@@ -1,0 +1,2 @@
+class RecipeComment < ApplicationRecord
+end
