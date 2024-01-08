@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :recommendations, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
+
     resources :recipes, only: [:index, :show, :edit, :destroy] do
       resources :recipe_comments, only: [:destroy]
     end
@@ -23,43 +24,28 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
+    get 'customers/mypage' => 'customers#show', as: 'mypage'
     resources :sakes, only: [:index, :show]
+
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:show, :edit, :update]
+
+    resources :snacks do
+      resources :tags, only: [:index, :create, :new, :destroy], controller: 'snack_tags'
+    end
+
+    resources :recipes, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :recipe_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+
+    resources :favorites, only: [:index]
+
+    resources :recommendations, only: [:index, :show]
   end
 
-  namespace :public do
-    get 'recommendations/index'
-    get 'recommendations/show'
-  end
-
-  namespace :public do
-    get 'tags/index'
-    get 'tags/new'
-  end
-  namespace :public do
-    get 'favorites/index'
-  end
-  namespace :public do
-    get 'recipes/new'
-    get 'recipes/show'
-  end
-  namespace :public do
-    get 'snacks/index'
-    get 'snacks/show'
-    get 'snacks/new'
-  end
-  namespace :public do
-    get 'customers/show'
-  end
-  # namespace :public do
-  #   get 'sakes/index'
-  #   get 'sakes/show'
-  # end
-  # namespace :public do
-  #   get 'homes/top'
-  # end
+  get '/search' => 'searches#search'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
