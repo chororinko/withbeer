@@ -1,0 +1,79 @@
+<%= form_with model: recipe do |f| %>
+<table class="table table-borderless">
+  <tr>
+    <th>材料</th>
+  </tr>
+  <tr>
+    <td><%= f.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= f.text_field :ingredients, placeholder: '1パック' %></td>
+  </tr>
+  <tr>
+    <td><%= f.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= f.text_field :ingredients, placeholder: '1パック' %></td>
+  </tr>
+  <tr>
+    <td><%= f.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= f.text_field :ingredients, placeholder: '1パック' %></td>
+  </tr>
+  <tr>
+    <td><%= f.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= f.text_field :ingredients, placeholder: '1パック' %></td>
+  </tr>
+  <tr>
+    <td><%= f.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= f.text_field :ingredients, placeholder: '1パック' %></td>
+  </tr>
+  <tr>
+    <td><%= f.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= f.text_field :ingredients, placeholder: '1パック' %></td>
+  </tr>
+  <tr>
+    <td><%= f.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= f.text_field :ingredients, placeholder: '1パック' %></td>
+  </tr>
+</table>
+
+<!--レシピの調味料フォーム-->
+<table class="table table-borderless">
+  <tr>
+    <td>A {</td>
+    <td><%= f.text_field :ingredients, placeholder: '酒' %>・・・・<%= f.text_field :ingredients, placeholder: '大さじ2' %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.text_field :ingredients, placeholder: '塩' %>・・・・<%= f.text_field :ingredients, placeholder: '少々' %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.text_field :ingredients, placeholder: '塩' %>・・・・<%= f.text_field :ingredients, placeholder: '少々' %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.text_field :ingredients, placeholder: '塩' %>・・・・<%= f.text_field :ingredients, placeholder: '少々' %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.text_field :ingredients, placeholder: '塩' %>・・・・<%= f.text_field :ingredients, placeholder: '少々' %></td>
+  </tr>
+</table>
+
+<!--レシピの作り方フォーム-->
+<table class="table table-borderless">
+  <tr>
+    <th>作り方</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><%= f.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><%= f.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><%= f.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><%= f.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><%= f.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
+  </tr>
+</table>
+<% end %>

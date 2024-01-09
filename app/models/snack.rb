@@ -1,4 +1,6 @@
 class Snack < ApplicationRecord
+  
+  has_many :recipes, dependent: :destroy
 
   has_one_attached :image
 

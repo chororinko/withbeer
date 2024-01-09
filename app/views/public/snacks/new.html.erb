@@ -1,2 +1,16 @@
-<h1>Public::Snacks#new</h1>
-<p>Find me in app/views/public/snacks/new.html.erb</p>
+<div class="container" style="margin-bottom: 100px;">
+<h4>おつまみレシピ新規投稿</h4>
+
+<!--おつまみ情報フォーム-->
+<%= render 'new', snack: @snack %>
+
+<!--レシピの材料フォーム-->
+<%= render 'recipes/new', recipe: @recipe %>
+
+<%= form_with model: @snack do |f| %>
+  <div class="row d-flex justify-content-center">
+    <%= f.submit 'おつまみレシピを投稿', class: 'btn btn-lg btn-info col-4' %>
+  </div>
+<% end %>
+</div>
+
