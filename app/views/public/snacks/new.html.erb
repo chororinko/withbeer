@@ -1,78 +1,9 @@
 <div class="container" style="margin-bottom: 100px;">
-<h4>おつまみレシピ新規投稿</h4>
+  <h4>おつまみレシピ新規投稿</h4>
 
-<!--おつまみ情報フォーム-->
-<%= form_with model: @snack do |f| %>
-<table class="table table-borderless">
-  <tr>
-    <th>おつまみ</th>
-  </tr>
-  <tr>
-    <td>おつまみ画像</td>
-    <td><%= f.file_field :image, accept: "image/*" %></td>
-  </tr>
-  <tr>
-    <td>タイトル</td>
-    <td><%= f.text_field :title, placeholder: 'タイトル' %></td>
-  </tr>
-  <tr>
-    <td>おつまみ紹介</td>
-    <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します' %></td>
-  </tr>
-</table>
+  <%= render 'list', snack: @snack %>
 
-<!--レシピ情報フォーム-->
-<%= f.fields_for :recipe do |recipe_fields| %>
-<!--レシピの材料フォーム-->
-<table class="table table-borderless">
-  <tr>
-    <th>材料</th>
-  </tr>
-  <tr>
-    <td><%= recipe_fields.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= recipe_fields.text_field :ingredients, placeholder: '1パック' %></td>
-  </tr>
-  <tr>
-    <td><%= recipe_fields.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= recipe_fields.text_field :ingredients, placeholder: '1パック' %></td>
-  </tr>
-  <tr>
-    <td><%= recipe_fields.text_field :ingredients, placeholder: 'エリンギ' %>・・・・<%= recipe_fields.text_field :ingredients, placeholder: '1パック' %></td>
-  </tr>
-</table>
-
-<!--レシピの調味料フォーム-->
-<table class="table table-borderless">
-  <tr>
-    <td>A {</td>
-    <td><%= recipe_fields.text_field :ingredients, placeholder: '酒' %>・・・・<%= recipe_fields.text_field :ingredients, placeholder: '大さじ2' %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><%= recipe_fields.text_field :ingredients, placeholder: '塩' %>・・・・<%= recipe_fields.text_field :ingredients, placeholder: '少々' %></td>
-  </tr>
-</table>
-<p>※Aには調味料を入れてください。</p>
-
-<!--レシピの作り方フォーム-->
-<table class="table table-borderless">
-  <tr>
-    <th>作り方</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td><%= recipe_fields.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td><%= recipe_fields.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td><%= recipe_fields.text_area :process, rows:'5', placeholder: 'ここに作り方を記述します' %></td>
-  </tr>
-</table>
-<% end %>
-
-<!--<#%= form_with model: @snack, url: snacks_path, method: :post do |f| %>-->
+  <%= form_with model: @snack, url: snacks_path, method: :post do |f| %>
   <div class="row d-flex justify-content-center">
     <%= f.submit 'おつまみレシピを投稿', class: 'btn btn-lg btn-info col-4' %>
   </div>

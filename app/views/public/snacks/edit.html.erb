@@ -1,0 +1,11 @@
+<div class="container" style="margin-bottom: 100px;">
+  <h4>おつまみレシピ編集</h4>
+
+  <%= render 'list', snack: @snack %>
+
+  <%= form_with model: @snack, url: snack_path, method: :patch do |f| %>
+    <div class="row d-flex justify-content-center">
+      <%= f.submit '変更を保存', class: 'btn btn-lg btn-info col-4' %>
+    </div>
+  <% end %>
+</div>

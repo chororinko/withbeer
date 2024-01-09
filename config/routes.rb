@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :recommendations, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
 
-    resources :recipes, only: [:index, :show, :edit, :destroy] do
-      resources :recipe_comments, only: [:destroy]
+    resources :snacks, only: [:index, :show, :edit, :destroy] do
+      resources :snack_comments, only: [:destroy]
     end
   end
 
@@ -33,10 +33,7 @@ Rails.application.routes.draw do
 
     resources :snacks do
       resources :tags, only: [:index, :create, :new, :destroy], controller: 'snack_tags'
-    end
-
-    resources :recipes, only: [:new, :create, :show, :edit, :update, :destroy] do
-      resources :recipe_comments, only: [:create, :destroy]
+      resources :snack_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
 

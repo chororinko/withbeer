@@ -68,24 +68,8 @@ ActiveRecord::Schema.define(version: 2024_01_08_013937) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "customer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "recipe_comments", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "customer_id", null: false
-    t.text "comment", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "recipes", force: :cascade do |t|
     t.integer "snack_id", null: false
-    t.string "ingredients", null: false
-    t.text "process", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,6 +87,14 @@ ActiveRecord::Schema.define(version: 2024_01_08_013937) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "snack_comments", force: :cascade do |t|
+    t.integer "snack_id", null: false
+    t.integer "customer_id", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "snack_tags", force: :cascade do |t|
     t.integer "snack_id", null: false
     t.integer "tag_id", null: false
@@ -114,6 +106,8 @@ ActiveRecord::Schema.define(version: 2024_01_08_013937) do
     t.integer "sake_id", null: false
     t.string "title", null: false
     t.text "introduction", null: false
+    t.text "ingredients", null: false
+    t.text "process", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

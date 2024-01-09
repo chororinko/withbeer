@@ -3,15 +3,10 @@ class Public::SnacksController < ApplicationController
 
   def new
     @snack = Snack.new
-    @snack.build_recipe
-    # @recipe = Recipe.new
   end
 
   def create
     @snack = Snack.new(snack_params)
-    # @snack.customer_id = current_customer.id
-    # @recipe = Recipe.new(recipe_params)
-    # @recipe.customer_id = current_customer.id
     if @snack.save
       flash[:notice] = 'おつまみレシピの新規投稿に成功しました。'
       redirect_to snack_path(@snack)
@@ -27,17 +22,14 @@ class Public::SnacksController < ApplicationController
 
   def show
     @snack = Snack.find(params[:id])
-    # @recipe = Recipe.find(params[:id])
   end
 
   def edit
     @snack = Snack.find(params[:id])
-    # @recipe = Recipe.find(params[:id])
   end
 
   def update
     @snack = Snack.find(params[:id])
-    # @recipe = Recipe.find(params[:id])
     if @snack.update(snack_params)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'
       redirect_to snack_path(@snack)
@@ -56,11 +48,7 @@ class Public::SnacksController < ApplicationController
   private
 
   def snack_params
-    params.require(:snack).permit(:image, :title, :introduction, recipe_attributes: [:id, :ingredients, :process])
+    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process)
   end
-
-  # def recipe_params
-  #   params.require(:recipe).permit(:ingredients, :process, :snack_id)
-  # end
 
 end

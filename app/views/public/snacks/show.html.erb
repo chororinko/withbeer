@@ -1,5 +1,11 @@
+<div class="notice">
+  <%= flash[:notice] %>
+</div>
+
 <%= form_with model: @snack do |f| %>
 <div class="container">
+  
+  <!--おつまみ情報-->
   <div class="row">
     <h4><%= @snack.title %></h4>
   </div>
@@ -8,9 +14,47 @@
     <div class="col">
       <%= image_tag @snack.get_image(400,400) %>
     </div>
-    <div class="col">
-      <h6>おつまみ紹介文</h6>
-      <p><%= @snack.introduction %></p>
+    <table class="table table-borderless col">
+      <tr>
+        <td><h6>おつまみ紹介文</h6></td>
+      </tr>
+      <tr>
+        <td><%= @snack.introduction %></td>
+      </tr> 
+      <tr>
+        <td><%= @tag.(cooking_genre, flavor, cooking_time) %></td>
+      </tr>
+      <tr>
+        <td><%= image_tag @customer.get_profile_image(50,50) %></td>
+        <td><%= @snack.customer.user_name %></td>
+      </tr>
+    </table>
+    
+    <!--おつまみのレシピ情報-->
+    <div class="row">
+      <h4>レシピ</h4>
     </div>
+    
+    <div class="row">
+      <div class="col">
+        <h5>材料</h5>
+      </div>
+      <div class="col">
+        <h5>作り方</h5>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col">
+        <p><%= @snack.ingredients %></p>
+      </div>
+      <div class="col">
+        <p><%= @snack.process %></p>
+      </div>
+    </div>
+    
+    
+    
+    
   </div>
 <% end %>

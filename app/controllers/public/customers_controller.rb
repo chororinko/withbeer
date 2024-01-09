@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
-    @snacks = @customer.snack.all
+    @snacks = @customer.snacks.all
     # @favorite = snack.favorite.count
     # @recipe_comment = snack.recipe_comment.count
   end

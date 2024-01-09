@@ -1,9 +1,5 @@
 class Snack < ApplicationRecord
 
-  # 以下２行追加
-  has_one :recipe
-  accepts_nested_attributes_for :recipe
-  
   belongs_to :customer
 
   has_one_attached :image
