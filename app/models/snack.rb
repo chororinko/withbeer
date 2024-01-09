@@ -1,6 +1,10 @@
 class Snack < ApplicationRecord
+
+  # 以下２行追加
+  has_one :recipe
+  accepts_nested_attributes_for :recipe
   
-  has_many :recipes, dependent: :destroy
+  belongs_to :customer
 
   has_one_attached :image
 
@@ -11,7 +15,7 @@ class Snack < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def self.looks(content, search)
     if search == "perfect_match"
       Snack.where("title LIKE?", "#{content}")

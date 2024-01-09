@@ -19,7 +19,7 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:ingredients, :process)
+    params.require(:recipe).permit(:ingredients, :process, :snack_id)
   end
 
 end

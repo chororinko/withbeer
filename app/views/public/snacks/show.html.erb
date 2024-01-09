@@ -1,2 +1,16 @@
-<h1>Public::Snacks#show</h1>
-<p>Find me in app/views/public/snacks/show.html.erb</p>
+<%= form_with model: @snack do |f| %>
+<div class="container">
+  <div class="row">
+    <h4><%= @snack.title %></h4>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= image_tag @snack.get_image(400,400) %>
+    </div>
+    <div class="col">
+      <h6>おつまみ紹介文</h6>
+      <p><%= @snack.introduction %></p>
+    </div>
+  </div>
+<% end %>
