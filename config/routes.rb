@@ -29,7 +29,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get 'customers/mypage' => 'customers#show', as: 'mypage'
     resources :sakes, only: [:index, :show]
 
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'

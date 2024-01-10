@@ -114,9 +114,7 @@ ActiveRecord::Schema.define(version: 2024_01_08_013937) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "cooking_genre", null: false
-    t.integer "flavor", null: false
-    t.integer "cooking_time", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

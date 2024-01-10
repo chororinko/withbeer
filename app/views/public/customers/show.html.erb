@@ -19,9 +19,11 @@
         <td>自己紹介：</td>
         <td><%= @customer.introduction %></td>
       </tr>
+      <% if @customer == current_customer %>
     　<tr>
-        <td><%= link_to '設定', edit_customer_path(@customer), class: 'btn btn-outline-secondary' %></td>
+        <td><%= link_to '設定', edit_customer_path(@customer), class: 'btn btn-outline-secondary col' %></td>
       </tr>
+      <% end %>
     </table>
   </div>
 

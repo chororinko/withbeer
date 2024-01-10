@@ -3,8 +3,8 @@ class Public::CustomersController < ApplicationController
   before_action :is_matching_login_customer, only: [:edit, :update]
 
   def show
-    @customer = current_customer
-    # @customer = Customer.find(params[:id])
+    # @customer = current_customer
+    @customer = Customer.find(params[:id])
     @snacks = @customer.snacks.all
     # @favorite = snack.favorite.count
     # @recipe_comment = snack.recipe_comment.count
@@ -18,7 +18,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = 'プロフィールの編集に成功しました。'
-      redirect_to mypage_path
+      redirect_to customer_path(@customer)
     else
       flash[:notice] = 'プロフィールの編集に失敗しました。'
       render :edit
@@ -43,7 +43,7 @@ class Public::CustomersController < ApplicationController
   def is_matching_login_customer
     customer = Customer.find(params[:id])
     unless customer.id == current_customer.id
-      redirect_to mypage_path(current_customer)
+      redirect_to customer_path(current_customer)
     end
   end
 

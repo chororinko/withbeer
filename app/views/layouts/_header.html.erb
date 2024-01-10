@@ -30,7 +30,7 @@
           </li>
         <% elsif customer_signed_in? %>
           <li>
-            <%= link_to mypage_path, class: "nav-link text-light" do %>
+            <%= link_to customer_path(current_customer), class: "nav-link text-light" do %>
               <i class="fa-regular fa-book-open"></i>マイページ
             <% end %>
           </li>
