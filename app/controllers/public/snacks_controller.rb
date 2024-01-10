@@ -1,6 +1,6 @@
 class Public::SnacksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show]
-  before_action :is_matching_login_customer, only: [:edit, :update]
+  before_action :is_matching_login_customer, only: [:edit, :update, :destroy]
 
   def new
     @snack = Snack.new

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h4>プロフィール編集</h4>
+  </div>
+
+  <%= form_with model: @customer do |f| %>
+    <div class="row">
+      <table class="table table-borderless">
+        <tr>
+          <td>プロフィール画像</td>
+          <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= f.text_field :user_name, placeholder: 'ユーザー名' %></td>
+        </tr>
+        <tr>
+          <td>自己紹介</td>
+          <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します' %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <%= f.submit '変更を保存', class: 'btn btn-info' %>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <%= link_to '退会する', customers_confirm_withdraw_path, class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+
+</div>

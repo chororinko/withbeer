@@ -18,6 +18,10 @@
       <td>おつまみ紹介</td>
       <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します' %></td>
     </tr>
+    <tr>
+      <td>お酒</td>
+      <td><%= f.collection_select(:sake_id, Sake.all, :id, :genre, include_blank: "-- このおつまみに合うお酒を選択してください --", class: 'w-100') %></td>
+    </tr>
   </table>
 
   <!--レシピの材料フォーム-->

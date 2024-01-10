@@ -3,10 +3,9 @@
 </div>
 
 <%= form_with model: @snack do |f| %>
-<div class="container">
-  
+<div class="container" style="margin-bottom: 100px;">
   <!--おつまみ情報-->
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <h4><%= @snack.title %></h4>
   </div>
 
@@ -20,41 +19,55 @@
       </tr>
       <tr>
         <td><%= @snack.introduction %></td>
-      </tr> 
-      <tr>
-        <td><%= @tag.(cooking_genre, flavor, cooking_time) %></td>
       </tr>
+      <!--<tr>-->
+      <!--  <td><#%= @tag.cooking_genre %></td>-->
+      <!--  <td><#%= @tag.flavor %></td>-->
+      <!--  <td><%#= @tag.cooking_time %></td>-->
+      <!--</tr>-->
       <tr>
-        <td><%= image_tag @customer.get_profile_image(50,50) %></td>
+        <td>
+          <%= link_to customer_path(@snack.customer) do %>
+            <%= image_tag @snack.customer.get_profile_image(100,100) %>
+          <% end %>
+        </td>
         <td><%= @snack.customer.user_name %></td>
       </tr>
     </table>
-    
-    <!--おつまみのレシピ情報-->
-    <div class="row">
-      <h4>レシピ</h4>
-    </div>
-    
-    <div class="row">
-      <div class="col">
-        <h5>材料</h5>
-      </div>
-      <div class="col">
-        <h5>作り方</h5>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col">
-        <p><%= @snack.ingredients %></p>
-      </div>
-      <div class="col">
-        <p><%= @snack.process %></p>
-      </div>
-    </div>
-    
-    
-    
-    
   </div>
+  <!--おつまみのレシピ情報-->
+  <div class="row d-flex justify-content-center">
+    <h4>レシピ</h4>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h5>材料</h5>
+    </div>
+    <div class="col">
+      <h5>作り方</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p><%= @snack.ingredients %></p>
+    </div>
+    <div class="col">
+      <p><%= @snack.process %></p>
+    </div>
+  </div>
+
+  <% if @snack.customer == current_customer %>
+    <div class="row d-flex justify-content-center">
+      <%= link_to '削除する', snack_path(@snack), method: :delete, class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+
+  <div class="row d-flex justify-content-center">
+    <%= link_to '編集する', edit_snack_path(@snack), class: 'btn btn-info' %>
+  </div>
+
+
+</div>
 <% end %>

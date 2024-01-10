@@ -3,6 +3,9 @@ class Snack < ApplicationRecord
   belongs_to :customer
   belongs_to :sake
 
+  has_many :snack_tags, dependent: :destroy
+  has_many :tags, through: :snack_tags
+
   has_one_attached :image
 
   def get_image(width, height)
