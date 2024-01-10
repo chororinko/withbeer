@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2024_01_08_013937) do
 
   create_table "snacks", force: :cascade do |t|
     t.integer "sake_id", null: false
+    t.integer "customer_id", null: false
     t.string "title", null: false
     t.text "introduction", null: false
     t.text "ingredients", null: false

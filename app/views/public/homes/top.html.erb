@@ -7,6 +7,20 @@
   </div>
 
   <div class="row d-flex justify-content-center">
+    <div class="col-2">
+      <h5><strong>ジャンル検索</strong></h5>
+      <table class="table">
+        <% @sakes.each do |sake| %>
+          <tbody>
+            <tr>
+              <td style="text-align: left; color: #583822;">
+                <%= link_to sake.genre, snacks_path(sake_id: sake.id), method: :get, class: "text-decoration-none text-dark" %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
     <div class="col text-center">
       <h4>今月のおすすめ</h4>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">

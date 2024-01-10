@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'sakes/index'
+    get 'sakes/edit'
+  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations], controllers: {
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :recommendations, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :sakes, only: [:index, :edit, :create, :update, :destroy]
 
     resources :snacks, only: [:index, :show, :edit, :destroy] do
       resources :snack_comments, only: [:destroy]
