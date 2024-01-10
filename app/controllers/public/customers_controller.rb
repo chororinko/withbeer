@@ -4,6 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    # @customer = Customer.find(params[:id])
     @snacks = @customer.snacks.all
     # @favorite = snack.favorite.count
     # @recipe_comment = snack.recipe_comment.count
@@ -42,7 +43,7 @@ class Public::CustomersController < ApplicationController
   def is_matching_login_customer
     customer = Customer.find(params[:id])
     unless customer.id == current_customer.id
-      redirect_to maypage(current_customer)
+      redirect_to mypage_path(current_customer)
     end
   end
 

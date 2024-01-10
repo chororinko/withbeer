@@ -60,7 +60,7 @@
 
   <% if @snack.customer == current_customer %>
     <div class="row d-flex justify-content-center">
-      <%= link_to '削除する', snack_path(@snack), method: :delete, class: 'btn btn-danger' %>
+      <%= link_to '削除する', snack_path(@snack), method: :delete, "data-confirm" => "本当に消しますか?", class: 'btn btn-danger' %>
     </div>
   <% end %>
 

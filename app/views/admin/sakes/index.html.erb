@@ -37,11 +37,16 @@
       <tbody>
         <tr>
           <td>
-            <div class="row ml-4"><%= sake.genre %></div>
+            <div class="col ml-4"><%= sake.genre %></div>
           </td>
           <td>
-            <div class="row de-flex justify-content-end">
-            <%= link_to '編集する', edit_admin_sake_path(sake.id), class: 'btn btn-info col-4 mr-5' %>
+            <div class="col d-flex justify-content-end">
+              <%= link_to '編集', edit_admin_sake_path(sake.id), class: 'btn btn-info col-7' %>
+            </div>
+          </td>
+          <td>
+            <div class="col">
+              <%= link_to '削除', admin_sake_path(sake.id), method: :delete, class: 'btn btn-danger' %>
             </div>
           </td>
         </tr>

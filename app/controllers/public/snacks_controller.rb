@@ -27,6 +27,7 @@ class Public::SnacksController < ApplicationController
 
   def show
     @snack = Snack.find(params[:id])
+    @customer = @snack.customer
   end
 
   def edit

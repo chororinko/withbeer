@@ -26,14 +26,14 @@
   </div>
 
   <div class="row">
-    <table class="table table-hover">
+    <table>
       <tr>
         <th>マイおつまみレシピ</th>
       </tr>
       <% @snacks.each do |snack| %>
-      <tr>
-        <td><%= image_tag @customer.snack.get_image(70,70) %></td>
-        <td><%= @customer.snack.title %></td>
+      <tr class="table table-hover">
+        <td><%= image_tag snack.get_image(70,70) %></td>
+        <td><%= snack.title %></td>
         <!--<td>♡いいね： <#%= @favorite.count %></td>-->
         <!--<td>コメント： <#%= @recipe_comment.count %></td>-->
       </tr>
