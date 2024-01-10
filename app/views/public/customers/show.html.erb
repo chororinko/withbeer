@@ -9,38 +9,51 @@
 
   <%= form_with model: @customer do |f| %>
   <div class="row">
-    <%= image_tag @customer.get_profile_image(200,200) %>
-    <table class="table table-borderless">
-      <tr>
-        <td>ユーザー名：</td>
-        <td><%= @customer.user_name %></td>
-      </tr>
-      <tr>
-        <td>自己紹介：</td>
-        <td><%= @customer.introduction %></td>
-      </tr>
+    <div class="col-md-3">
+      <%= image_tag @customer.get_profile_image(200,200) %>
+      <table class="table table-borderless">
+        <tr>
+          <td>ユーザー名：</td>
+          <td><%= @customer.user_name %></td>
+        </tr>
+        <tr>
+          <td>自己紹介：</td>
+          <td><%= @customer.introduction %></td>
+        </tr>
+      </table>
       <% if @customer == current_customer %>
-    　<tr>
-        <td><%= link_to '設定', edit_customer_path(@customer), class: 'btn btn-outline-secondary col' %></td>
-      </tr>
+    　<div>
+        <%= link_to '設定', edit_customer_path(@customer), class: 'btn btn-outline-secondary col' %>
+      </div>
       <% end %>
-    </table>
-  </div>
+    </div>
 
-  <div class="row">
-    <table>
-      <tr>
-        <th>マイおつまみレシピ</th>
-      </tr>
-      <% @snacks.each do |snack| %>
-      <tr class="table table-hover">
-        <td><%= image_tag snack.get_image(70,70) %></td>
-        <td><%= snack.title %></td>
-        <!--<td>♡いいね： <#%= @favorite.count %></td>-->
-        <!--<td>コメント： <#%= @recipe_comment.count %></td>-->
-      </tr>
-      <% end %>
-    </table>
+    <div class="col-md-8 offset-md-1">
+      <table>
+        <tr>
+          <th>マイおつまみレシピ</th>
+        </tr>
+        <% @snacks.each do |snack| %>
+        <tr class="table table-hover">
+          <td>
+            <%= link_to snack_path(snack) do %>
+              <%= image_tag snack.get_image(70,70) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to snack_path(snack) do %>
+              <%= snack.title %>
+            <% end %>
+          </td>
+          <td></td>
+          <td id="favorite-btn_<%= snack.id %> ml-5">
+            <%= render 'public/favorites/favorite-btn', snack: snack %><br>
+            <!--コメント：<%#= snack.snack_comments.count %>-->
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
   <% end %>
 </div>

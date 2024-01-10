@@ -15,7 +15,7 @@
     </div>
     <table class="table table-borderless col">
       <tr>
-        <td><h6>おつまみ紹介文</h6></td>
+        <th><h5>おつまみ紹介文</h5></th>
       </tr>
       <tr>
         <td><%= @snack.introduction %></td>
@@ -27,9 +27,9 @@
         <td>
           <%= link_to customer_path(@snack.customer) do %>
             <%= image_tag @snack.customer.get_profile_image(100,100) %>
+            <%= @snack.customer.user_name %>
           <% end %>
         </td>
-        <td><%= @snack.customer.user_name %></td>
       </tr>
     </table>
   </div>
@@ -56,15 +56,18 @@
     </div>
   </div>
 
+  <div id="favorite-btn_<%= @snack.id %>" class="row justify-content-end mr-5">
+    <%= render 'public/favorites/favorite-btn', snack: @snack %>
+  </div>
+
   <% if @snack.customer == current_customer %>
+    <div class="row d-flex justify-content-center">
+      <%= link_to '編集する', edit_snack_path(@snack), class: 'btn btn-info' %>
+    </div>
     <div class="row d-flex justify-content-center">
       <%= link_to '削除する', snack_path(@snack), method: :delete, "data-confirm" => "本当に消しますか?", class: 'btn btn-danger' %>
     </div>
   <% end %>
-
-  <div class="row d-flex justify-content-center">
-    <%= link_to '編集する', edit_snack_path(@snack), class: 'btn btn-info' %>
-  </div>
 
 
 </div>
