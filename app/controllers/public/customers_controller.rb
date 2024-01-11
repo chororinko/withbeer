@@ -29,6 +29,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
     @customer.update(is_active: false)
     reset_session
     redirect_to root_path
@@ -41,7 +42,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def is_matching_login_customer
-    customer = Customer.find(params[:id])
+    customer = current_customer
     unless customer.id == current_customer.id
       redirect_to customer_path(current_customer)
     end

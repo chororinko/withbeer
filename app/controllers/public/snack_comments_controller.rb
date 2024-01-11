@@ -14,7 +14,7 @@ class Public::SnackCommentsController < ApplicationController
 
   private
 
-  def sanck_comment_params
+  def snack_comment_params
     params.require(:snack_comment).permit(:comment)
   end
 

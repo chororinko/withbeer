@@ -26,7 +26,7 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:email, :user_name, :is_active)
+    params.require(:customer).permit(:is_active)
   end
 
   def ensure_customer
