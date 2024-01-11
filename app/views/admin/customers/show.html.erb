@@ -1,2 +1,43 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<%= form_with model: @customer do |f| %>
+<div class="container">
+  <div class="row">
+    <h4><%= @customer.user_name %>さんの会員詳細</h4>
+  </div>
+
+  <div class="row">
+    <table class="table table-borderless">
+      <tr>
+        <td>会員ID</td>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td>ユーザー名</td>
+        <td><%= @customer.user_name %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <td>会員ステータス</td>
+        <td class="row">
+          <div class="col-4">
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, "有効" %>
+          </div>
+          <div class="col-5">
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "退会" %>
+          </div>
+        </td>
+        <td><%= f.submit '変更', class: 'btn btn-sm btn-info' %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_to 'おつまみ一覧', admin_customer_snacks_path(@customer), class: 'btn btn-lg btn-info' %>
+  </div>
+
+</div>
+<% end %>

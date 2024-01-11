@@ -1,0 +1,7 @@
+<div class="notice">
+  <%= flash[:notice] %>
+</div>
+
+<%= render 'public/snacks/list', snack: @snack %>
+
+<%= render 'admin/snacks/delete', snack: @snack, customer: @customer %>

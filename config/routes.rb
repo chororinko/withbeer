@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :recommendations, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    get 'customers/:customer_id/snacks' => 'snacks#index', as: 'customer_snacks'
+    resources :recommendations
     resources :customers, only: [:index, :show, :edit, :update]
     resources :sakes, only: [:index, :edit, :create, :update, :destroy]
 

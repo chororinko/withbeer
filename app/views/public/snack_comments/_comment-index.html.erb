@@ -14,7 +14,9 @@
     </tr>
   </table>
 <% end %>
-<%= form_with model: [snack, snack_comment], local: false do |f| %>
-  <div><%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: "col-5" %></div><br>
-  <div><%= f.submit '送信' %></div>
+<% if customer_signed_in? %>
+  <%= form_with model: [snack, snack_comment], local: false do |f| %>
+    <div><%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: "col-5" %></div><br>
+    <div><%= f.submit '送信' %></div>
+  <% end %>
 <% end %>

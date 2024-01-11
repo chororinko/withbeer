@@ -4,12 +4,17 @@ class Snack < ApplicationRecord
   belongs_to :sake
 
   has_many :favorites, dependent: :destroy
+  has_many :favorited_customers, through: :favorites, source: :customer
   has_many :snack_tags, dependent: :destroy
   has_many :tags, through: :snack_tags
   has_many :snack_comments, dependent: :destroy
 
   def favorited_by?(customer)
-    favorites.exists?(customer_id: customer.id)
+    if customer.instance_of?(Customer)
+      favorites.exists?(customer_id: customer.id)
+    else
+      false
+    end
   end
 
   has_one_attached :image

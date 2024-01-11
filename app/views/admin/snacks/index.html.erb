@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model: @customer do |f| %>
+      <h4><%= @customer.user_name %>さんのおつまみレシピ一覧</h4>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= render 'public/customers/snacks-index', snacks: @snacks %>
+  </div>
+</div>

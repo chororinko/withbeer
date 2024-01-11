@@ -29,30 +29,8 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <table>
-        <tr>
-          <th>マイおつまみレシピ</th>
-        </tr>
-        <% @snacks.each do |snack| %>
-        <tr class="table table-hover">
-          <td>
-            <%= link_to snack_path(snack) do %>
-              <%= image_tag snack.get_image(70,70) %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to snack_path(snack) do %>
-              <%= snack.title %>
-            <% end %>
-          </td>
-          <td></td>
-          <td id="favorite-btn_<%= snack.id %> ml-5">
-            <%= render 'public/favorites/favorite-btn', snack: snack %><br>
-            コメント：<%= snack.snack_comments.count %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+      マイおつまみレシピ
+      <%= render 'public/customers/snacks-index', snacks: @snacks %>
     </div>
   </div>
   <% end %>

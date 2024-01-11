@@ -50,7 +50,7 @@ class Public::SnacksController < ApplicationController
   def destroy
     snack = Snack.find(params[:id])
     snack.destroy
-    redirect_to mypage_path
+    redirect_to customer_path(current_customer)
   end
 
   private
