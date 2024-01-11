@@ -48,7 +48,7 @@
           <td></td>
           <td id="favorite-btn_<%= snack.id %> ml-5">
             <%= render 'public/favorites/favorite-btn', snack: snack %><br>
-            <!--コメント：<%#= snack.snack_comments.count %>-->
+            コメント：<%= snack.snack_comments.count %>
           </td>
         </tr>
         <% end %>

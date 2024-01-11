@@ -29,7 +29,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    resources :sakes, only: [:index, :show]
+    resources :sakes, only: [:index, :show] do
+      resources :snacks, only: [:index, :show]
+    end
 
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch 'customers/withdraw' => 'customers#withdraw'

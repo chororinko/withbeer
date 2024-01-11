@@ -20,9 +20,9 @@
       <tr>
         <td><%= @snack.introduction %></td>
       </tr>
-      <!--<tr>-->
-        <td><%#= @tag.name %></td>
-      <!--</tr>-->
+      <tr>
+        <td>合うお酒：<strong><%= @snack.sake.genre %></storong></td>
+      </tr>
       <tr>
         <td>
           <%= link_to customer_path(@snack.customer) do %>
@@ -58,6 +58,10 @@
 
   <div id="favorite-btn_<%= @snack.id %>" class="row justify-content-end mr-5">
     <%= render 'public/favorites/favorite-btn', snack: @snack %>
+  </div>
+
+  <div class="comment-index row justify-content-end mr-5">
+    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
   </div>
 
   <% if @snack.customer == current_customer %>

@@ -6,6 +6,7 @@ class Snack < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :snack_tags, dependent: :destroy
   has_many :tags, through: :snack_tags
+  has_many :snack_comments, dependent: :destroy
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)

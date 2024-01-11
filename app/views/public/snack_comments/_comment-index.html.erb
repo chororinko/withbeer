@@ -1,0 +1,20 @@
+<% snack.snack_comments.each do |comment| %>
+  <table>
+    <tr>
+      <td><%= image_tag(comment.customer.get_profile_image(80,80)) %></td>
+      <td><%= comment.comment %><td>
+      <td>
+        <% if comment.customer == current_customer %>
+          <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= link_to comment.customer.user_name, customer_path(comment.customer) %></td>
+    </tr>
+  </table>
+<% end %>
+<%= form_with model: [snack, snack_comment], local: false do |f| %>
+  <div><%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: "col-5" %></div><br>
+  <div><%= f.submit '送信' %></div>
+<% end %>
