@@ -10,7 +10,10 @@ class Public::SnacksController < ApplicationController
   def create
     @snack = Snack.new(snack_params)
     @snack.customer_id = current_customer.id
+    tags = params[:snack][:name].split(',')
     if @snack.save
+      # @snack.tag_ids = Tag.where(name: @tags).pluck(:id)
+      @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの新規投稿に成功しました。'
       redirect_to snack_path(@snack)
     else
@@ -23,22 +26,27 @@ class Public::SnacksController < ApplicationController
     @snacks = Snack.page(params[:page])
     @sake = Sake.find(params[:sake_id])
     @quantity = @sake.snacks.count
+    # @tags = @snacks.tags.pluck(:name).join(nil)
   end
 
   def show
     @snack = Snack.find(params[:id])
     @customer = @snack.customer.id
     @snack_comment = SnackComment.new
-    # @tags = Tag.all
+    @tags = @snack.tags.pluck(:name).join(nil)
   end
 
   def edit
     @snack = Snack.find(params[:id])
+    @tags = @snack.tags.pluck(:name).join(nil)
   end
 
   def update
     @snack = Snack.find(params[:id])
+    @tags = params[:snack][:tag_id].split(nil)
     if @snack.update(snack_params)
+      @snack.save_tags(@tags)
+      # @snack.tag_ids = Tag.where(name: @tags).pluck(:id)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'
       redirect_to snack_path(@snack)
     else

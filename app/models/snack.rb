@@ -9,19 +9,13 @@ class Snack < ApplicationRecord
   has_many :tags, through: :snack_tags
   has_many :snack_comments, dependent: :destroy
 
+  # 1つの投稿に対して1人1回までしかいいねできないようにするための確認のメソッド
   def favorited_by?(customer)
     if customer.instance_of?(Customer)
       favorites.exists?(customer_id: customer.id)
     else
       false
     end
-  end
-
-  def self.favorited_snacks(customer, page)    # 1. モデル内での操作を開始
-    includes(:favorites)                                 # 2. favorites テーブルを結合
-      .where(favorites: { customer_id: customer.id })    # 3. ユーザーがいいねしたレコードを絞り込み
-      .order(created_at: :desc) # 4. 投稿を作成日時の降順でソート
-      .page(page) # 5. ページネーションのため、指定ページに表示するデータを選択
   end
 
   has_one_attached :image
@@ -45,4 +39,25 @@ class Snack < ApplicationRecord
       Snack.where("title LIKE?", "%#{content}%")
     end
   end
+
+  def save_tags(tags)
+    # 既にタグあるなら全取得
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+
+    # 共通要素取り出し
+    old_tags = current_tags - tags
+    new_tags = tags - current_tags
+
+    # 古いタグ削除
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(name: old_name)
+    end
+
+    # 新しいタグ作成
+    new_tags.each do |new_name|
+      post_tag = Tag.find_or_create_by(name: new_name)
+      self.tags << post_tag
+    end
+  end
+
 end

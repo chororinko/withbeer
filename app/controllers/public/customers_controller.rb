@@ -6,14 +6,12 @@ class Public::CustomersController < ApplicationController
     # @customer = current_customer
     @customer = Customer.find(params[:id])
     @snacks = @customer.snacks.all
-    # @favorite = snack.favorite.count
-    # @recipe_comment = snack.recipe_comment.count
   end
 
-  def favorited_snacks
+  def favorites
     @customer = current_customer
-    @snacks = Snack.all
-    @favorited_snacks = Snack.favorited_snacks(current_customer, params[:page])
+    @favorites = @customer.favorites.includes(:snack)    #ログインしているユーザーがいいねした投稿の情報を取得する
+    @snacks = @favorites.map(&:snack)    # いいねした投稿に関連付けられたおつまみの情報を@snacksに格納
   end
 
   def edit

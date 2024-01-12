@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'sakes/index'
-    get 'sakes/edit'
-  end
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations], controllers: {
@@ -16,6 +13,9 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+  get "search_tag" => "snacks#search_tag"
+  get '/search' => 'searches#search'
+  
   namespace :admin do
     root to: 'homes#top'
     get 'customers/:customer_id/snacks' => 'snacks#index', as: 'customer_snacks'
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:show, :edit, :update] do
       member do
-        get :favorited_snacks
+      get :favorites
       end
     end
 
@@ -50,8 +50,6 @@ Rails.application.routes.draw do
     # resources :favorites, only: [:index]
     resources :recommendations, only: [:index, :show]
   end
-
-  get '/search' => 'searches#search'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,4 +1,5 @@
 <div class="container" style="margin-bottom: 100px;">
+
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
     <h4><%= snack.title %></h4>
@@ -19,6 +20,9 @@
         <td>合うお酒：<strong><%= snack.sake.genre %></storong></td>
       </tr>
       <tr>
+        <td>タグ：<strong><i class="fa-solid fa-tag"></i><%= @tags %></storong></td>
+      </tr>
+      <tr>
         <td>
           <%= link_to customer_path(snack.customer) do %>
             <%= image_tag snack.customer.get_profile_image(100,100) %>
@@ -28,6 +32,7 @@
       </tr>
     </table>
   </div>
+
   <!--おつまみのレシピ情報-->
   <div class="row d-flex justify-content-center">
     <h4>レシピ</h4>
@@ -55,7 +60,8 @@
     <%= render 'public/favorites/favorite-btn', snack: @snack %>
   </div>
 
-  <div class="comment-index row justify-content-end mr-5">
+  <!--コメント-->
+  <div class="comment-index mr-5">
     <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
   </div>
 
@@ -68,6 +74,7 @@
     </div>
   <% end %>
 
+  <!--管理者側で不適切な投稿を削除するため-->
   <% if admin_signed_in? %>
     <div class="row d-flex justify-content-center">
       <%= link_to '削除する', admin_snack_path(@snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
