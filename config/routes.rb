@@ -36,16 +36,18 @@ Rails.application.routes.draw do
 
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch 'customers/withdraw' => 'customers#withdraw'
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        get :favorited_snacks
+      end
+    end
 
     resources :snacks do
       resources :tags, only: [:index, :create, :new, :destroy], controller: 'snack_tags'
       resources :snack_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-
-    resources :favorites, only: [:index]
-
+    # resources :favorites, only: [:index]
     resources :recommendations, only: [:index, :show]
   end
 

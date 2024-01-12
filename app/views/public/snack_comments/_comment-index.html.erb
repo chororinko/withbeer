@@ -1,16 +1,19 @@
 <% snack.snack_comments.each do |comment| %>
   <table>
     <tr>
-      <td><%= image_tag(comment.customer.get_profile_image(80,80)) %></td>
+      <td>
+        <%= image_tag(comment.customer.get_profile_image(100,100)) %><br>
+        <%= link_to comment.customer.user_name, customer_path(comment.customer) %>
+      </td>
       <td><%= comment.comment %><td>
       <td>
         <% if comment.customer == current_customer %>
           <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger' %>
+        <% elsif admin_signed_in? %>
+          <%= link_to '削除', admin_snack_snack_comment_path(comment.snack, comment),
+          method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger' %>
         <% end %>
       </td>
-    </tr>
-    <tr>
-      <td><%= link_to comment.customer.user_name, customer_path(comment.customer) %></td>
     </tr>
   </table>
 <% end %>

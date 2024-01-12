@@ -7,9 +7,6 @@ class Public::FavoritesController < ApplicationController
     favorite.save
   end
 
-  def index
-  end
-
   def destroy
     @snack = Snack.find(params[:snack_id])
     favorite = current_customer.favorites.find_by(snack_id: @snack.id)

@@ -17,6 +17,13 @@ class Snack < ApplicationRecord
     end
   end
 
+  def self.favorited_snacks(customer, page)    # 1. モデル内での操作を開始
+    includes(:favorites)                                 # 2. favorites テーブルを結合
+      .where(favorites: { customer_id: customer.id })    # 3. ユーザーがいいねしたレコードを絞り込み
+      .order(created_at: :desc) # 4. 投稿を作成日時の降順でソート
+      .page(page) # 5. ページネーションのため、指定ページに表示するデータを選択
+  end
+
   has_one_attached :image
 
   def get_image(width, height)

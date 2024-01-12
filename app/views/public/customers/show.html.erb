@@ -4,7 +4,11 @@
 
 <div class="container">
   <div class="row">
-    <h4>マイページ</h4>
+    <% if @customer == current_customer %>
+      <h4>マイページ</h4>
+    <% else %>
+      <h4><%= @customer.user_name %>さんのページ</h4>
+    <% end %>
   </div>
 
   <%= form_with model: @customer do |f| %>

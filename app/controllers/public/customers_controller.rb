@@ -10,6 +10,12 @@ class Public::CustomersController < ApplicationController
     # @recipe_comment = snack.recipe_comment.count
   end
 
+  def favorited_snacks
+    @customer = current_customer
+    @snacks = Snack.all
+    @favorited_snacks = Snack.favorited_snacks(current_customer, params[:page])
+  end
+
   def edit
     @customer = Customer.find(params[:id])
   end

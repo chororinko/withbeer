@@ -5,12 +5,11 @@
       <!--管理者側でログインしていたら管理者側の会員のおつまみ詳細を表示させる-->
       <% if admin_signed_in? %>
         <%= link_to admin_snack_path(snack) do %>
-          <%= image_tag snack.get_image(70,70) %>
+          <%= image_tag snack.get_image(100,100) %>
         <% end %>
-      <!--会員側でログインしていたら会員側のおつまみ詳細を表示させる-->
       <% else %>
         <%= link_to snack_path(snack) do %>
-          <%= image_tag snack.get_image(70,70) %>
+          <%= image_tag snack.get_image(100,100) %>
         <% end %>
       <% end %>
     </td>

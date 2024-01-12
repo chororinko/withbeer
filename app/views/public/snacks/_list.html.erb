@@ -64,7 +64,13 @@
       <%= link_to '編集する', edit_snack_path(snack), class: 'btn btn-info' %>
     </div>
     <div class="row d-flex justify-content-center">
-      <%= link_to '削除する', snack_path(snack), method: :delete, "data-confirm" => "本当に消しますか?", class: 'btn btn-danger' %>
+      <%= link_to '削除する', snack_path(snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+
+  <% if admin_signed_in? %>
+    <div class="row d-flex justify-content-center">
+      <%= link_to '削除する', admin_snack_path(@snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
     </div>
   <% end %>
 </div>
