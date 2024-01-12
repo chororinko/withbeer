@@ -55,8 +55,8 @@ class Snack < ApplicationRecord
 
     # 新しいタグ作成
     new_tags.each do |new_name|
-      post_tag = Tag.find_or_create_by(name: new_name)
-      self.tags << post_tag
+      tag = Tag.find_or_create_by(name: new_name)
+      self.tags << tag
     end
   end
 

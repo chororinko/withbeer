@@ -1,70 +1,10 @@
+<div class="notice">
+  <%= flash[:notice] %>
+</div>
+
 <div class="container" style="margin-bottom: 100px;">
   <h4>おつまみレシピ編集</h4>
 
-  <!--おつまみ情報フォーム-->
-<%= form_with model: @snack do |f| %>
-<div class="row">
-  <div class="col">
-    <table class="table table-borderless">
-      <tr>
-        <th>おつまみ</th>
-      </tr>
-      <tr>
-        <td>おつまみ画像</td>
-        <td><%= f.file_field :image, accept: "image/*" %></td>
-      </tr>
-      <tr>
-        <td>タイトル</td>
-        <td><%= f.text_field :title, placeholder: 'タイトル', class: 'col' %></td>
-      </tr>
-      <tr>
-        <td>おつまみ紹介</td>
-        <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します', class: 'col' %></td>
-      </tr>
-      <tr>
-        <td>お酒</td>
-        <td><%= f.collection_select(:sake_id, Sake.all, :id, :genre, include_blank: "-- このおつまみに合うお酒を選択してください --", class: 'w-100') %></td>
-      </tr>
-      <tr>
-        <td>タグ</td>
-        <td><%= f.text_area :tag_id, rows:'5', placeholder: '和食　こってり　15分以内', class: 'col' %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>※タグが複数ある場合はスペースで区切ってください</td>
-      </tr>
-    </table>
-  </div>
+  <%= render 'public/snacks/form', snack: @snack %>
 
-  <!--レシピの材料フォーム-->
-  <div class="col">
-    <table class="table table-borderless">
-      <tr>
-        <th>レシピ</th>
-      </tr>
-      <tr>
-        <td>材料</td>
-        <td><%= f.text_area :ingredients, rows: '7', class: 'w-100',
-            placeholder: '（例）エリンギ（小）：8本 バター：15g にんにくチューブ：3センチ 冷凍いんげん：7~8本 A（しょうゆ：小さじ1 化学調味料：適量)' %>
-        </td>
-      </tr>
-    </table>
-
-    <!--レシピの作り方フォーム-->
-    <table class="table table-borderless">
-      <tr>
-        <td>作り方</td>
-        <td><%= f.text_area :process, rows: '15', class: 'w-100',
-            placeholder: '（例）1. エリンギといんげんを食べやすい大きさにカットします。2.フライパンを弱火にかけバターを熱します。チューブにんにくをいれバターと炒め合わせます。3. 中火でエリンギといんげんを炒め、しんなりしたらAを加えて味を整える。' %>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<div class="row d-flex justify-content-center">
-  <%= f.submit '変更を保存', class: 'btn btn-lg btn-info col-4' %>
-</div>
-
-<% end %>
 </div>

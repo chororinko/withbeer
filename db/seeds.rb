@@ -9,3 +9,19 @@ Admin.create!(
    email: 'withbeer@withbeer',
    password: 'withbeer'
 )
+
+Tag.create([
+    { name: '和食' },
+    { name: '洋食' },
+    { name: '中華'},
+    { name: 'イタリアン'},
+    { name: 'フレンチ'},
+    { name: 'こってり'},
+    { name: 'さっぱり'},
+    { name: '5分以内' },
+    { name: '10分以内'},
+    { name: '15分以内'},
+    { name: '20分以内'},
+    { name: '25分以内'}
+    ])
+    

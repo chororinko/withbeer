@@ -3,9 +3,17 @@
     <h4><%= @sake.genre %>に合うおつまみ（<%= @quantity %>品）</h4>
   </div>
 
+  <div class="row">
+    <div class="col-2">
+      <h6><i class="fa-solid fa-magnifying-glass"></i>タグ検索</h6>
+      <% @tags.each do |tag|%>
+        <i class="fa-sharp fa-solid fa-tag"></i>
+        <%=link_to tag.name,search_tag_path(tag_id: tag.id) %>
+        <%="(#{tag.snacks.count})" %>
+      <% end %>
+    </div>
 
-  <div class="container">
-    <div class="d-flex flex-wrap">
+    <div class="col d-flex flex-wrap">
       <% @sake.snacks.each do |snack| %>
       <div class="flex-item mb-5" style="flex-basis: 25%;">
         <%= link_to snack_path(snack) do %>

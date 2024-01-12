@@ -10,7 +10,7 @@ class Public::SnacksController < ApplicationController
   def create
     @snack = Snack.new(snack_params)
     @snack.customer_id = current_customer.id
-    tags = params[:snack][:name].split(',')
+    tags = Tag.find(params[:snack][:name]).split(',')
     if @snack.save
       # @snack.tag_ids = Tag.where(name: @tags).pluck(:id)
       @snack.save_tags(tags)
@@ -26,7 +26,7 @@ class Public::SnacksController < ApplicationController
     @snacks = Snack.page(params[:page])
     @sake = Sake.find(params[:sake_id])
     @quantity = @sake.snacks.count
-    # @tags = @snacks.tags.pluck(:name).join(nil)
+    @tags = Tag.all# @tags = @snacks.tags.pluck(:name).join(nil)
   end
 
   def show
@@ -43,10 +43,9 @@ class Public::SnacksController < ApplicationController
 
   def update
     @snack = Snack.find(params[:id])
-    @tags = params[:snack][:tag_id].split(nil)
+    tags = Tag.find(params[:snack][:name]).split(',')
     if @snack.update(snack_params)
-      @snack.save_tags(@tags)
-      # @snack.tag_ids = Tag.where(name: @tags).pluck(:id)
+      @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'
       redirect_to snack_path(@snack)
     else
@@ -61,10 +60,19 @@ class Public::SnacksController < ApplicationController
     redirect_to customer_path(current_customer)
   end
 
+  def search_tag
+    #検索結果画面でもタグ一覧表示
+    @tags = Tag.all
+    　#検索されたタグを受け取る
+    @tag = Tag.find(params[:tag_id])
+    　#検索されたタグに紐づく投稿を表示
+    @snacks = @tag.snacks
+  end
+
   private
 
   def snack_params
-    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id)
+    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id, :tag_id)
   end
 
   def is_matching_login_customer
