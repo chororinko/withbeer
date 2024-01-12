@@ -20,7 +20,14 @@
         <td>合うお酒：<strong><%= snack.sake.genre %></storong></td>
       </tr>
       <tr>
-        <td>タグ：<strong><i class="fa-solid fa-tag"></i><%= @tags %></storong></td>
+        <td>タグ：</td>
+        <% @snack_tags.each do |tag| %>
+        <td>
+          <strong><i class="fa-sharp fa-solid fa-tag"></i>
+            <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
+          </storong>
+        </td>
+        <% end %>
       </tr>
       <tr>
         <td>

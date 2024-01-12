@@ -1,1 +1,20 @@
+<div class="container" style="margin-bottom: 100px;">
+  <div class="row">
+    <h4><i class="fa-sharp fa-solid fa-tag"></i><%= @tag.name %></h4>
+  </div>
 
+  <div class="row d-flex flex-wrap">
+    <% @snacks.each do |snack| %>
+      <div class="flex-item mb-5" style="flex-basis: 25%;">
+        <%= link_to snack_path(snack) do %>
+          <p><%= image_tag(@tag.snack.get_image(200,150)) %></p>
+        <% end %>
+        <p><%= snack.title %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row d-flex justify-content-center mb-3">
+    <%= paginate @snacks %>
+  </div>
+</div>

@@ -5,12 +5,13 @@ class Public::SnacksController < ApplicationController
   def new
     @snack = Snack.new
     @sakes = Sake.all
+    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def create
     @snack = Snack.new(snack_params)
     @snack.customer_id = current_customer.id
-    tags = Tag.find(params[:snack][:name]).split(',')
+    tags = params[:snack][:name].split(',')
     if @snack.save
       # @snack.tag_ids = Tag.where(name: @tags).pluck(:id)
       @snack.save_tags(tags)
@@ -26,24 +27,25 @@ class Public::SnacksController < ApplicationController
     @snacks = Snack.page(params[:page])
     @sake = Sake.find(params[:sake_id])
     @quantity = @sake.snacks.count
-    @tags = Tag.all# @tags = @snacks.tags.pluck(:name).join(nil)
+    @tags = Tag.all
   end
 
   def show
     @snack = Snack.find(params[:id])
     @customer = @snack.customer.id
     @snack_comment = SnackComment.new
-    @tags = @snack.tags.pluck(:name).join(nil)
+    @tags = @snack.tags.pluck(:name).join(',')
+    @snack_tags = @snack.tags
   end
 
   def edit
     @snack = Snack.find(params[:id])
-    @tags = @snack.tags.pluck(:name).join(nil)
+    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def update
     @snack = Snack.find(params[:id])
-    tags = Tag.find(params[:snack][:name]).split(',')
+    tags = params[:snack][:name].split(',')
     if @snack.update(snack_params)
       @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'

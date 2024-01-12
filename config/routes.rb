@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get "search_tag" => "snacks#search_tag"
   get '/search' => 'searches#search'
-  
+
   namespace :admin do
     root to: 'homes#top'
     get 'customers/:customer_id/snacks' => 'snacks#index', as: 'customer_snacks'
@@ -42,8 +42,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :snacks do
-      resources :tags, only: [:index, :create, :new, :destroy], controller: 'snack_tags'
+    resources :tags, only: [:index, :create, :new, :destroy]
+      resources :snacks do
+
       resources :snack_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
