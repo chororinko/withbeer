@@ -1,2 +1,5 @@
-<h1>Admin::Recommendations#show</h1>
-<p>Find me in app/views/admin/recommendations/show.html.erb</p>
+<div class="notice">
+  <%= flash[:notice] %>
+</div>
+
+<%= render 'public/snacks/detail', snack: @snack, tags: @snack_tags %>

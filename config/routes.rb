@@ -13,23 +13,29 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-  get "search_tag" => "snacks#search_tag"
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+
   get '/search' => 'searches#search'
 
   namespace :admin do
     root to: 'homes#top'
     get 'customers/:customer_id/snacks' => 'snacks#index', as: 'customer_snacks'
-    resources :recommendations
+
     resources :customers, only: [:index, :show, :edit, :update]
     resources :sakes, only: [:index, :edit, :create, :update, :destroy]
 
-    resources :snacks, only: [:index, :show, :edit, :destroy] do
+    resources :snacks do
       resources :snack_comments, only: [:destroy]
+      resources :recommendations
     end
   end
 
   scope module: :public do
     root to: 'homes#top'
+    resources :recommendations, only: [:index, :show]
+
     resources :sakes, only: [:index, :show] do
       resources :snacks, only: [:index, :show]
     end
@@ -42,16 +48,15 @@ Rails.application.routes.draw do
       end
     end
 
+    get "search_tag" => "snacks#search_tag"
     resources :tags, only: [:index, :create, :new, :destroy] do
-      resources :snacks, only: [:index]
+      resources :snacks, only: [:index, :show]
     end
 
     resources :snacks, only: [:new, :edit, :show, :create, :update, :destroy] do
       resources :snack_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    # resources :favorites, only: [:index]
-    resources :recommendations, only: [:index, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

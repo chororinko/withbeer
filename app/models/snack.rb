@@ -8,8 +8,9 @@ class Snack < ApplicationRecord
   has_many :snack_tags, dependent: :destroy
   has_many :tags, through: :snack_tags
   has_many :snack_comments, dependent: :destroy
+  has_many :recommendations, dependent: :destroy
 
-  # 1つの投稿に対して1人1回までしかいいねできないようにするための確認のメソッド
+  # 1つの投稿に対して1人1回までしかいいねできないようにするための確認メソッド
   def favorited_by?(customer)
     if customer.instance_of?(Customer)
       favorites.exists?(customer_id: customer.id)

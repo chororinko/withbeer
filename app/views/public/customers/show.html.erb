@@ -14,7 +14,7 @@
   <%= form_with model: @customer do |f| %>
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @customer.get_profile_image(200,200) %>
+      <%= image_tag @customer.get_profile_image(200,200), class: 'rounded-circle' %>
       <table class="table table-borderless">
         <tr>
           <td>ユーザー名：</td>

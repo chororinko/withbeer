@@ -1,0 +1,15 @@
+<h4>ゲストログイン</h4>
+
+<%= form_with model: customer, url: customer_session_path, method: :post do |f|%>
+
+  <h6>メールアドレス</h6>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+  <h6>パスワード</h6>
+  <%= f.password_field :password, autocomplete: "current-password" %><br>
+
+  <%= f.submit 'ログイン'%><br>
+
+  <h8><%= link_to '会員登録がお済みでない方はこちら', new_customer_registration_path %></h8>
+
+<% end %>

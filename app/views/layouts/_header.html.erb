@@ -23,7 +23,7 @@
             <%= link_to 'お酒一覧', admin_sakes_path, class: "nav-link text-light" %>
           </li>
           <li>
-            <%= link_to '今月のおすすめ履歴一覧', admin_recommendations_path, class: "nav-link text-light" %>
+            <%= link_to '今月のおすすめ履歴一覧', admin_root_path, class: "nav-link text-light" %>
           </li>
           <li>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-light" %>
@@ -50,6 +50,9 @@
             <% end %>
           </li>
         <% else %>
+          <li>
+            <%= link_to 'ゲストログイン', customers_guest_sign_in_path, class: "nav-link text-light" %>
+          </li>
           <li>
             <%= link_to customer_session_path, class: "nav-link text-light" do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿

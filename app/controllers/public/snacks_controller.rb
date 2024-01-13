@@ -1,5 +1,5 @@
 class Public::SnacksController < ApplicationController
-  before_action :authenticate_customer!, except: [:index, :show]
+  before_action :authenticate_customer!, except: [:index, :show, :search_tag]
   before_action :is_matching_login_customer, only: [:edit, :update, :destroy]
 
   def new
@@ -13,7 +13,6 @@ class Public::SnacksController < ApplicationController
     @snack.customer_id = current_customer.id
     tags = params[:snack][:name].split(',')
     if @snack.save
-      # @snack.tag_ids = Tag.where(name: @tags).pluck(:id)
       @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの新規投稿に成功しました。'
       redirect_to snack_path(@snack)
@@ -63,9 +62,10 @@ class Public::SnacksController < ApplicationController
   end
 
   def search_tag
-    @tags = Tag.all     #検索結果画面でもタグ一覧表示
-    @tag = Tag.find(params[:tag_id])     #検索されたタグを受け取る
-    @snacks = @tag.snacks    #検索されたタグに紐づく投稿を表示
+    @tags = Tag.all
+    @tag = Tag.find(params[:tag_id])          #検索されたタグを受け取る
+    @snacks = @tag.snacks.page(params[:page])    #検索されたタグに紐づく投稿を表示
+    @quantity = @tag.snacks.count             # タグに紐づくおつまみの数
   end
 
   private
