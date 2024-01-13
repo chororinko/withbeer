@@ -9,6 +9,7 @@ class Admin::SnacksController < ApplicationController
   def show
     @snack = Snack.find(params[:id])
     @customer = @snack.customer
+    @snack_tags = @snack.tags
   end
 
   def edit

@@ -2,7 +2,7 @@ class Public::TagsController < ApplicationController
 
   def index
     @snacks = Snack.page(params[:snack_id])
-    @tag = Tag.find(params[:id])
+    @tag = @tag.snacks
   end
 
   def new

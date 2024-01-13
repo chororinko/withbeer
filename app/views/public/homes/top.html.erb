@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom: 100px;">
   <div class="row d-flex justify-content-center">
     <h5>
       お酒の種類ごとに合ったおつまみを紹介するサイトです。<br>
@@ -6,9 +6,10 @@
     </h5>
   </div>
 
+  <!--お酒ジャンル検索-->
   <div class="row d-flex justify-content-center">
     <div class="col-2">
-      <h5><strong>ジャンル検索</strong></h5>
+      <h5><strong>お酒ジャンル検索</strong></h5>
       <table class="table table-hover">
         <% @sakes.each do |sake| %>
           <tbody>
@@ -21,6 +22,8 @@
         <% end %>
       </table>
     </div>
+
+    <!--今月のおすすめ-->
     <div class="col text-center">
       <h4>今月のおすすめ</h4>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
@@ -32,6 +35,8 @@
         サンプル<br>
       </div>
     </div>
+
+    <!--人気のレシピ-->
     <div class="col text-center">
       <h4>人気のレシピ</h4>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
@@ -42,6 +47,13 @@
         サンプル<br>
         サンプル<br>
       </div>
+    </div>
+  </div>
+
+  <!--タグ検索-->
+  <div class="row">
+    <div class="col-2">
+      <%= render 'public/homes/taglist', tags: @tags%>
     </div>
   </div>
 </div>

@@ -42,9 +42,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :tags, only: [:index, :create, :new, :destroy]
-      resources :snacks do
+    resources :tags, only: [:index, :create, :new, :destroy] do
+      resources :snacks, only: [:index]
+    end
 
+    resources :snacks, only: [:new, :edit, :show, :create, :update, :destroy] do
       resources :snack_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end

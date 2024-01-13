@@ -6,12 +6,7 @@
   <!--タグ検索-->
   <div class="row">
     <div class="col-2">
-      <h6><i class="fa-solid fa-magnifying-glass"></i>タグ検索</h6>
-      <% @tags.each do |tag|%>
-        <i class="fa-sharp fa-solid fa-tag"></i>
-        <%=link_to tag.name, snack_tags_path(tag_id: tag.id) %>
-        <%="(#{tag.snacks.count})" %>
-      <% end %>
+     <%= render 'public/homes/taglist', tags: @tags%>
     </div>
 
     <!--特定のお酒に紐づいたおつまみ一覧-->
