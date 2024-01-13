@@ -14,13 +14,13 @@ Rails.application.routes.draw do
 }
 
   devise_scope :customer do
-    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
   get '/search' => 'searches#search'
 
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'recommendation_snacks#index'
     get 'customers/:customer_id/snacks' => 'snacks#index', as: 'customer_snacks'
 
     resources :customers, only: [:index, :show, :edit, :update]
@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
     resources :snacks do
       resources :snack_comments, only: [:destroy]
-      resources :recommendations
     end
+    resources :recommendation_snacks
   end
 
   scope module: :public do

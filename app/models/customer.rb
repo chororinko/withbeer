@@ -19,8 +19,8 @@ class Customer < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |customer|
-      customer.password = SecureRandom.urlsafe_base64
+    find_or_create_by!(email: 'guest@example.com') do |customer|    # 指定したメアドが見つからなければ新規作成する
+      customer.password = SecureRandom.urlsafe_base64     # パスワードをランダムで作成する
     end
   end
 

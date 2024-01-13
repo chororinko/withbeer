@@ -1,5 +1,5 @@
 <!--おつまみ情報フォーム-->
-  <%= form_with model: snack do |f| %>
+  <%= form_with model: snack, url: admin_recommendation_snacks_path, method: :post do |f| %>
   <div class="row">
     <div class="col">
       <table class="table table-borderless">

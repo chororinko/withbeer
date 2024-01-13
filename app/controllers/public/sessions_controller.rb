@@ -18,9 +18,9 @@ class Public::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
-  def guest_sign_in
-    customer = Customer.guest
-    sign_in customer
+  def guest_sign_in         # これだけでログインできるデバイス特有の機能
+    customer = Customer.guest       # モデルで定義したものがCustomerに格納されている
+    sign_in customer       # 上で定義したcustomer情報でログインする
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   # DELETE /resource/sign_out

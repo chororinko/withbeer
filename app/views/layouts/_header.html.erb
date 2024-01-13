@@ -51,7 +51,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to 'ゲストログイン', customers_guest_sign_in_path, class: "nav-link text-light" %>
+            <%= link_to 'ゲストログイン', customers_guest_sign_in_path, method: :post, class: "nav-link text-light" %>
           </li>
           <li>
             <%= link_to customer_session_path, class: "nav-link text-light" do %>
