@@ -5,13 +5,13 @@ class Public::SnacksController < ApplicationController
   def new
     @snack = Snack.new
     @sakes = Sake.all
-    @tags = @snack.tags.pluck(:name).join(',')
+    @tags = @snack.tags.pluck(:tag_id).join(',')
   end
 
   def create
     @snack = Snack.new(snack_params)
     @snack.customer_id = current_customer.id
-    tags = params[:snack][:name].split(',')
+    tags = params[:snack][:tag_id].split(',')
     if @snack.save
       @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの新規投稿に成功しました。'
@@ -33,18 +33,18 @@ class Public::SnacksController < ApplicationController
     @snack = Snack.find(params[:id])
     @customer = @snack.customer.id
     @snack_comment = SnackComment.new
-    @tags = @snack.tags.pluck(:name).join(',')
+    @tags = @snack.tags.pluck(:tag_id).join(',')
     @snack_tags = @snack.tags
   end
 
   def edit
     @snack = Snack.find(params[:id])
-    @tags = @snack.tags.pluck(:name).join(',')
+    @tags = @snack.tags.pluck(:tag_id).join(',')
   end
 
   def update
     @snack = Snack.find(params[:id])
-    tags = params[:snack][:name].split(',')
+    tags = params[:snack][:tag_id].split(',')
     if @snack.update(snack_params)
       @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'
@@ -71,7 +71,7 @@ class Public::SnacksController < ApplicationController
   private
 
   def snack_params
-    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id, :tag_id)
+    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id)
   end
 
   def is_matching_login_customer

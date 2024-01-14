@@ -18,10 +18,16 @@ class Customer < ApplicationRecord
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  GUEST_USER_EMAIL = "guest@example.com"
+
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |customer|    # 指定したメアドが見つからなければ新規作成する
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |customer|    # 指定したメアドが見つからなければ新規作成する
       customer.password = SecureRandom.urlsafe_base64     # パスワードをランダムで作成する
     end
+  end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
 
 end

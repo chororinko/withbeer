@@ -25,7 +25,7 @@
           <td><%= @customer.introduction %></td>
         </tr>
       </table>
-      <% if @customer == current_customer %>
+      <% if @customer == current_customer && !@customer.guest_user? %>
     　<div>
         <%= link_to '設定', edit_customer_path(@customer), class: 'btn btn-outline-secondary col' %>
       </div>

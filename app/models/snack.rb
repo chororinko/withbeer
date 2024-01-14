@@ -1,6 +1,6 @@
 class Snack < ApplicationRecord
 
-  belongs_to :customer
+  belongs_to :customer, optional: true
   belongs_to :sake
 
   has_many :favorites, dependent: :destroy
@@ -43,7 +43,7 @@ class Snack < ApplicationRecord
 
   def save_tags(tags)
     # 既にタグあるなら全取得
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    current_tags = self.tags.pluck(:tag_id) unless self.tags.nil?
 
     # 共通要素取り出し
     old_tags = current_tags - tags

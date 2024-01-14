@@ -51,9 +51,6 @@
           </li>
         <% else %>
           <li>
-            <%= link_to 'ゲストログイン', customers_guest_sign_in_path, method: :post, class: "nav-link text-light" %>
-          </li>
-          <li>
             <%= link_to customer_session_path, class: "nav-link text-light" do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
@@ -62,6 +59,9 @@
             <%= link_to customer_session_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-right-to-bracket"></i>ログイン
             <% end %>
+          </li>
+          <li>
+            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "nav-link text-light" %>
           </li>
         <% end %>
       </ul>

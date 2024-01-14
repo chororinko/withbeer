@@ -4,12 +4,12 @@ class Admin::RecommendationSnacksController < ApplicationController
   def new
     @snack = Snack.new
     @sakes = Sake.all
-    @tags = @snack.tags.pluck(:name).join(',')
+    @tags = @snack.tags.pluck(:tag_id).join(',')
   end
 
   def create
     @snack = Snack.new(snack_params)
-    tags = params[:snack][:name].split(',')
+    tags = params[:snack][:tag_id].split(',')
     if @snack.save
       @snack.save_tags(tags)
       flash[:notice] = '今月のおすすめの新規登録に成功しました。'
@@ -21,25 +21,25 @@ class Admin::RecommendationSnacksController < ApplicationController
   end
 
   def index
-    @snacks = Snack.page(params[:page])
+    @snacks = Snack.where(customer_id: nil).page(params[:page])
     @sakes = Sake.all
   end
 
   def show
-    @snack = Snack.find(params[:snack_id])
+    @snack = Snack.find(params[:id])
     @snack_comment = SnackComment.new
-    @tags = @snack.tags.pluck(:name).join(',')
+    @tags = @snack.tags.pluck(:tag_id).join(',')
     @snack_tags = @snack.tags
   end
 
   def edit
-    @snack = Snack.find(params[:snack_id])
-    @tags = @snack.tags.pluck(:name).join(',')
+    @snack = Snack.find(params[:id])
+    @tags = @snack.tags.pluck(:tag_id).join(',')
   end
 
   def update
-    @snack = Snack.find(params[:snack_id])
-    tags = params[:snack][:name].split(',')
+    @snack = Snack.find(params[:id])
+    tags = params[:snack][:tag_id].split(',')
     if @snack.update(snack_params)
       @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'
@@ -51,22 +51,15 @@ class Admin::RecommendationSnacksController < ApplicationController
   end
 
   def destroy
-    snack = Snack.find(params[:snack_id])
+    snack = Snack.find(params[:id])
     snack.destroy
     redirect_to admin_root_path
   end
 
-  # def search_tag
-  #   @tags = Tag.all
-  #   @tag = Tag.find(params[:tag_id])          #検索されたタグを受け取る
-  #   @snacks = @tag.snacks.page(params[:page])    #検索されたタグに紐づく投稿を表示
-  #   @quantity = @tag.snacks.count             # タグに紐づくおつまみの数
-  # end
-
   private
 
   def snack_params
-    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id, :tag_id)
+    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id)
   end
 
 end

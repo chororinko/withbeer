@@ -5,7 +5,7 @@ class Recommendation < ApplicationRecord
 
   def save_tags(tags)
     # 既にタグあるなら全取得
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    current_tags = self.tags.pluck(:tag_id) unless self.tags.nil?
 
     # 共通要素取り出し
     old_tags = current_tags - tags
