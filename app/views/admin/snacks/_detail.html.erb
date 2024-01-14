@@ -1,0 +1,77 @@
+<!--おつまみ詳細画面-->
+<div class="container" style="margin-bottom: 100px;">
+
+  <!--おつまみ情報-->
+  <div class="row d-flex justify-content-center">
+    <h4><%= snack.title %></h4>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= image_tag snack.get_image(400,400) %>
+    </div>
+    <table class="table table-borderless col">
+      <tr>
+        <th><h5>おつまみ紹介文</h5></th>
+      </tr>
+      <tr>
+        <td><%= snack.introduction %></td>
+      </tr>
+      <tr>
+        <td>合うお酒：<strong><%= snack.sake.genre %></storong></td>
+      </tr>
+      <tr>
+        <td>タグ：</td>
+        <% snack_tags.each do |tag| %>
+        <td>
+          <strong><i class="fa-sharp fa-solid fa-tag"></i>
+            <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
+          </storong>
+        </td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>運営者による投稿</td>
+      </tr>
+    </table>
+  </div>
+
+  <!--おつまみのレシピ情報-->
+  <div class="row d-flex justify-content-center">
+    <h4>レシピ</h4>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h5>材料</h5>
+    </div>
+    <div class="col">
+      <h5>作り方</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p><%= snack.ingredients %></p>
+    </div>
+    <div class="col">
+      <p><%= snack.process %></p>
+    </div>
+  </div>
+
+  <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mr-5">
+    <%= render 'public/favorites/favorite-btn', snack: @snack %>
+  </div>
+
+  <!--コメント-->
+  <div class="comment-index mr-5">
+    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <%= link_to '編集する', edit_admin_recommendation_snack_path(snack), class: 'btn btn-info' %>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <%= link_to '削除する', admin_recommendation_snack_path(snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
+  </div>
+</div>

@@ -23,13 +23,10 @@ class Admin::RecommendationSnacksController < ApplicationController
   def index
     @snacks = Snack.page(params[:page])
     @sakes = Sake.all
-    # @quantity = @sake.snacks.count
-    # @tags = Tag.all
   end
 
   def show
     @snack = Snack.find(params[:snack_id])
-    @customer = @snack.customer.id
     @snack_comment = SnackComment.new
     @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
@@ -46,7 +43,7 @@ class Admin::RecommendationSnacksController < ApplicationController
     if @snack.update(snack_params)
       @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'
-      redirect_to snack_path(@snack)
+      redirect_to admin_recommendation_snack_path(@snack)
     else
       flash[:notice] = 'おつまみレシピの編集に失敗しました。'
       render :edit
@@ -56,8 +53,15 @@ class Admin::RecommendationSnacksController < ApplicationController
   def destroy
     snack = Snack.find(params[:snack_id])
     snack.destroy
-    redirect_to customer_path(current_customer)
+    redirect_to admin_root_path
   end
+
+  # def search_tag
+  #   @tags = Tag.all
+  #   @tag = Tag.find(params[:tag_id])          #検索されたタグを受け取る
+  #   @snacks = @tag.snacks.page(params[:page])    #検索されたタグに紐づく投稿を表示
+  #   @quantity = @tag.snacks.count             # タグに紐づくおつまみの数
+  # end
 
   private
 

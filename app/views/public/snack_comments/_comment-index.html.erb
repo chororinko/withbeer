@@ -20,7 +20,8 @@
     </table>
   <% end %>
   </div>
-<!--コメントフォーム-->
+
+  <!--コメントフォーム-->
   <div class="col-5 justify-content-end">
   <% if customer_signed_in? %>
     <%= form_with model: [snack, snack_comment], local: false do |f| %>

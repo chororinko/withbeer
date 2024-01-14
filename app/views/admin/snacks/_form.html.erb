@@ -63,13 +63,9 @@
     </div>
   </div>
 
-  <% if admin_signed_in? %>
+  <% if snack.new_record? %>
     <div class="row d-flex justify-content-center">
       <%= f.submit 'おすすめを登録', class: 'btn btn-lg btn-info col-4' %>
-    </div>
-  <% elsif snack.new_record? %>
-    <div class="row d-flex justify-content-center">
-      <%= f.submit 'おつまみレシピを投稿', class: 'btn btn-lg btn-info col-4' %>
     </div>
   <% else %>
     <div class="row d-flex justify-content-center">

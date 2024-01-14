@@ -49,9 +49,9 @@ Rails.application.routes.draw do
     end
 
     get "search_tag" => "snacks#search_tag"
-    resources :tags, only: [:index, :create, :new, :destroy] do
-      resources :snacks, only: [:index, :show]
-    end
+    resources :tags, only: [:index, :create, :new, :destroy]
+      # resources :snacks, only: [:index, :show]
+    # end
 
     resources :snacks, only: [:new, :edit, :show, :create, :update, :destroy] do
       resources :snack_comments, only: [:create, :destroy]

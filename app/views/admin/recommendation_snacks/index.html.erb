@@ -1,6 +1,6 @@
-<div class="container mb-5" style="margin-bottom: 100px;">
+<div class="container" style="margin-bottom: 100px;">
   <div class="row">
-    <div class="col-2 text-center mt-5 mb-4">
+    <div class="col-5 text-center mt-5 mb-4">
       <h4>今月のおすすめ履歴一覧</h4>
     </div>
     <div class="col mt-5 d-flex justify-content-end">
@@ -27,19 +27,11 @@
             text-decoration: underline;
             }
           </style>
-          <%= link_to admin_recommendation_snack_path(snack), class: "text-dark link-underline-dark" do %>
-            <strong><%= snack.name %></strong>
+        　<%= link_to admin_recommendation_snack_path(snack), class: "text-dark link-underline-dark" do %>
+            <strong><%= snack.sake.genre %><strong>　✖　<strong><%= snack.title %></strong>
           <% end %>
         </td>
-        <td><%= item.price.to_s(:delimited) %></td>
-        <td><%= item.genre.name %></td>
-        <td>
-          <% if item.is_active %>
-            <strong><span class="text-success">販売中</span></strong>
-          <% else %>
-            <strong><span class="text-secondary">販売停止中</span></strong>
-          <% end %>
-        </td>
+        <td><%= snack.favorites.count %></td>
       </tr>
     </tbody>
     <% end %>
