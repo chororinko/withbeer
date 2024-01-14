@@ -1,5 +1,5 @@
 class Admin::RecommendationSnacksController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:show, :search_tag]
 
   def new
     @snack = Snack.new

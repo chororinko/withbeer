@@ -29,15 +29,15 @@ class Snack < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.looks(content, search)
-    if search == "perfect_match"
-      Snack.where("title LIKE?", "#{content}")
-    elsif search == "forward_match"
-      Snack.where("title LIKE?", "#{content}%")
-    elsif search == "backward_match"
-      Snack.where("title LIKE?", "%#{content}")
+  def self.looks(word)
+    if word == "perfect_match"
+      Snack.where("title LIKE?", "#{word}")
+    elsif word == "forward_match"
+      Snack.where("title LIKE?", "#{word}%")
+    elsif word == "backward_match"
+      Snack.where("title LIKE?", "%#{word}")
     else
-      Snack.where("title LIKE?", "%#{content}%")
+      Snack.where("title LIKE?", "%#{word}%")
     end
   end
 

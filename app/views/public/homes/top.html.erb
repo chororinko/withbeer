@@ -19,7 +19,7 @@
           <tbody>
             <tr>
               <td style="color: #583822;">
-                <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), method: :get, class: "text-decoration-none text-dark" %>
+                <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), class: "text-decoration-none text-dark" %>
               </td>
               <td>( <%= sake.snacks.count %> )</td>
             </tr>
@@ -32,12 +32,9 @@
     <div class="col text-center">
       <h4>今月のおすすめ</h4>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
+        <!--<#%= link_to admin_recommendation_snack_path(@snack), class: "text-dark link-underline-dark" do %>-->
+        <!--  <strong><#%= @snack.sake.genre %><strong>　✖　<strong><#%= @snack.title %></strong>-->
+        <!--<#% end %>-->
       </div>
     </div>
 

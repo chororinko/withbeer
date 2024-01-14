@@ -10,9 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
 
+      　<!--キーワード検索フォーム-->
         <%= form_with url: search_path, local: true, method: :get do |f| %>
-          <li><%= f.text_field :content %></li>
-          <li><%= f.submit '検索' %></li>
+          <li><%= f.text_field :word %><%= f.submit '検索' %></li>
         <% end %>
 
         <% if admin_signed_in? %>

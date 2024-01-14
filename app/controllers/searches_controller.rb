@@ -1,11 +1,10 @@
 class SearchesController < ApplicationController
 
   def search
-		@content = params[:content]
-    if @content == "Snack"
-      @snacks = Snack.looks(@content, @search)
-      render '/searches/search_result'
-    end
+		@word = params[:word]
+    @word == "Snack"
+    @snacks = Snack.looks(@word)
+    render 'searches/search'
   end
 
 end
