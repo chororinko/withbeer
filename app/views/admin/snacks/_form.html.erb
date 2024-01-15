@@ -1,5 +1,5 @@
 <!--おつまみ情報フォーム-->
-  <%= form_with model: snack, url: admin_recommendation_snacks_path, method: :post do |f| %>
+  <%= form_with model: snack, url: admin_recommendation_snacks_path do |f| %>
   <div class="row">
     <div class="col">
       <table class="table table-borderless">
@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td>タグ</td>
-          <td><%= f.text_area :tag_id, value: tags, rows:'5', placeholder: '和食,こってり,15分以内', class: 'col' %></td>
+          <td><%= f.text_area :name, value: tags, rows:'5', placeholder: '和食,こってり,15分以内', class: 'col' %></td>
         </tr>
         <tr>
         <td></td>
@@ -63,14 +63,8 @@
     </div>
   </div>
 
-  <% if snack.new_record? %>
-    <div class="row d-flex justify-content-center">
-      <%= f.submit 'おすすめを登録', class: 'btn btn-lg btn-info col-4' %>
-    </div>
-  <% else %>
-    <div class="row d-flex justify-content-center">
-      <%= f.submit '変更を保存', class: 'btn btn-lg btn-info col-4' %>
-    </div>
-  <% end %>
+  <div class="row d-flex justify-content-center">
+    <%= f.submit 'おすすめを登録', class: 'btn btn-lg btn-info col-4' %>
+  </div>
 
-  <% end %>
+<% end %>

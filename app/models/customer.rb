@@ -8,6 +8,9 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :snack_comments, dependent: :destroy
 
+  # validates :user_name, presence: true, length: { in: 2..20 }
+  # validates :introduction, length: { maximum: 50 }
+
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
@@ -25,7 +28,7 @@ class Customer < ApplicationRecord
       customer.password = SecureRandom.urlsafe_base64     # パスワードをランダムで作成する
     end
   end
-  
+
   def guest_user?
     email == GUEST_USER_EMAIL
   end

@@ -1,15 +1,15 @@
 class Admin::RecommendationSnacksController < ApplicationController
-  before_action :authenticate_admin!, except: [:show, :search_tag]
+  before_action :authenticate_admin!, except: [:show]
 
   def new
     @snack = Snack.new
     @sakes = Sake.all
-    @tags = @snack.tags.pluck(:tag_id).join(',')
+    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def create
     @snack = Snack.new(snack_params)
-    tags = params[:snack][:tag_id].split(',')
+    tags = params[:snack][:name].split(',')
     if @snack.save
       @snack.save_tags(tags)
       flash[:notice] = '今月のおすすめの新規登録に成功しました。'
@@ -28,18 +28,18 @@ class Admin::RecommendationSnacksController < ApplicationController
   def show
     @snack = Snack.find(params[:id])
     @snack_comment = SnackComment.new
-    @tags = @snack.tags.pluck(:tag_id).join(',')
+    @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
   end
 
   def edit
     @snack = Snack.find(params[:id])
-    @tags = @snack.tags.pluck(:tag_id).join(',')
+    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def update
     @snack = Snack.find(params[:id])
-    tags = params[:snack][:tag_id].split(',')
+    tags = params[:snack][:name].split(',')
     if @snack.update(snack_params)
       @snack.save_tags(tags)
       flash[:notice] = 'おつまみレシピの編集に成功しました。'

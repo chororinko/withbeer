@@ -10,6 +10,15 @@ class Snack < ApplicationRecord
   has_many :snack_comments, dependent: :destroy
   has_many :recommendations, dependent: :destroy
 
+  with_options presence: true do
+    validates :title
+    validates :ingredients
+    validates :process
+    validates :sake_id
+  end
+
+  validates :introduction, presence: true, length: { maximum: 200 }
+
   # 1つの投稿に対して1人1回までしかいいねできないようにするための確認メソッド
   def favorited_by?(customer)
     if customer.instance_of?(Customer)
@@ -43,7 +52,7 @@ class Snack < ApplicationRecord
 
   def save_tags(tags)
     # 既にタグあるなら全取得
-    current_tags = self.tags.pluck(:tag_id) unless self.tags.nil?
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
 
     # 共通要素取り出し
     old_tags = current_tags - tags
