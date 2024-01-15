@@ -33,21 +33,12 @@
       <h4>今月のおすすめ</h4>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
         <%= link_to admin_recommendation_snack_path(@snack), class: "text-dark link-underline-dark" do %>
-          <strong><%= @snack.sake.genre %><strong>　✖　<strong><%= @snack.title %></strong>
-        <% end %>
-      </div>
-    </div>
-
-    <!--人気のレシピ-->
-    <div class="col text-center">
-      <h4>人気のレシピ</h4>
-      <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
-        サンプル<br>
+          <strong><%= @snack.sake.genre %><strong>
+        <% end %>　✖
+        <%= link_to snack_path(@snack) do %>
+          <%= image_tag(@snack.get_image(150,150)) %>
+        <% end %><br>
+        <strong><%= @snack.title %></strong>
       </div>
     </div>
   </div>

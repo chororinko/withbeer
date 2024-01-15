@@ -10,10 +10,9 @@ ja:
       snack:
         title: "タイトル"
         introduction: "紹介文"
-        sake_id: "お酒"
+        sake: "お酒"
         ingredients: "材料"
         process: "作り方"
-        tags: "タグ"
     models:
       user: "ユーザ"
   devise:

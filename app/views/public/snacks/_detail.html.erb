@@ -12,31 +12,34 @@
     </div>
     <table class="table table-borderless col">
       <tr>
-        <th><h5>おつまみ紹介文</h5></th>
+        <th class="col-5"><h5>おつまみ紹介文</h5></th>
       </tr>
       <tr>
         <td><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
       </tr>
       <tr>
-        <td>合うお酒：<strong><%= snack.sake.genre %></storong></td>
+        <td>合うお酒：　<strong><%= snack.sake.genre %></storong></td>
       </tr>
       <tr>
-        <td>タグ：</td>
+        <td>タグ：
         <% @snack_tags.each do |tag| %>
-        <td>
           <strong><i class="fa-sharp fa-solid fa-tag"></i>
             <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
           </storong>
-        </td>
         <% end %>
+        </td>
       </tr>
       <tr>
         <td>
           <% if snack.customer.present? %>
             <%= link_to customer_path(snack.customer) do %>
               <%= image_tag snack.customer.get_profile_image(100,100), class: 'rounded-circle' %>
-                <%= snack.customer.user_name %>
+              <%= snack.customer.user_name %>
             <% end %>
+          <% else %>
+            <tr>
+              <td>運営者による投稿</td>
+            </tr>
           <% end %>
         </td>
       </tr>
@@ -57,7 +60,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col">
       <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
@@ -70,11 +73,6 @@
     <%= render 'public/favorites/favorite-btn', snack: @snack %>
   </div>
 
-  <!--コメント-->
-  <div class="comment-index mr-5 mt-3">
-    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
-  </div>
-
   <% if @snack.customer == current_customer %>
     <div class="row d-flex justify-content-center mt-5">
       <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
@@ -84,6 +82,11 @@
       "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
     </div>
   <% end %>
+
+  <!--コメント-->
+  <div class="comment-index container">
+    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+  </div>
 
   <!--管理者側で不適切な投稿を削除するため-->
   <% if admin_signed_in? %>
