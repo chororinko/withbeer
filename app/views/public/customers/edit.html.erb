@@ -1,32 +1,32 @@
-<div class="container">
-  <div class="row">
+<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
+  <div class="row mb-5" style="margin-left: 100px;">
     <h4>プロフィール編集</h4>
   </div>
 
   <%= form_with model: @customer do |f| %>
-    <div class="row">
-      <table class="table table-borderless">
+    <div class="row justify-content-center">
+      <table class="table table-borderless col-6">
         <tr>
           <td>プロフィール画像</td>
           <td><%= f.file_field :profile_image, accept: "image/*" %></td>
         </tr>
         <tr>
           <td>ユーザー名</td>
-          <td><%= f.text_field :user_name, placeholder: 'ユーザー名' %></td>
+          <td><%= f.text_field :user_name, placeholder: 'ユーザー名', class: 'col-10' %></td>
         </tr>
         <tr>
           <td>自己紹介</td>
-          <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します' %></td>
+          <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します', class: 'col-10' %></td>
         </tr>
       </table>
     </div>
 
     <div class="row d-flex justify-content-center">
-      <%= f.submit '変更を保存', class: 'btn btn-info' %>
+      <%= f.submit '変更を保存', class: 'btn btn-lg btn-info col-3 rounded-pill' %>
     </div>
 
-    <div class="row d-flex justify-content-center">
-      <%= link_to '退会する', customers_confirm_withdraw_path, class: 'btn btn-danger' %>
+    <div class="row d-flex justify-content-end">
+      <%= link_to '退会する', customers_confirm_withdraw_path, class: 'btn btn-danger btn-sm rounded-pill' %>
     </div>
   <% end %>
 

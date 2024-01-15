@@ -3,7 +3,7 @@
 
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
-    <h4><%= snack.title %></h4>
+    <h4><%=safe_join(snack.title.split("\n"),tag(:br))%></h4>     <!--改行表示-->
   </div>
 
   <div class="row mt-5">

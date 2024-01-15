@@ -2,8 +2,8 @@
   <%= flash[:notice] %>
 </div>
 
-<div class="container">
-  <div class="row">
+<div class="container" style="margin-bottom: 100px; margin-top: 40px;">
+  <div class="row mb-3" style="margin-left: 50px;">
     <% if @customer == current_customer %>
       <h4>マイページ</h4>
     <% else %>
@@ -17,7 +17,7 @@
       <%= image_tag @customer.get_profile_image(200,200), class: 'rounded-circle' %>
       <table class="table table-borderless">
         <tr>
-          <td>ユーザー名：</td>
+          <td style="margin-bottom: 20px;">ユーザー名：</td>
           <td><%= @customer.user_name %></td>
         </tr>
         <tr>
@@ -33,9 +33,16 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-      マイおつまみレシピ
+      <div style="font-size: 20px;">
+        <strong>マイおつまみレシピ</strong>
+      </div>
       <%= render 'public/customers/snacks-index', snacks: @snacks %>
     </div>
   </div>
   <% end %>
+  
+  <div class="row d-flex justify-content-center mb-3">
+    <%= paginate @snacks %>
+  </div>
+  
 </div>

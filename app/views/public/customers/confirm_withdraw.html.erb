@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row main-row">
-    <div class="col-12 mx-auto">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col justify-content-center">
       <h3 class="p-3 text-center ">
         <strong>本当に退会しますか？</strong>
       </h3>
@@ -13,7 +13,8 @@
 
       <div class="mt-5 text-center">
         <%= link_to "いいえ", customer_path(current_customer), class: "btn btn-info btn-lg col-2 mr-5" %>
-        <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger btn-sm ml-5", data: { confirm: "OKを押すと退会処理がされます。本当によろしいですか？" } %>
+        <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger btn-sm ml-5", 
+          data: { confirm: "OKを押すと退会処理がされます。本当によろしいですか？" } %>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <% snacks.each do |snack| %>
 <table class="table table">
   <tr>
-    <td>
+    <td class="col-4">
       <!--管理者側でログインしていたら管理者側の会員のおつまみ詳細を表示させる-->
       <% if admin_signed_in? %>
         <%= link_to admin_snack_path(snack) do %>
@@ -13,7 +13,7 @@
         <% end %>
       <% end %>
     </td>
-    <td>
+    <td class="col-5">
       <% if admin_signed_in? %>
         <%= link_to admin_snack_path(snack) do %>
           <%= snack.title %>
@@ -24,8 +24,8 @@
         <% end %>
       <% end %>
     </td>
-    <td></td>
-    <td id="favorite-btn_<%= snack.id %> ml-5">
+
+    <td id="favorite-btn_<%= snack.id %> ml-5" class="col-3">
       <%= render 'public/favorites/favorite-btn', snack: snack %><br>
       コメント：<%= snack.snack_comments.count %>
     </td>
