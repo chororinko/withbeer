@@ -7,6 +7,13 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      snack:
+        title: "タイトル"
+        introduction: "紹介文"
+        sake_id: "お酒"
+        ingredients: "材料"
+        process: "作り方"
+        tags: "タグ"
     models:
       user: "ユーザ"
   devise:
@@ -54,7 +61,7 @@ ja:
     sessions:
       new:
         sign_in: "ログイン"
-      signed_in: ログインしました。
+      signed_in: ログインに成功しました。
       signed_out: ログアウトしました。
     shared:
       links:
@@ -68,3 +75,8 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+  errors:
+    messages:
+      not_saved:
+        one: '1件のエラーが発生したため %{resource} は保存されませんでした。'
+        other: '%{count} 件のエラーが発生したため %{resource} は保存されませんでした。'

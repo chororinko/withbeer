@@ -1,6 +1,8 @@
 <h6><i class="fa-solid fa-magnifying-glass"></i>タグ検索</h6>
 <% tags.each do |tag|%>
-  <i class="fa-sharp fa-solid fa-tag"></i>
-  <%=link_to tag.name, search_tag_path(tag_id: tag.id) %>
-  (<%= tag.snacks.count %>)
+  <% unless tag.snacks.count == 0 %>
+    <i class="fa-sharp fa-solid fa-tag"></i>
+    <%=link_to tag.name, search_tag_path(tag_id: tag.id) %>
+    (<%= tag.snacks.count %>)
+  <% end %>
 <% end %>

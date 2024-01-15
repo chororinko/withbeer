@@ -1,12 +1,12 @@
 <!--おつまみ詳細画面-->
-<div class="container" style="margin-bottom: 100px;">
+<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
 
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
     <h4><%= snack.title %></h4>
   </div>
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col">
       <%= image_tag snack.get_image(400,400) %>
     </div>
@@ -15,7 +15,7 @@
         <th><h5>おつまみ紹介文</h5></th>
       </tr>
       <tr>
-        <td><%= snack.introduction %></td>
+        <td><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
       </tr>
       <tr>
         <td>合うお酒：<strong><%= snack.sake.genre %></storong></td>
@@ -42,11 +42,11 @@
   </div>
 
   <!--おつまみのレシピ情報-->
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center  mt-5">
     <h4>レシピ</h4>
   </div>
 
-  <div class="row">
+  <div class="row  mt-5">
     <div class="col">
       <h5>材料</h5>
     </div>
@@ -57,10 +57,10 @@
 
   <div class="row">
     <div class="col">
-      <p><%= snack.ingredients %></p>
+      <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
     <div class="col">
-      <p><%= snack.process %></p>
+      <p><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
     </div>
   </div>
 
@@ -69,16 +69,17 @@
   </div>
 
   <!--コメント-->
-  <div class="comment-index mr-5">
+  <div class="comment-index mr-5 mt-3">
     <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
   </div>
 
   <% if @snack.customer == current_customer %>
-    <div class="row d-flex justify-content-center">
-      <%= link_to '編集する', edit_snack_path(snack), class: 'btn btn-info' %>
+    <div class="row d-flex justify-content-center mt-5">
+      <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
     </div>
-    <div class="row d-flex justify-content-center">
-      <%= link_to '削除する', snack_path(snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
+    <div class="row d-flex justify-content-center mt-5">
+      <%= link_to '削除する', snack_path(snack), method: :delete,
+      "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
     </div>
   <% end %>
 
