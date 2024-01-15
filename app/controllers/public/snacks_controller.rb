@@ -31,7 +31,11 @@ class Public::SnacksController < ApplicationController
 
   def show
     @snack = Snack.find(params[:id])
-    @customer = @snack.customer.id
+    if @snack.customer.present?
+      @customer = @snack.customer.id
+    else
+      @customer = nil
+    end
     @snack_comment = SnackComment.new
     @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags

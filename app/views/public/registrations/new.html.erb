@@ -5,6 +5,9 @@
   <h6>メールアドレス（必須）</h6>
   <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 
+  <h6>ユーザー名（必須）</h6>
+  <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
+
   <h6>パスワード（必須）</h6>
   <%= f.password_field :password, autocomplete: "new-password" %>
 

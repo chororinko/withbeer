@@ -32,9 +32,11 @@
       </tr>
       <tr>
         <td>
-          <%= link_to customer_path(snack.customer) do %>
-            <%= image_tag snack.customer.get_profile_image(100,100), class: 'rounded-circle' %>
-              <%= snack.customer.user_name %>
+          <% if snack.customer.present? %>
+            <%= link_to customer_path(snack.customer) do %>
+              <%= image_tag snack.customer.get_profile_image(100,100), class: 'rounded-circle' %>
+                <%= snack.customer.user_name %>
+            <% end %>
           <% end %>
         </td>
       </tr>

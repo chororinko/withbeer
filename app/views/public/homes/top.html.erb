@@ -32,7 +32,9 @@
     <div class="col text-center">
       <h4>今月のおすすめ</h4>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-
+        <%= link_to admin_recommendation_snack_path(@snack), class: "text-dark link-underline-dark" do %>
+          <strong><%= @snack.sake.genre %><strong>　✖　<strong><%= @snack.title %></strong>
+        <% end %>
       </div>
     </div>
 

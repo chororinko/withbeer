@@ -8,8 +8,8 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :snack_comments, dependent: :destroy
 
-  # validates :user_name, presence: true, length: { in: 2..20 }
-  # validates :introduction, length: { maximum: 50 }
+  validates :user_name, presence: true, length: { in: 2..20 }
+  validates :introduction, length: { maximum: 50 }
 
   has_one_attached :profile_image
 

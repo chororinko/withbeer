@@ -14,7 +14,6 @@ class Snack < ApplicationRecord
     validates :title
     validates :ingredients
     validates :process
-    validates :sake_id
   end
   validates :introduction, presence: true, length: { maximum: 200 }
 
