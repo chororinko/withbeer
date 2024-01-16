@@ -1,24 +1,25 @@
+<!--コメント内容-->
+<table class="col-5 mb-5 comment-index">
+  <% snack.snack_comments.each do |comment| %>
+    <tr>
+      <td>
+        <%= link_to customer_path(comment.customer) do %>
+          <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle mr-3') %><br>
+          <%= comment.customer.user_name %>
+        <% end %>
+      </td>
+      <td class="mr-3 col-3"><%= comment.comment %></td>
+      <td>
+        <% if comment.customer == current_customer %>
+          <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger btn-sm ml-3' %>
+        <% elsif admin_signed_in? %>
+          <%= link_to '削除', admin_snack_snack_comment_path(comment.snack, comment),
+          method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger btn-sm ml-3' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
 
-  <!--コメント内容-->
-  <table class="col-5 mb-5 comment-index">
-    <% snack.snack_comments.each do |comment| %>
-      <tr>
-        <td>
-          <%= link_to customer_path(comment.customer) do %>
-            <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle mr-3') %><br>
-          <% end %>
-          <%= link_to comment.customer.user_name, customer_path(comment.customer), class: 'col text-center mb-5' %>
-        </td>
-        <td class="mr-3"><%= comment.comment %></td>
-        <td>
-          <% if comment.customer == current_customer %>
-            <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger btn-sm ml-3' %>
-          <% elsif admin_signed_in? %>
-            <%= link_to '削除', admin_snack_snack_comment_path(comment.snack, comment),
-            method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger btn-sm ml-3' %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+
 

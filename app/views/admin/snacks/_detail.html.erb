@@ -72,11 +72,6 @@
     <%= render 'public/favorites/favorite-btn', snack: @snack %>
   </div>
 
-  <!--コメント-->
-  <div class="comment-index container">
-    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
-  </div>
-
   <% if admin_signed_in?%>
     <div class="row mt-5 justify-content-center">
       <%= link_to '編集する', edit_admin_recommendation_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
@@ -86,4 +81,19 @@
       "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
     </div>
   <% end %>
+
+  <!--コメント-->
+  <div class="row-3 d-flex justify-content-between">
+    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+
+  <!--コメントフォーム-->
+    <div class="col-5">
+      <% if customer_signed_in? %>
+        <%= form_with model: [@snack, @snack_comment], local: false do |f| %>
+          <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5 pl-5' %>
+          <%= f.submit '送信' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

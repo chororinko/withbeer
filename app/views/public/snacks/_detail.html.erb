@@ -87,17 +87,16 @@
   <div class="row d-flex justify-content-between">
     <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
 
-  <!--コメントフォーム-->
-  <div class="col-5">
-    <% if customer_signed_in? %>
-      <%= form_with model: [@snack, @snack_comment], local: false do |f| %>
-        <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5 pl-5' %>
-        <%= f.submit '送信' %>
+    <!--コメントフォーム-->
+    <div class="col-5">
+      <% if customer_signed_in? %>
+        <%= form_with model: [@snack, @snack_comment], local: false do |f| %>
+          <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5 pl-5' %>
+          <%= f.submit '送信' %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-  </div>
-
 
   <!--管理者側で不適切な投稿を削除するため-->
   <% if admin_signed_in? %>

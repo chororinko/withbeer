@@ -1,7 +1,7 @@
 <table class="table table">
   <% snacks.each do |snack| %>
     <tr>
-      <td class="col-3">
+      <td class="col-4">
         <!--管理者側でログインしていたら管理者側の会員のおつまみ詳細を表示させる-->
         <!--<#% if admin_signed_in? %>-->
           <!--<#%= link_to admin_snack_path(snack) do %>-->
@@ -13,7 +13,7 @@
           <% end %>
         <!--<#% end %>-->
       </td>
-      <td class="col-7">
+      <td class="col-6">
         <!--<#% if admin_signed_in? %>-->
         <!--  <#%= link_to admin_snack_path(snack) do %>-->
         <!--    <#%= snack.title %>-->
