@@ -1,22 +1,50 @@
-<h4>新規会員登録（無料）</h4>
+<div class="container mt-2 ml-4">
+  <%= render 'layouts/errors', obj: @customer %>
+</div>
 
-<%= form_with model: @customer, url: customer_registration_path, method: :post do |f|%>
+<div class="container" style="margin-top: 60px; margin-bottom: 100px;">
+  <div class="row justify-content-center">
+    <h4>新規会員登録（無料）</h4>
+  </div>
 
-  <h6>メールアドレス（必須）</h6>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= form_with model: @customer, url: customer_registration_path, method: :post do |f|%>
+    <div class="row justify-content-center mt-4">
+      <%= f.label 'メールアドレス（必須）', class: 'col-4' %>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'withbeer@gmail.com', class: 'col-4' %>
+    </div>
 
-  <h6>ユーザー名（必須）</h6>
-  <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
+    <div class="row justify-content-center mt-3">
+      <%= f.label 'ユーザー名（必須）', class: 'col-4' %>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", placeholder: '2〜20文字以内', class: 'col-4' %>
+    </div>
 
-  <h6>パスワード（必須）</h6>
-  <%= f.password_field :password, autocomplete: "new-password" %>
+    <div class="row justify-content-center mt-3">
+      <%= f.label 'パスワード（必須）', class: 'col-4' %>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: 'パスワードを入力', class: 'col-4' %>
+    </div>
 
-  <h6>確認用のパスワード（必須）</h6>
-  <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br>
-  <h8><%= @minimum_password_length %>文字以上で入力してください。</h8><br>
+    <div class="row justify-content-center mt-3">
+      <%= f.label '確認用のパスワード（必須）', class: 'col-4' %>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'パスワードを入力', class: 'col-4' %><br>
+    </div>
+    <div class="row justify-content-center text-muted" style="margin-right: 80px;">
+      <h8>※<%= @minimum_password_length %>文字以上で入力してください。</h8><br>
+    </div>
 
-  <%= f.submit '新規登録'%><br>
+    <div class="row justify-content-center mt-4">
+      <%= f.submit '新規登録', class: 'btn btn-primary col-4 rounded-pill' %>
+    </div>
 
-  <h8><%= link_to 'すでに会員の方はこちら', new_customer_session_path %></h8>
-
-<% end %>
+    <div class="row justify-content-center mt-5">
+      <h8><%= link_to 'すでに会員の方はこちら', new_customer_session_path %></h8>
+    </div>
+  <% end %>
+</div>

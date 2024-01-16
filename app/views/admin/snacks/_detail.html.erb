@@ -21,7 +21,7 @@
       </tr>
       <tr>
         <td>タグ：
-        <% @snack_tags.each do |tag| %>
+        <% snack_tags.each do |tag| %>
           <strong><i class="fa-sharp fa-solid fa-tag"></i>
             <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
           </storong>
@@ -77,11 +77,13 @@
     <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
   </div>
 
-  <div class="row mt-5 justify-content-center">
-    <%= link_to '編集する', edit_admin_recommendation_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
-  </div>
-  <div class="row mt-3 justify-content-end">
-    <%= link_to '削除する', admin_recommendation_snack_path(snack), method: :delete,
-    "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
-  </div>
+  <% if admin_signed_in?%>
+    <div class="row mt-5 justify-content-center">
+      <%= link_to '編集する', edit_admin_recommendation_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
+    </div>
+    <div class="row mt-3 justify-content-end">
+      <%= link_to '削除する', admin_recommendation_snack_path(snack), method: :delete,
+      "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
+    </div>
+  <% end %>
 </div>

@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
 
   def favorites
     @customer = current_customer
-    @favorites = @customer.favorites.includes(:snack)    #ログインしているユーザーがいいねした投稿の情報を取得
+    @favorites = @customer.favorites.includes(:snack).page(params[:page]).per(10)    #ログインしているユーザーがいいねした投稿の情報を取得
     @snacks = @favorites.map(&:snack)    # いいねした投稿に関連付けられたおつまみの情報を@snacksに格納
   end
 

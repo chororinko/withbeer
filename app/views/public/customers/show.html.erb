@@ -1,4 +1,4 @@
-<div class="notice">
+<div class="notice mt-2 ml-3">
   <%= flash[:notice] %>
 </div>
 
@@ -27,22 +27,24 @@
       </table>
       <% if @customer == current_customer && !@customer.guest_user? %>
     　<div>
-        <%= link_to '設定', edit_customer_path(@customer), class: 'btn btn-outline-secondary col' %>
+        <%= link_to edit_customer_path(@customer), class: 'btn btn-outline-secondary col' do %>
+          <i class="fa-solid fa-gear"></i>設定
+        <% end %>
       </div>
       <% end %>
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <div style="font-size: 20px;">
+      <div class="mb-3" style="font-size: 20px;">
         <strong>マイおつまみレシピ</strong>
       </div>
       <%= render 'public/customers/snacks-index', snacks: @snacks %>
     </div>
   </div>
   <% end %>
-  
-  <div class="row d-flex justify-content-center mb-3">
+
+  <div class="row justify-content-center mb-3">
     <%= paginate @snacks %>
   </div>
-  
+
 </div>

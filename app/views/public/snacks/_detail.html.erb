@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td>タグ：
-        <% @snack_tags.each do |tag| %>
+        <% snack_tags.each do |tag| %>
           <strong><i class="fa-sharp fa-solid fa-tag"></i>
             <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
           </storong>
@@ -73,7 +73,7 @@
     <%= render 'public/favorites/favorite-btn', snack: @snack %>
   </div>
 
-  <% if @snack.customer == current_customer %>
+  <% if snack.customer == current_customer %>
     <div class="row d-flex justify-content-center mt-5">
       <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
     </div>
@@ -84,7 +84,7 @@
   <% end %>
 
   <!--コメント-->
-  <div class="comment-index container">
+  <div class="comment-index">
     <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
   </div>
 

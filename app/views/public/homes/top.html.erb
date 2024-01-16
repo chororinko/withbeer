@@ -1,17 +1,10 @@
-<div class="notice">
+<div class="notic mt-2 ml-3">
   <%= flash[:notice] %>
 </div>
 
-<div class="container" style="margin-bottom: 100px;">
-  <div class="row d-flex justify-content-center">
-    <h5>
-      お酒の種類ごとに合ったおつまみを紹介するサイトです。<br>
-      お酒がよりおいしく、楽しくなること間違いなし！！
-    </h5>
-  </div>
-
+<div class="container" style="margin-bottom: 30px; margin-top: 50px;">
   <!--お酒ジャンル検索-->
-  <div class="row d-flex justify-content-center">
+  <div class="row">
     <div class="col-2">
       <h5><strong>お酒ジャンル検索</strong></h5>
       <table class="table table">
@@ -28,28 +21,45 @@
       </table>
     </div>
 
-    <!--今月のおすすめ-->
-    <div class="col text-center">
-      <h4>今月のおすすめ</h4>
-      <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-        <%= link_to admin_recommendation_snack_path(@snack), class: "text-dark link-underline-dark" do %>
-          <strong><%= @snack.sake.genre %><strong>
-        <% end %>　✖
-        <%= link_to snack_path(@snack) do %>
-          <%= image_tag(@snack.get_image(150,150)) %>
-        <% end %><br>
-        <strong><%= @snack.title %></strong>
-      </div>
+    <div class="col text-center" style="margin-top: 50px; margin-left: 50px; margin-right: 50px;">
+      <h5>
+        <p>お酒の種類ごとに合ったおつまみを紹介するサイトです。</p><br>
+        <p>お酒がよりおいしく、楽しくなること間違いなし！！</p>
+      </h5>
     </div>
   </div>
+</div>
 
+<div class="container" style="margin-bottom: 150px; margin-top: 50px;">
   <!--タグ検索-->
   <div class="row">
     <div class="col-2">
       <%= render 'public/homes/taglist', tags: @tags%>
     </div>
+
+    <!--今月のおすすめ-->
+    <div class="col-9 offset-1 text-center">
+      <h3>今月のおすすめ</h3>
+      <div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
+      <div class="row ml-5 mt-3 mb-4">
+        <%= link_to admin_recommendation_snack_path(@snack), class: "text-dark link-underline-dark" do %>
+          <h1><strong><%= @snack.sake.genre %><strong></h1>
+        <% end %>
+      </div>
+      <div class="row justify-content-center mb-3"><h2>✖</h2></div>
+      <div class="row justify-content-end mr-5 mb-3">
+        <%= link_to snack_path(@snack) do %>
+          <%= image_tag(@snack.get_image(250,200)) %><br>
+          <h3><strong><%= @snack.title %></strong></h3>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
 
 
 

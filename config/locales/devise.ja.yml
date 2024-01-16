@@ -7,6 +7,11 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      customer:
+        email: "メールアドレス"
+        password: "パスワード"
+        user_name: "ユーザー名"
+        password_confirmation: "確認用パスワード"
       snack:
         title: "タイトル"
         introduction: "紹介文"

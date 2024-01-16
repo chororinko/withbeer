@@ -1,33 +1,35 @@
-<!--コメントフォーム-->
-<div class="row-6 justify-content-end mb-3">
-  <% if customer_signed_in? %>
-    <%= form_with model: [snack, snack_comment], local: false do |f| %>
-      <div><%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します' %></div><br>
-      <div><%= f.submit '送信' %></div>
-    <% end %>
-  <% end %>
-</div>
-
-<!--コメント内容-->
-<div class="row-5">
-  <% snack.snack_comments.each do |comment| %>
-    <table>
+<div class="row d-flex justify-content-between mb-3 mt-5">
+  <!--コメント内容-->
+  <table class="col-5 mb-5">
+    <% snack.snack_comments.each do |comment| %>
       <tr>
         <td>
-          <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle mr-3') %><br>
-          <%= link_to comment.customer.user_name, customer_path(comment.customer) %>
+          <%= link_to customer_path(comment.customer) do %>
+            <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle mr-3') %><br>
+          <% end %>
+          <%= link_to comment.customer.user_name, customer_path(comment.customer), class: 'col text-center mb-5' %>
         </td>
         <td class="mr-3"><%= comment.comment %></td>
         <td>
           <% if comment.customer == current_customer %>
-            <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger ml-3' %>
+            <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger btn-sm ml-3' %>
           <% elsif admin_signed_in? %>
             <%= link_to '削除', admin_snack_snack_comment_path(comment.snack, comment),
-            method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger ml-3' %>
+            method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger btn-sm ml-3' %>
           <% end %>
         </td>
       </tr>
-    </table>
+    <% end %>
+  </table>
+
+  <!--コメントフォーム-->
+  <div class="col-5">
+  <% if customer_signed_in? %>
+    <%= form_with model: [snack, snack_comment], local: false do |f| %>
+      <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5 pl-5' %>
+      <%= f.submit '送信' %>
+    <% end %>
   <% end %>
+  </div>
 </div>
 

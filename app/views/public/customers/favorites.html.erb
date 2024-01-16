@@ -1,13 +1,14 @@
-<div class="container">
-  <div class="row">
-    <h4><%= @customer.user_name %>さんがいいねした投稿一覧</h4>
+<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
+  <div class="row mb-4" style="margin-left: 50px;">
+    <h4><%= @customer.user_name %>さんがいいねした投稿</h4>
   </div>
 
-  <div class="row col-8">
+  <div class="row" style="margin-left: 150px; margin-right: 170px;">
     <%= render 'public/customers/snacks-index', snacks: @snacks %>
   </div>
 
-  <!--<div class="row d-flex justify-content-center">-->
-  <!--  <#%= paginate @favorited_snacks %>-->
-  <!--</div>-->
+  <div class="row justify-content-center">
+    <%= paginate @favorites %>
+  </div>
+
 </div>
