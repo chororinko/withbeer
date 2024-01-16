@@ -1,6 +1,6 @@
-<div class="row d-flex justify-content-between mb-3 mt-5">
+
   <!--コメント内容-->
-  <table class="col-5 mb-5">
+  <table class="col-5 mb-5 comment-index">
     <% snack.snack_comments.each do |comment| %>
       <tr>
         <td>
@@ -21,15 +21,4 @@
       </tr>
     <% end %>
   </table>
-
-  <!--コメントフォーム-->
-  <div class="col-5">
-  <% if customer_signed_in? %>
-    <%= form_with model: [snack, snack_comment], local: false do |f| %>
-      <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5 pl-5' %>
-      <%= f.submit '送信' %>
-    <% end %>
-  <% end %>
-  </div>
-</div>
 

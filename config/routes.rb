@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   get '/search' => 'searches#search'
+  get "customers" => redirect("/customers/sign_up")
 
   namespace :admin do
     root to: 'recommendation_snacks#index'

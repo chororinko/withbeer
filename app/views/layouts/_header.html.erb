@@ -1,5 +1,5 @@
 <header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
   <div class="container fluid">
     <a class="navbar-brand" href= "/">WithBeer</a>
 
@@ -12,7 +12,14 @@
 
       　<!--キーワード検索フォーム-->
         <%= form_with url: search_path, local: true, method: :get do |f| %>
-          <li><%= f.text_field :word %><%= f.submit '検索' %></li>
+          <li>
+            <div class="col mr-3">
+              <%= f.text_field :word, placeholder: 'キーワードを入力' %>
+              <%= f.button :submit, class: "btn-sm btn-primary" do %>
+                <i class="fa-solid fa-magnifying-glass"></i>
+              <% end %>
+            </div>
+          </li>
         <% end %>
 
         <% if admin_signed_in? %>
@@ -35,23 +42,23 @@
             <% end %>
           </li>
           <li>
-            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link text-light" do %>
+            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link text-light col ml-3" do %>
               <i class="fa-solid fa-heart"></i>いいね一覧
             <% end %>
           </li>
           <li>
-            <%= link_to new_snack_path, class: "nav-link text-light" do %>
+            <%= link_to new_snack_path, class: "nav-link text-light col ml-3" do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light col ml-3" do %>
               <i class="fa-solid fa-right-from-bracket"></i>ログアウト
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to customer_session_path, class: "nav-link text-light" do %>
+            <%= link_to customer_session_path, class: "nav-link text-light col ml-2" do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
           </li>

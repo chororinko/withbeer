@@ -1,12 +1,19 @@
-<div class="container" style="margin-bottom: 100px;">
-  <div class="row">
+<div class="container" style="margin-bottom: 100px; margin-top: 40px;">
+  <div class="row mb-5 ml-4">
     <h4>"<%= @word %>" に関連するおつまみ（<%= @snacks.count %>品）</h4>
   </div>
 
-  <!--キーワードに紐づいた投稿一覧-->
-  <div class="col d-flex flex-wrap">
-    <% @snacks.each do |snack| %>
-      <%= render 'public/snacks/list', snack: snack %>
-    <% end %>
+  <!--タグ検索-->
+  <div class="row">
+    <div class="col-2 mr-5">
+      <%= render 'public/homes/taglist', tags: @tags%>
+    </div>
+
+    <!--キーワードに紐づいた投稿一覧-->
+    <div class="col d-flex flex-wrap">
+      <% @snacks.each do |snack| %>
+        <%= render 'public/snacks/list', snack: snack %>
+      <% end %>
+    </div>
   </div>
 </div>

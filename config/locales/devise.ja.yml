@@ -21,6 +21,9 @@ ja:
     models:
       user: "ユーザ"
   devise:
+    failure:
+      customer:
+        invalid: ログインに失敗しました。
     confirmations:
       new:
         resend_confirmation_instructions: "アカウント確認メール再送"
