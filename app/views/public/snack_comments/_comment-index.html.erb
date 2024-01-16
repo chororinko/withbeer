@@ -1,6 +1,6 @@
 <!--コメントフォーム-->
 <div class="row-6 justify-content-end mb-3">
-  <% if customer_signed_in? && !@customer %>
+  <% if customer_signed_in? %>
     <%= form_with model: [snack, snack_comment], local: false do |f| %>
       <div><%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します' %></div><br>
       <div><%= f.submit '送信' %></div>

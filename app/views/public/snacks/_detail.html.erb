@@ -1,5 +1,5 @@
 <!--おつまみ詳細画面-->
-<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
+<div class="container" style="margin-bottom: 200px; margin-top: 50px;">
 
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
@@ -77,7 +77,7 @@
     <div class="row d-flex justify-content-center mt-5">
       <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
     </div>
-    <div class="row d-flex justify-content-center mt-5">
+    <div class="row d-flex justify-content-end mt-5">
       <%= link_to '削除する', snack_path(snack), method: :delete,
       "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
     </div>

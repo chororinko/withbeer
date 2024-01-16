@@ -1,9 +1,11 @@
-<div class="notice">
-  <%= flash[:notice] %>
+<div class="container mt-2 ml-4">
+  <%= render 'layouts/errors', obj: @snack %>
 </div>
 
-<div class="container" style="margin-bottom: 100px;">
-  <h4>今月のおすすめ新規登録</h4>
+<div class="container-fluid" style="margin-bottom: 100px; margin-top: 50px;">
+  <div class="row ml-5">
+    <h4>今月のおすすめ新規登録</h4>
+  </div>
 
   <%= render 'admin/snacks/form', snack: @snack, tags: @tags %>
 

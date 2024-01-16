@@ -1,6 +1,6 @@
 <!--おつまみ情報フォーム-->
-  <%= form_with model: snack, url: admin_recommendation_snacks_path do |f| %>
-  <div class="row">
+<%= form_with model: snack, url: admin_recommendation_snacks_path do |f| %>
+  <div class="row ml-5 mt-5">
     <div class="col">
       <table class="table table-borderless">
         <tr>
@@ -8,14 +8,14 @@
         </tr>
         <tr>
           <td>おつまみ画像</td>
-          <td><%= f.file_field :image, accept: "image/*", class: 'w-100' %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
         </tr>
         <tr>
           <td></td>
-          <td>※画像の拡張子はjpg・png・jpeg形式のものをご使用ください。</td>
+          <td class="text-muted">※画像の拡張子はjpg・png・jpeg形式のものをご使用ください。</td>
         </tr>
         <tr>
-          <td>タイトル</td>
+          <td class="col-3">タイトル</td>
           <td><%= f.text_field :title, placeholder: 'タイトル', class: 'col' %></td>
         </tr>
         <tr>
@@ -24,47 +24,56 @@
         </tr>
         <tr>
           <td>お酒</td>
-          <td><%= f.collection_select(:sake_id, Sake.all, :id, :genre, include_blank: "-- このおつまみに合うお酒を選択してください --", class: 'w-100') %></td>
+          <td><%= f.collection_select(:sake_id, Sake.all, :id, :genre, include_blank: "-- このおつまみに合うお酒を選択してください --") %></td>
         </tr>
         <tr>
           <td>タグ</td>
-          <td><%= f.text_area :name, value: tags, rows:'5', placeholder: '和食,こってり,15分以内', class: 'col' %></td>
+          <td><%= f.text_area :name, value: tags, rows:'3', placeholder: '和食,こってり,15分以内', class: 'col' %></td>
         </tr>
         <tr>
         <td></td>
-        <td>※タグが複数ある場合は半角の" , "で区切ってください。</td>
+        <td class="text-muted">※タグが複数ある場合は半角の" , "で区切ってください。</td>
       </tr>
       </table>
     </div>
 
     <!--レシピの材料フォーム-->
-    <div class="col">
+    <div class="col offset-1">
       <table class="table table-borderless">
         <tr>
           <th>レシピ</th>
         </tr>
         <tr>
-          <td>材料</td>
-          <td><%= f.text_area :ingredients, rows: '7', class: 'col',
+          <td class="col-2">材料</td>
+          <td>
+            <%= f.text_area :ingredients, rows: '7', class: 'col-11',
               placeholder: 'エリンギ（小）：8本 バター：15g にんにくチューブ：3センチ 冷凍いんげん：7~8本 A（しょうゆ：小さじ1 化学調味料：適量)' %>
           </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="text-muted">※材料ごとに改行して入力してください。</td>
         </tr>
       </table>
 
       <!--レシピの作り方フォーム-->
       <table class="table table-borderless">
         <tr>
-          <td>作り方</td>
-          <td><%= f.text_area :process, rows: '15', class: 'col',
+          <td class="col-2">作り方</td>
+          <td><%= f.text_area :process, rows: '15', class: 'col-11',
               placeholder: '1. エリンギといんげんを食べやすい大きさにカットします。2.フライパンを弱火にかけバターを熱します。チューブにんにくをいれバターと炒め合わせます。3. 中火でエリンギといんげんを炒め、しんなりしたらAを加えて味を整えます。' %>
           </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="text-muted">※文章ごとに改行して入力してください。</td>
         </tr>
       </table>
     </div>
   </div>
 
   <div class="row d-flex justify-content-center">
-    <%= f.submit 'おすすめを登録', class: 'btn btn-lg btn-info col-4' %>
+    <%= f.submit 'おすすめを登録', class: 'btn btn-lg btn-info col-4 rounded-pill' %>
   </div>
 
 <% end %>

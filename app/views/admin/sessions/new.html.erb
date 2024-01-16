@@ -1,13 +1,21 @@
-<h4>管理者ログイン</h4>
+<div class="container" style="margin-top: 50px;">
+  <div class="row justify-content-center">
+    <h4>管理者ログイン</h4>
+  </div>
 
-<%= form_with model: @admin, url: admin_session_path, method: :post do |f|%>
+  <%= form_with model: @admin, url: admin_session_path, method: :post do |f|%>
+  <div class="row justify-content-center mt-4">
+    <h6 class="col-2">メールアドレス</h6>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-4" %>
+  </div>
 
-  <h6>メールアドレス</h6>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row justify-content-center mt-4">
+    <h6 class="col-2">パスワード</h6>
+    <%= f.password_field :password, autocomplete: "current-password", class: "col-4" %><br>
+  </div>
 
-  <h6>パスワード</h6>
-  <%= f.password_field :password, autocomplete: "current-password" %><br>
-
-  <%= f.submit 'ログイン'%><br>
-
-<% end %>
+  <div class="row justify-content-center mt-4">
+   <%= f.submit 'ログイン'%><br>
+  </div>
+  <% end %>
+</div>

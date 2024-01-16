@@ -1,7 +1,11 @@
-<%= render 'layouts/errors', obj: @snack %>
-<!--, obj: @tags-->
-<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
-  <h4>おつまみレシピ新規投稿</h4>
+<div class="container mt-2 ml-4">
+  <%= render 'layouts/errors', obj: @snack %>
+</div>
+
+<div class="container-fluid" style="margin-bottom: 100px; margin-top: 50px;">
+  <div class="row ml-5">
+    <h4>おつまみレシピ新規投稿</h4>
+  </div>
 
   <%= render 'public/snacks/form', snack: @snack, tags: @tags %>
 
