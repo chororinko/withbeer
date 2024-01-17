@@ -1,6 +1,10 @@
 <div class="notice col ml-1 mt-1">
   <%= flash[:notice] %>
 </div>
+<div class="container" style="margin-bottom: 200px; margin-top: 50px;">
+  <%= render 'public/snacks/detail', snack: @snack, snack_tags: @snack_tags, snack_comment: @snack_comment %>
 
-<%= render 'public/snacks/detail', snack: @snack, snack_tags: @snack_tags, snack_comment: @snack_comment, snack_comments: @snack_comments %>
-
+  <div class="row justify-content-center mb-3">
+    <%= paginate @snack_comments, theme: 'twitter-bootstrap-4'%>
+  </div>
+</div>

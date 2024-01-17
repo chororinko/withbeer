@@ -1,10 +1,10 @@
 ja:
   views:
     pagination:
-      first: <i class="fas fa-angle-double-left"></i>
-      last: <i class="fa-solid fa-forward-fast"></i>
-      previous: <i class="fas fa-angle-left"></i>
-      next: <i class="fa-solid fa-forward-step"></i>
+      first: <i class="fa-solid fa-angles-left"></i>
+      last: <i class="fa-solid fa-angles-right"></i>
+      previous: <i class="fa-solid fa-angle-left"></i>
+      next: <i class="fa-solid fa-angle-right"></i>
   activerecord:
     attributes:
       user:

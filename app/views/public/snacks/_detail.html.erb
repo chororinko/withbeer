@@ -1,5 +1,4 @@
 <!--おつまみ詳細画面-->
-<div class="container" style="margin-bottom: 200px; margin-top: 50px;">
 
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
@@ -122,8 +121,3 @@
       <%= link_to '削除する', admin_snack_path(@snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
     </div>
   <% end %>
-
-  <div class="row justify-content-center mb-3">
-    <%= paginate snack_comments%>
-  </div>
-</div>
