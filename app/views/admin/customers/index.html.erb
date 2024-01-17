@@ -1,29 +1,29 @@
-<div class="container">
-  <div class="row">
+<div class="container" style="margin-bottom: 100px; margin-top: 60px;">
+  <div class="row mb-3" style="margin-left: 60px;">
     <h4>会員一覧</h4>
   </div>
-  <div class="row">
-    <table class="table table">
-      <tr>
-        <th>会員ID</th>
+  <div class="row" style="margin-left: 120px; margin-right: 110px;">
+    <table class="table">
+      <tr class="table table-active">
+        <th class="col-2 pl-4">会員ID</th>
         <th>ユーザー名</th>
         <th>メールアドレス</th>
-        <th>会員ステータス</th>
+        <th class="col-2 pl-5">会員ステータス</th>
       </tr>
       <% @customers.each do |customer|%>
       <tr>
-        <td><%= customer.id %></td>
-        <td>
+        <td class="col-2 pl-5"><%= customer.id %></td>
+        <td class="col-3 pl-3">
           <%=link_to admin_customer_path(customer), class: 'text-dark underline' do %>
             <%= customer.user_name %>
           <% end %>
         </td>
-        <td>
+        <td class="col-4">
           <%=link_to admin_customer_path(customer), class: 'text-dark underline' do %>
             <%= customer.email %>
           <% end %>
         </td>
-        <td>
+        <td class="col-3 text-center">
           <% if customer.is_active? %>
             <strong><span class="text-success">有効</span></strong>
           <% else %>

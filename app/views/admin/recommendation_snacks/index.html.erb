@@ -1,13 +1,13 @@
-<div class="notice mt-3 ml-3">
+<div class="notice mt-2 ml-2">
   <%= flash[:notice] %>
 </div>
 
-<div class="container" style="margin-bottom: 100px;">
+<div class="container" style="margin-bottom: 100px; margin-top: 60px;">
   <div class="row">
-    <div class="col ml-5 mt-5 mb-4">
+    <div class="col ml-5">
       <h4>今月のおすすめ履歴一覧</h4>
     </div>
-    <div class="col mt-5 d-flex justify-content-end" style="margin-right: 90px;">
+    <div class="col mt-2 mb-2 d-flex justify-content-end" style="margin-right: 100px;">
       <h1><%= link_to '新規登録', new_admin_recommendation_snack_path, class: 'btn btn-lg btn-outline-dark rounded-circle'%></h1>
     </div>
   </div>
@@ -15,15 +15,15 @@
   <table class="col-9" style="margin-left: 130px; margin-right: 90px;">
     <thead class="table table-active">
       <tr>
-        <th class="col-3">作成日時</th>
-        <th class="col-7 pl-4">組み合わせ</th>
+        <th class="col-4 pl-4">作成日時</th>
+        <th class="col-6 pl-4">組み合わせ</th>
         <th class="col-2 text-center">いいね数</th>
       </tr>
     </thead>
     <% @snacks.each do |snack| %>
     <tbody class="table table-borderless">
       <tr>
-        <td><%= snack.created_at.strftime("%Y/%m/%d") %></td>
+        <td class="col-4 pl-4"><%= snack.created_at.strftime("%Y/%m/%d") %></td>
         <td>
           <style>
             .link-underline-dark {
@@ -39,8 +39,8 @@
     </tbody>
     <% end %>
   </table>
-  <div class="row d-flex justify-content-center mt-3">
-    <%= paginate @snacks %>
+  <div class="row justify-content-center mt-3">
+    <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>
 

@@ -3,3 +3,37 @@
 .field_with_errors {
   display: contents;
 }
+
+.snack-comment {
+  /* widthやmax-widthで表示範囲の横幅を指定する */
+  width: 100%;
+  max-width: 280px;
+
+  /* その上で、下記を指定する。word-breakと併せて指定しましょう */
+  // overflow-wrap: break-word;
+
+  /* その上で、下記のいずれかを指定する。overflow-wrapと併せて指定しましょう */
+  word-break: break-word;
+  // word-break: break-all;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.pagination {
+  justify-content: center;
+}

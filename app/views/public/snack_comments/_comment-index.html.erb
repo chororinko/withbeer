@@ -7,11 +7,15 @@
         <div class="col mb-5"><%= comment.customer.user_name %></div>
       <% end %>
     </div>
-    <div class="col-7 pt-2 mb-5"><%=safe_join(comment.comment.split("\n"),tag(:br))%></div>
-    <div class="col-2 pt-2">
+    <div class="col-7 pt-2 mb-5">
+      <div class="snack-comment">
+        <%= comment.comment %>
+      </div>
+    </div>
+    <div class="col-2 pt-3">
       <% if comment.customer == current_customer %>
-        <%= link_to snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-secondary btn-sm' do %>
-          <i class="fa-solid fa-trash-can"></i>
+        <%= link_to snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true do %>
+          <h5><i class="fa-solid fa-trash-can"></i></h5>
         <% end %>
       <% elsif admin_signed_in? %>
         <%= link_to '削除', admin_snack_snack_comment_path(comment.snack, comment),

@@ -22,12 +22,12 @@
         <td>会員ステータス</td>
         <td class="row">
           <div class="col-4">
-          <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, "有効" %>
+         　  <%= f.radio_button :is_active, "true" %>
+            <%= f.label :is_active_true, "有効" %>
           </div>
           <div class="col-5">
-          <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, "退会" %>
+            <%= f.radio_button :is_active, "false" %>
+            <%= f.label :is_active_false, "退会" %>
           </div>
         </td>
         <td><%= f.submit '変更', class: 'btn btn-sm btn-info' %></td>

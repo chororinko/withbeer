@@ -30,8 +30,11 @@ ja:
     failure:
       customer:
         invalid: ログインに失敗しました。
+        not_found_in_database: メールアドレスまたはパスワードが無効です。
       admin:
+        unauthenticated: ログインしてください。
         invalid: ログインに失敗しました。
+        not_found_in_database: メールアドレスまたはパスワードが無効です。
     confirmations:
       new:
         resend_confirmation_instructions: "アカウント確認メール再送"

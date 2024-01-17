@@ -4,7 +4,6 @@ class Public::CustomersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def show
-    # @customer = current_customer
     @customer = Customer.find(params[:id])
     @snacks = @customer.snacks.page(params[:page]).per(10)
   end
