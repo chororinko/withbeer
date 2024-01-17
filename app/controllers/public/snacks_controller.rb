@@ -37,6 +37,7 @@ class Public::SnacksController < ApplicationController
       @customer = nil
     end
     @snack_comment = SnackComment.new
+    @snack_comments = @snack.snack_comments.page(params[:page]).per(10)
     @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
   end

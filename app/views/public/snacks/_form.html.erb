@@ -1,6 +1,6 @@
 <!--おつまみ情報フォーム-->
   <%= form_with model: snack do |f| %>
-  <div class="row ml-5 mt-5">
+  <div class="row ml-5 mb-5">
     <div class="col">
       <table class="table table-borderless">
         <tr>
@@ -75,11 +75,11 @@
   </div>
 
   <% if snack.new_record? %>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center" style="margin-bottom: 150px;">
       <%= f.submit 'おつまみレシピを投稿', class: 'btn btn-lg btn-info col-4 rounded-pill' %>
     </div>
   <% else %>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center" style="margin-bottom: 150px;">
       <%= f.submit '変更を保存', class: 'btn btn-lg btn-info col-4 rounded-pill' %>
     </div>
   <% end %>

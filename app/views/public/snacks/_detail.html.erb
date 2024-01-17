@@ -31,11 +31,19 @@
       </tr>
       <tr>
         <td>
-          <% if snack.customer.present? %>
-            <%= link_to customer_path(snack.customer) do %>
-              <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2 rounded-circle' %>
-              <%= snack.customer.user_name %>
-            <% end %>
+          <% if snack.customer == current_customer %>
+            <tr>
+              <td>あなたの投稿</td>
+            </tr>
+          <% elsif snack.customer.present? %>
+            <tr>
+              <td>
+                <%= link_to customer_path(snack.customer) do %>
+                  <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2 rounded-circle' %>
+                  <%= snack.customer.user_name %>
+                <% end %>
+              </td>
+            </tr>
           <% else %>
             <tr>
               <td>運営者による投稿</td>
@@ -51,7 +59,7 @@
     <h4>レシピ</h4>
   </div>
 
-  <div class="row  mt-5">
+  <div class="row mt-5">
     <div class="col">
       <h5>材料</h5>
     </div>
@@ -60,46 +68,50 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mb-5">
-    <div class="col">
+  <div class="row mb-5">
+    <div class="col" style="padding: 10px; margin-bottom: 10px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
       <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
-    <div class="col">
+    <div class="col" style="padding: 10px; margin-bottom: 10px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
       <p><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
     </div>
   </div>
 
-  <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-3" style="margin-right: 70px;">
-    <%= render 'public/favorites/favorite-btn', snack: @snack %>
-  </div>
+  <h5>
+    <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-3" style="margin-right: 70px;">
+      <%= render 'public/favorites/favorite-btn', snack: @snack %>
+    </div>
+  </h5>
 
   <% if current_customer && snack.customer == current_customer %>
     <div class="row d-flex justify-content-center mt-5">
       <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
     </div>
-    <div class="row d-flex justify-content-end mt-5">
+    <div class="row d-flex justify-content-end mt-5 mr-4">
       <%= link_to '削除する', snack_path(snack), method: :delete,
       "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
     </div>
   <% end %>
 
   <!--コメントフォーム-->
-  <div class="row justify-content-end">
+  <% unless snack.customer == current_customer %>
+  <div class="row justify-content-end mt-4 mb-5">
     <div class="col-5">
       <% if customer_signed_in? %>
-        <%= form_with model: [@snack, @snack_comment], local: false do |f| %>
+        <%= form_with model: [snack, snack_comment], local: false do |f| %>
           <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
           <%= f.submit '送信' %>
         <% end %>
       <% end %>
     </div>
   </div>
+  <% end %>
 
   <!--コメント-->
   <div class="container-6 comment-index">
     <div class="row">
       <div class="col-6">
-      <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+      <%= render 'public/snack_comments/comment-index', snack: @snack %>
       </div>
     </div>
   </div>
@@ -110,5 +122,8 @@
       <%= link_to '削除する', admin_snack_path(@snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
     </div>
   <% end %>
-</div>
 
+  <div class="row justify-content-center mb-3">
+    <%= paginate snack_comments%>
+  </div>
+</div>
