@@ -7,10 +7,10 @@
   </div>
 
   <div class="row mt-5">
-    <div class="col">
+    <div class="col ml-5">
       <%= image_tag snack.get_image(400,400) %>
     </div>
-    <table class="table table-borderless col">
+    <table class="table table-borderless col mr-5">
       <tr>
         <th class="col-5"><h5>おつまみ紹介文</h5></th>
       </tr>
@@ -18,7 +18,7 @@
         <td><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
       </tr>
       <tr>
-        <td>合うお酒：　<strong><%= snack.sake.genre %></storong></td>
+        <td>合うお酒： <strong><%= snack.sake.genre %></storong></td>
       </tr>
       <tr>
         <td>タグ：
@@ -33,7 +33,7 @@
         <td>
           <% if snack.customer.present? %>
             <%= link_to customer_path(snack.customer) do %>
-              <%= image_tag snack.customer.get_profile_image(100,100), class: 'rounded-circle' %>
+              <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2 rounded-circle' %>
               <%= snack.customer.user_name %>
             <% end %>
           <% else %>
@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mb-5">
     <div class="col">
       <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
@@ -69,7 +69,7 @@
     </div>
   </div>
 
-  <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mr-5">
+  <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-3" style="margin-right: 70px;">
     <%= render 'public/favorites/favorite-btn', snack: @snack %>
   </div>
 
@@ -83,18 +83,24 @@
     </div>
   <% end %>
 
-  <!--コメント-->
-  <div class="row d-flex justify-content-between">
-    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
-
-    <!--コメントフォーム-->
+  <!--コメントフォーム-->
+  <div class="row justify-content-end">
     <div class="col-5">
       <% if customer_signed_in? %>
         <%= form_with model: [@snack, @snack_comment], local: false do |f| %>
-          <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5 pl-5' %>
+          <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
           <%= f.submit '送信' %>
         <% end %>
       <% end %>
+    </div>
+  </div>
+
+  <!--コメント-->
+  <div class="container-6 comment-index">
+    <div class="row">
+      <div class="col-6">
+      <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+      </div>
     </div>
   </div>
 

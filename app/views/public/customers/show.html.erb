@@ -2,7 +2,7 @@
   <%= flash[:notice] %>
 </div>
 
-<div class="container" style="margin-bottom: 100px; margin-top: 40px;">
+<div class="container" style="margin-bottom: 180px; margin-top: 40px;">
   <div class="row mb-3" style="margin-left: 50px;">
     <% if @customer == current_customer %>
       <h4>マイページ</h4>
@@ -14,20 +14,20 @@
   <%= form_with model: @customer do |f| %>
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @customer.get_profile_image(200,200), class: 'rounded-circle' %>
+      <%= image_tag @customer.get_profile_image(200,200), class: 'rounded-circle col mb-3' %>
       <table class="table table-borderless">
-        <tr class="col-5">
-          <td style="margin-bottom: 20px;">ユーザー名：</td>
-          <td><%= @customer.user_name %></td>
+        <tr>
+          <td class="col-4" style="margin-bottom: 20px;">ユーザー名：</td>
+          <td class="col-8"><%= @customer.user_name %></td>
         </tr>
-        <tr class="col-7">
-          <td>自己紹介：</td>
-          <td><%= @customer.introduction %></td>
+        <tr>
+          <td class="col-4">自己紹介：</td>
+          <td class="col-8"><%= @customer.introduction %></td>
         </tr>
       </table>
       <% if @customer == current_customer && !@customer.guest_user? %>
     　<div>
-        <%= link_to edit_customer_path(@customer), class: 'btn btn-outline-secondary col' do %>
+        <%= link_to edit_customer_path(@customer), class: 'btn btn-outline-secondary col mb-5' do %>
           <i class="fa-solid fa-gear"></i>設定
         <% end %>
       </div>

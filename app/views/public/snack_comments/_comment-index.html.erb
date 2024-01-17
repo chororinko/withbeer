@@ -1,25 +1,23 @@
 <!--コメント内容-->
-<table class="col-5 mb-5 comment-index">
+<div class="row">
   <% snack.snack_comments.each do |comment| %>
-    <tr>
-      <td>
+      <div class="col-3">
         <%= link_to customer_path(comment.customer) do %>
-          <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle mr-3') %><br>
-          <%= comment.customer.user_name %>
+          <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle') %><br>
+          <div class="col text-center"><%= comment.customer.user_name %></div>
         <% end %>
-      </td>
-      <td class="mr-3 col-3"><%= comment.comment %></td>
-      <td>
+      </div>
+      <div class="col-7"><%= comment.comment %></div>
+      <div class="col-2">
         <% if comment.customer == current_customer %>
-          <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger btn-sm ml-3' %>
+          <%= link_to '削除', snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %>
         <% elsif admin_signed_in? %>
           <%= link_to '削除', admin_snack_snack_comment_path(comment.snack, comment),
-          method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger btn-sm ml-3' %>
+          method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger btn-sm' %>
         <% end %>
-      </td>
-    </tr>
+      </div>
   <% end %>
-</table>
+</div>
 
 
 

@@ -11,7 +11,7 @@
         <% @sakes.each do |sake| %>
           <tbody>
             <tr>
-              <td style="color: #583822;">
+              <td>
                 <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), class: "text-dark" %>
               </td>
               <td>( <%= sake.snacks.count %> )</td>

@@ -1,3 +1,7 @@
+<div class="col mt-1">
+  <%= alert %>
+</div>
+
 <div class="container" style="margin-top: 60px;">
   <div class="row justify-content-center">
     <h4>管理者ログイン</h4>
@@ -7,11 +11,11 @@
     <div class="row justify-content-center mt-5">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレスを入力', class: "col-4" %>
     </div>
-    
+
     <div class="row justify-content-center mt-4">
       <%= f.password_field :password, autocomplete: "current-password", placeholder: 'パスワードを入力', class: "col-4"  %><br>
     </div>
-    
+
     <div class="row justify-content-center mt-5">
       <%= f.submit 'ログイン', class: 'btn btn-primary col-4 rounded-pill' %><br>
     </div>

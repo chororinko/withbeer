@@ -1,3 +1,4 @@
+<h5>
 <% if snack.favorited_by?(current_customer) %>
   <%= link_to '♥', snack_favorites_path(snack), method: :delete, remote: true, style: 'color: red;' %>
     いいね：<%= snack.favorites.count %>
@@ -5,3 +6,4 @@
   <%= link_to '♡', snack_favorites_path(snack), method: :post, remote: true %>
    いいね：<%= snack.favorites.count %>
 <% end %>
+</h5>
