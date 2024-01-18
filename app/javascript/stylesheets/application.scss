@@ -4,6 +4,12 @@
   display: contents;
 }
 
+.snack-title {
+  width: 100%;
+  max-width: 150px;
+  word-break: break-word;
+}
+
 .snack-comment {
   /* widthやmax-widthで表示範囲の横幅を指定する */
   width: 100%;

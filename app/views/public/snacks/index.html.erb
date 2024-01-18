@@ -1,0 +1,23 @@
+<div class="container" style="margin-bottom: 100px; margin-top: 40px;">
+  <div class="row ml-4">
+    <h4><%= @sake.genre %>に合うおつまみ（<%= @quantity %>品）</h4>
+  </div>
+
+  <!--タグ検索-->
+  <div class="row mt-5">
+    <div class="col-2 mr-5">
+     <%= render 'public/homes/taglist', tags: @tags%>
+    </div>
+
+    <!--特定のお酒に紐づいたおつまみ一覧-->
+    <div class="col d-flex flex-wrap">
+      <% @sake.snacks.each do |snack| %>
+        <%= render 'public/snacks/list', snack: snack %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>

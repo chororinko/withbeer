@@ -2,6 +2,6 @@
 <div class="flex-item" style="flex-basis: 20%;">
   <%= link_to snack_path(snack) do %>
     <%= image_tag(snack.get_image(150,150)) %>
-    <div class="mt-4 mr-4 mb-5"><%= snack.title %></div>
+    <div class="snack-title mt-3"><%= snack.title %></div>
   <% end %>
 </div>
