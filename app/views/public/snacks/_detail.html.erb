@@ -5,7 +5,7 @@
     <h4><%=safe_join(snack.title.split("\n"),tag(:br))%></h4>     <!--改行表示-->
   </div>
 
-  <div class="row mt-5">
+  <div class="row mt-5" style="margin-bottom: 100px;">
     <div class="col ml-5">
       <%= image_tag snack.get_image(400,400) %>
     </div>
@@ -54,7 +54,7 @@
   </div>
 
   <!--おつまみのレシピ情報-->
-  <div class="row d-flex justify-content-center  mt-5">
+  <div class="row d-flex justify-content-center mt-5">
     <h4>レシピ</h4>
   </div>
 
