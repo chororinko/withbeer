@@ -17,18 +17,18 @@
       <%= image_tag @customer.get_profile_image(200,200), class: 'rounded-circle col mb-3' %>
       <table class="table table-borderless">
         <tr>
-          <td class="col-4" style="margin-bottom: 20px;">ユーザー名：</td>
-          <td class="col-8"><%= @customer.user_name %></td>
+          <td class="col-6" style="margin-bottom: 20px;">ユーザー名：</td>
+          <td class="col-6"><%= @customer.user_name %></td>
         </tr>
         <tr>
-          <td class="col-4">自己紹介：</td>
-          <td class="col-8"><%= @customer.introduction %></td>
+          <td>自己紹介：</td>
+          <td><%= @customer.introduction %></td>
         </tr>
       </table>
       <% if @customer == current_customer && !@customer.guest_user? %>
     　<div>
         <%= link_to edit_customer_path, class: 'btn btn-outline-secondary col mb-5' do %>
-          <i class="fa-solid fa-gear"></i>設定
+          <i class="fa-solid fa-gear"></i>
         <% end %>
       </div>
       <% end %>

@@ -5,7 +5,4 @@ class SnackComment < ApplicationRecord
 
   validates :comment, presence: true
 
-  # コメントの表示件数
-  paginates_per 1
-
 end

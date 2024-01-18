@@ -17,8 +17,6 @@ class Snack < ApplicationRecord
   end
   validates :introduction, presence: true, length: { maximum: 200 }
 
-  
-
   # 1つの投稿に対して1人1回までしかいいねできないようにするための確認メソッド
   def favorited_by?(customer)
     if customer.instance_of?(Customer)

@@ -37,7 +37,7 @@ class Public::SnacksController < ApplicationController
       @customer = nil
     end
     @snack_comment = SnackComment.new
-    @snack_comments = @snack.snack_comments.order(created_at: :asc).page(params[:page])
+    @snack_comments = @snack.snack_comments.order(created_at: :desc).page(params[:page]).per(6)
     @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
   end

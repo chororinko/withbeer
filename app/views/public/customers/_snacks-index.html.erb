@@ -6,15 +6,15 @@
           <%= image_tag snack.get_image(100,100) %>
         <% end %>
       </td>
-      <td class="col-7">
+      <td class="col-5">
         <%= link_to snack_path(snack) do %>
           <%= snack.title %>
         <% end %>
       </td>
       <td id="favorite-btn_<%= snack.id %>" class="col-2">
-        <%= render 'public/favorites/favorite-btn', snack: snack %><br>
-        コメント：<%= snack.snack_comments.count %>
+        <%= render 'public/favorites/favorite-btn', snack: snack %>
       </td>
+      <td class="col-2">コメント：<%= snack.snack_comments.count %></td>
     </tr>
   <% end %>
 </table>

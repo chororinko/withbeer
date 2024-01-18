@@ -10,7 +10,7 @@
     </div>
 
     <!--キーワードに紐づいた投稿一覧-->
-    <div class="col d-flex flex-wrap">
+    <div class="snack-list col d-flex flex-wrap">
       <% @snacks.each do |snack| %>
         <%= render 'public/snacks/list', snack: snack %>
       <% end %>

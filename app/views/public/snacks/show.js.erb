@@ -1,2 +1,2 @@
-$('#comment-index').append("<%= escape_javascript(render 'public/snack_comments/comment-index', snack_comments: @snack_comments) %>");
-$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@snack_comments, 'もっと見る', remote: true, id: 'view_more')) %>");
+$('.comment-index').append("<%= escape_javascript(render 'public/snack_comments/comment-index', snack_comments: @snack_comments) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@snack_comments, 'コメントをもっと見る', remote: true, id: 'view_more')) %>");
