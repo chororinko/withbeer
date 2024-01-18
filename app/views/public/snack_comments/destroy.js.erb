@@ -1,2 +1,2 @@
-$(".comment-index").html("<%= j(render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment ) %>");
+$("#comment-index").html("<%= j(render 'public/snack_comments/comment-index', snack_comments: @snack_comments ) %>");
 $("textarea").val("");

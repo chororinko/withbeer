@@ -1,6 +1,6 @@
 <!--コメント内容-->
 <div class="row">
-  <% snack.snack_comments.each do |comment| %>
+  <% snack_comments.each do |comment| %>
     <div class="col-3">
       <%= link_to customer_path(comment.customer) do %>
         <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle') %><br>
