@@ -14,8 +14,10 @@ class Admin::CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
+      flash[:alert] = '会員ステータスの変更に成功しました。'
       redirect_to admin_customers_path
     else
+      flash[:alert] = '会員ステータスの変更に失敗しました。'
       render :show
     end
   end

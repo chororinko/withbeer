@@ -68,23 +68,32 @@
     </div>
   </div>
 
-  <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mr-5">
-    <%= render 'public/favorites/favorite-btn', snack: @snack %>
-  </div>
+  <!--いいね-->
+  <h5>
+    <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mr-5">
+      <%= render 'public/favorites/favorite-btn', snack: @snack %>
+    </div>
+  </h5>
 
+  <!--投稿の編集＆削除-->
   <% if admin_signed_in?%>
     <div class="row mt-5 justify-content-center">
       <%= link_to '編集する', edit_admin_recommendation_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
     </div>
-    <div class="row mt-3 justify-content-end">
-      <%= link_to '削除する', admin_recommendation_snack_path(snack), method: :delete,
+    <div class="row mt-5 mb-5 mr-3 justify-content-end">
+      <%= link_to '投稿の削除', admin_recommendation_snack_path(snack), method: :delete,
       "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
     </div>
   <% end %>
 
   <!--コメント-->
-  <div class="row-3 d-flex justify-content-between">
-    <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+  <div class="container-6">
+    <div class="row">
+      <div class="col-6 comment-index">
+        <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+      </div>
+    </div>
+  </div>
 
   <!--コメントフォーム-->
     <div class="col-5">

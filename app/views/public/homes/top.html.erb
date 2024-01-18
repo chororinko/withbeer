@@ -56,7 +56,7 @@
         <div class="row justify-content-end mr-5 mb-3">
           <%= link_to snack_path(@snack) do %>
             <%= image_tag(@snack.get_image(250,200)) %><br>
-            <h3><strong><%= @snack.title %></strong></h3>
+            <h3 class="text-dark link-underline-dark"><strong><%= @snack.title %></strong></h3>
           <% end %>
         </div>
       </div>

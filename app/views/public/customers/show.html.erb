@@ -27,7 +27,7 @@
       </table>
       <% if @customer == current_customer && !@customer.guest_user? %>
     　<div>
-        <%= link_to edit_customer_path(@customer), class: 'btn btn-outline-secondary col mb-5' do %>
+        <%= link_to edit_customer_path, class: 'btn btn-outline-secondary col mb-5' do %>
           <i class="fa-solid fa-gear"></i>設定
         <% end %>
       </div>

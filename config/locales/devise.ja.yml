@@ -17,6 +17,7 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         user_name: "ユーザー名"
+        introduction: 自己紹介文
         password_confirmation: "確認用パスワード"
       snack:
         title: "タイトル"

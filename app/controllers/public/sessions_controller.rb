@@ -43,6 +43,7 @@ class Public::SessionsController < Devise::SessionsController
     return if @customer.is_active == true
 
     if @customer.is_active == false
+      flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
       redirect_to new_customer_registration_path
     end
   end

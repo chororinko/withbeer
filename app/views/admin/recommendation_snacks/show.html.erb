@@ -1,5 +1,6 @@
 <div class="notice mt-3 ml-3">
   <%= flash[:notice] %>
 </div>
-
-<%= render 'admin/snacks/detail', snack: @snack, snack_tags: @snack_tags %>
+<div class="container" style="margin-bottom: 200px; margin-top: 50px;">
+  <%= render 'admin/snacks/detail', snack: @snack, snack_tags: @snack_tags %>
+</div>

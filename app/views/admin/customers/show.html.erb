@@ -1,13 +1,17 @@
+<div class="notice mt-2 ml-2">
+  <%= flash[:alert] %>
+</div>
+
 <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-<div class="container">
-  <div class="row">
+<div class="container" style="margin-bottom: 100px; margin-top: 60px; margin-left: 100px;">
+  <div class="row mb-5 ml-5">
     <h4><%= @customer.user_name %>さんの会員詳細</h4>
   </div>
 
-  <div class="row">
+  <h5 class="row" style="margin-left: 80px; padding-left: 80px;">
     <table class="table table-borderless">
       <tr>
-        <td>会員ID</td>
+        <td class="col-4">会員ID</td>
         <td><%= @customer.id %></td>
       </tr>
       <tr>
@@ -21,21 +25,21 @@
       <tr>
         <td>会員ステータス</td>
         <td class="row">
-          <div class="col-4">
+          <div class="col-3">
          　  <%= f.radio_button :is_active, "true" %>
             <%= f.label :is_active_true, "有効" %>
           </div>
-          <div class="col-5">
+          <div class="col-3">
             <%= f.radio_button :is_active, "false" %>
             <%= f.label :is_active_false, "退会" %>
           </div>
+          <div class="col-2"><%= f.submit '変更', class: 'btn btn-sm btn-info' %></div>
         </td>
-        <td><%= f.submit '変更', class: 'btn btn-sm btn-info' %></td>
       </tr>
     </table>
-  </div>
+  </h5>
 
-  <div class="row">
+  <div class="row justify-content-center mt-5">
     <%= link_to 'おつまみ一覧', admin_customer_snacks_path(@customer), class: 'btn btn-lg btn-info' %>
   </div>
 

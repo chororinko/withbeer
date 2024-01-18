@@ -15,11 +15,13 @@
     <div class="col-2 pt-3">
       <% if comment.customer == current_customer %>
         <%= link_to snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true do %>
-          <h5><i class="fa-solid fa-trash-can"></i></h5>
+          <h5><i class="fa-solid fa-trash-can" style="color:red;"></i></h5>
         <% end %>
       <% elsif admin_signed_in? %>
-        <%= link_to '削除', admin_snack_snack_comment_path(comment.snack, comment),
-        method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?", class: 'btn btn-danger btn-sm' %>
+        <%= link_to admin_snack_snack_comment_path(comment.snack, comment),
+        method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?" do %>
+        <h5><i class="fa-solid fa-trash-can" style="color:red;"></i></h5>
+        <% end %>
       <% end %>
     </div>
   <% end %>

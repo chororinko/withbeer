@@ -53,6 +53,7 @@ class Admin::RecommendationSnacksController < ApplicationController
   def destroy
     snack = Snack.find(params[:id])
     snack.destroy
+    flash[:notice] = '今月のおすすめを削除しました。'
     redirect_to admin_root_path
   end
 

@@ -24,7 +24,6 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = 'プロフィールの編集に成功しました。'
       redirect_to customer_path(@customer)
     else
-      flash[:notice] = 'プロフィールの編集に失敗しました。'
       render :edit
     end
   end

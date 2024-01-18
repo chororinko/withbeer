@@ -85,12 +85,19 @@
 
   <!--投稿の編集＆削除-->
   <% if current_customer && snack.customer == current_customer %>
-    <div class="row d-flex justify-content-center mt-5">
+    <div class="row justify-content-center mt-5">
       <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
     </div>
-    <div class="row d-flex justify-content-end mt-5 mr-4">
-      <%= link_to '削除する', snack_path(snack), method: :delete,
+    <div class="row justify-content-end mt-5 mr-4 mb-5">
+      <%= link_to '投稿の削除', snack_path(snack), method: :delete,
       "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger btn-sm rounded-pill' %>
+    </div>
+  <% end %>
+
+  <!--管理者側で不適切な投稿を削除するため-->
+  <% if admin_signed_in? %>
+    <div class="row justify-content-center mt-5 mb-5">
+      <%= link_to '投稿の削除', admin_snack_path(@snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'col-3 btn btn-danger btn-lg' %>
     </div>
   <% end %>
 
@@ -117,9 +124,4 @@
     </div>
   </div>
 
-  <!--管理者側で不適切な投稿を削除するため-->
-  <% if admin_signed_in? %>
-    <div class="row d-flex justify-content-center">
-      <%= link_to '削除する', admin_snack_path(@snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'btn btn-danger' %>
-    </div>
-  <% end %>
+
