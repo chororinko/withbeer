@@ -5,12 +5,12 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @snacks = @customer.snacks.page(params[:page]).per(10)
+    @snacks = @customer.snacks.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def favorites
     @customer = current_customer
-    @favorites = @customer.favorites.includes(:snack).page(params[:page]).per(10)    #ログインしているユーザーがいいねした投稿の情報を取得
+    @favorites = @customer.favorites.includes(:snack).order(created_at: :desc).page(params[:page]).per(10)    #ログインしているユーザーがいいねした投稿の情報を取得
     @snacks = @favorites.map(&:snack)    # いいねした投稿に関連付けられたおつまみの情報を@snacksに格納
   end
 

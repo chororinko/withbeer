@@ -30,7 +30,7 @@
       </tr>
       <tr>
         <td>
-          <% if snack.customer == current_customer %>
+          <% if current_customer && snack.customer == current_customer %>
             <tr>
               <td>あなたの投稿</td>
             </tr>
@@ -68,12 +68,16 @@
   </div>
 
   <div class="row mb-5">
-    <div class="col" style="padding: 10px; margin-bottom: 10px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
+    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
       <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
-    <div class="col" style="padding: 10px; margin-bottom: 10px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
+    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
       <p><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
     </div>
+  </div>
+
+  <div class="row ml-1">
+    投稿日：<%= snack.created_at.strftime("%Y/%m/%d") %>
   </div>
 
   <!--いいね-->
@@ -122,7 +126,9 @@
         <%= render 'public/snack_comments/comment-index', snack_comments: snack_comments %>
       </div>
     </div>
-    <div class="col-4 mt-4 ml-5"><%= link_to_next_page snack_comments, 'コメントをもっと見る', remote: true, id: 'view_more' %></div>
+    <div class="col-3 mt-4 ml-5">
+      <%= link_to_next_page snack_comments, 'コメントをもっと見る', remote: true, id: 'view_more', class: 'btn btn-outline-dark rounded-pill' %>
+    </div>
   </div>
 
 

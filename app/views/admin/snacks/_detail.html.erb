@@ -1,15 +1,15 @@
 <!--おつまみ詳細画面-->
-<div class="container" style="margin-bottom: 200px; margin-top: 50px;">
+
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
     <h4><%=safe_join(snack.title.split("\n"),tag(:br))%></h4>     <!--改行表示-->
   </div>
 
-  <div class="row mt-5">
-    <div class="col">
+  <div class="row mt-5" style="margin-bottom: 100px;">
+    <div class="col ml-5">
       <%= image_tag snack.get_image(400,400) %>
     </div>
-    <table class="table table-borderless col">
+    <table class="table table-borderless col mr-5">
       <tr>
         <th class="col-5"><h5>おつまみ紹介文</h5></th>
       </tr>
@@ -17,7 +17,7 @@
         <td><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
       </tr>
       <tr>
-        <td>合うお酒：　<strong><%= snack.sake.genre %></storong></td>
+        <td>合うお酒： <strong><%= snack.sake.genre %></storong></td>
       </tr>
       <tr>
         <td>タグ：
@@ -30,11 +30,19 @@
       </tr>
       <tr>
         <td>
-          <% if snack.customer.present? %>
-            <%= link_to customer_path(snack.customer) do %>
-              <%= image_tag snack.customer.get_profile_image(100,100), class: 'rounded-circle' %>
-              <%= snack.customer.user_name %>
-            <% end %>
+          <% if current_customer && snack.customer == current_customer %>
+            <tr>
+              <td>あなたの投稿</td>
+            </tr>
+          <% elsif snack.customer.present? %>
+            <tr>
+              <td>
+                <%= link_to customer_path(snack.customer) do %>
+                  <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2 rounded-circle' %>
+                  <%= snack.customer.user_name %>
+                <% end %>
+              </td>
+            </tr>
           <% else %>
             <tr>
               <td>運営者による投稿</td>
@@ -46,11 +54,11 @@
   </div>
 
   <!--おつまみのレシピ情報-->
-  <div class="row d-flex justify-content-center  mt-5">
+  <div class="row d-flex justify-content-center mt-5">
     <h4>レシピ</h4>
   </div>
 
-  <div class="row  mt-5">
+  <div class="row mt-5">
     <div class="col">
       <h5>材料</h5>
     </div>
@@ -59,19 +67,23 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="col">
+  <div class="row mb-5">
+    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
       <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
-    <div class="col">
+    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
       <p><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
     </div>
   </div>
 
+  <div class="row ml-1">
+    投稿日：<%= snack.created_at.strftime("%Y/%m/%d") %>
+  </div>
+
   <!--いいね-->
   <h5>
-    <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mr-5">
-      <%= render 'public/favorites/favorite-btn', snack: @snack %>
+    <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-3" style="margin-right: 70px;">
+      <%= render 'public/favorites/favorite-btn', snack: snack %>
     </div>
   </h5>
 
@@ -90,19 +102,8 @@
   <div class="container-6">
     <div class="row">
       <div class="col-6 comment-index">
-        <%= render 'public/snack_comments/comment-index', snack: @snack, snack_comment: @snack_comment %>
+        <%= render 'public/snack_comments/comment-index', snack_comments: snack_comments %>
       </div>
     </div>
+    <div class="col-4 mt-4 ml-5"><%= link_to_next_page snack_comments, 'コメントをもっと見る', remote: true, id: 'view_more' %></div>
   </div>
-
-  <!--コメントフォーム-->
-    <div class="col-5">
-      <% if customer_signed_in? %>
-        <%= form_with model: [@snack, @snack_comment], local: false do |f| %>
-          <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5 pl-5' %>
-          <%= f.submit '送信' %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>

@@ -1,4 +1,5 @@
 class Public::SakesController < ApplicationController
+  
   def index
   end
 

@@ -1,6 +1,6 @@
-<div class="container" style="margin-bottom: 100px; margin-top: 40px;">
+<div class="container" style="margin-bottom: 150px; margin-top: 40px;">
   <div class="row mb-5 ml-4">
-    <h4>"<%= @word %>" に関連するおつまみ（<%= @snacks.count %>品）</h4>
+    <h4>”<%= @word %>” に関連するおつまみ（<%= @snacks.count %>品）</h4>
   </div>
 
   <!--タグ検索-->
@@ -14,10 +14,10 @@
       <% @snacks.each do |snack| %>
         <%= render 'public/snacks/list', snack: snack %>
       <% end %>
-      <div class="row justify-content-center mb-3">
-        <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
-      </div>
+
     </div>
   </div>
-
+  <div class="row justify-content-center mb-3">
+    <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

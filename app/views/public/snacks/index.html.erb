@@ -11,7 +11,7 @@
 
     <!--特定のお酒に紐づいたおつまみ一覧-->
     <div class="snack-list col d-flex flex-wrap">
-      <% @sake.snacks.each do |snack| %>
+      <% @snacks.each do |snack| %>
         <%= render 'public/snacks/list', snack: snack %>
       <% end %>
     </div>

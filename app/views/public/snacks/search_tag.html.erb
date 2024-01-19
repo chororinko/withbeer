@@ -9,7 +9,7 @@
      <%= render 'public/homes/taglist', tags: @tags%>
     </div>
 
-    <!--タグに紐づいた投稿一覧-->
+    <!--特定のタグに紐づいた投稿一覧-->
     <div class="snack-list col d-flex flex-wrap">
       <% @snacks.each do |snack| %>
         <%= render 'public/snacks/list', snack: snack %>

@@ -23,8 +23,8 @@ class Public::SnacksController < ApplicationController
   end
 
   def index
-    @snacks = Snack.page(params[:page])
     @sake = Sake.find(params[:sake_id])
+    @snacks = @sake.snacks.order(created_at: :desc).page(params[:page])
     @quantity = @sake.snacks.count
     @tags = Tag.all
   end
@@ -68,9 +68,9 @@ class Public::SnacksController < ApplicationController
 
   def search_tag
     @tags = Tag.all
-    @tag = Tag.find(params[:tag_id])          #検索されたタグを受け取る
-    @snacks = @tag.snacks.page(params[:page])    #検索されたタグに紐づく投稿を表示
-    @quantity = @tag.snacks.count             # タグに紐づくおつまみの数
+    @tag = Tag.find(params[:tag_id])                     #特定のタグを受け取る
+    @snacks = @tag.snacks.order(created_at: :desc).page(params[:page])     #特定のタグに紐づく投稿を表示
+    @quantity = @tag.snacks.count                       # タグに紐づくおつまみの数
   end
 
   private

@@ -21,13 +21,13 @@ class Admin::RecommendationSnacksController < ApplicationController
   end
 
   def index
-    @snacks = Snack.where(customer_id: nil).page(params[:page])
+    @snacks = Snack.where(customer_id: nil).order(created_at: :desc).page(params[:page])
     @sakes = Sake.all
   end
 
   def show
     @snack = Snack.find(params[:id])
-    @snack_comment = SnackComment.new
+    @snack_comments = @snack.snack_comments.order(created_at: :desc).page(params[:page]).per(6)
     @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
   end
