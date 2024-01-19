@@ -1,4 +1,4 @@
-<div class="container" style="margin-bottom: 100px; margin-top: 40px;">
+<div class="container" style="margin-bottom: 150px; margin-top: 40px;">
   <div class="row ml-4">
     <h4><%= @sake.genre %>に合うおつまみ（<%= @quantity %>品）</h4>
   </div>
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mb-3">
+  <div class="pagination row justify-content-center mt-3">
     <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>
