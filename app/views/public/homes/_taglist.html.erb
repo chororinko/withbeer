@@ -1,4 +1,5 @@
-<h5 class="col mb-3"><i class="fa-solid fa-magnifying-glass"></i>タグ検索</h5>
+<h5 class="col mb-3"><i class="fa-solid fa-magnifying-glass"></i><strong>タグ検索</strong></h5>
+<div class="search">
 <% tags.each do |tag|%>
   <% unless tag.snacks.count == 0 %>
     <i class="fa-sharp fa-solid fa-tag"></i>
@@ -6,3 +7,4 @@
     (<%= tag.snacks.count %>)
   <% end %>
 <% end %>
+</div>

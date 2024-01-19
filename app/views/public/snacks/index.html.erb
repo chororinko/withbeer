@@ -1,6 +1,6 @@
 <div class="container" style="margin-bottom: 150px; margin-top: 40px;">
   <div class="row ml-4">
-    <h4><%= @sake.genre %>に合うおつまみ（<%= @quantity %>品）</h4>
+    <h4><strong><%= @sake.genre %></strong>に合うおつまみ（<%= @quantity %>品）</h4>
   </div>
 
   <!--タグ検索-->
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="pagination row justify-content-center mt-3">
+  <div class="pagination row justify-content-center" style="margin-top: 70px;">
     <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

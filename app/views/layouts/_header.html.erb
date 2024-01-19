@@ -1,7 +1,10 @@
 <header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
+<nav class="navbar navbar-expand-lg navbar-dark p-1" style="background-color: #FFCC00;">
   <div class="container fluid">
-    <a class="navbar-brand" href= "/">WithBeer</a>
+    <a class="navbar-brand text-dark" href= "/">
+      <span><%= image_tag 'beer.png', size: "90x70" %></span><br>
+      <h4><strong>WithBeer</strong></h4>
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,7 +18,7 @@
           <li>
             <div class="col mr-3">
               <%= f.text_field :word, placeholder: 'キーワードを入力' %>
-              <%= f.button :submit, class: "btn-sm btn-primary" do %>
+              <%= f.button :submit, class: "btn-sm btn-dark" do %>
                 <i class="fa-solid fa-magnifying-glass"></i>
               <% end %>
             </div>
@@ -24,51 +27,51 @@
 
         <% if admin_signed_in? %>
           <li>
-            <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-light ml-3" %>
+            <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-dark ml-3" %>
           </li>
           <li>
-            <%= link_to 'お酒一覧', admin_sakes_path, class: "nav-link text-light ml-3" %>
+            <%= link_to 'お酒一覧', admin_sakes_path, class: "nav-link text-dark ml-3" %>
           </li>
           <li>
-            <%= link_to '今月のおすすめ履歴一覧', admin_root_path, class: "nav-link text-light ml-3" %>
+            <%= link_to '今月のおすすめ履歴一覧', admin_root_path, class: "nav-link text-dark ml-3" %>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-light ml-3" %>
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark ml-3" %>
           </li>
         <% elsif customer_signed_in? %>
           <li>
-            <%= link_to customer_path(current_customer), class: "nav-link text-light col ml-3" do %>
+            <%= link_to customer_path(current_customer), class: "nav-link text-dark col ml-3" do %>
               <i class="fa-regular fa-user"></i>マイページ
             <% end %>
           </li>
           <li>
-            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link text-light col ml-3" do %>
+            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link text-dark col ml-3" do %>
               <i class="fa-solid fa-heart"></i>いいね一覧
             <% end %>
           </li>
           <li>
-            <%= link_to new_snack_path, class: "nav-link text-light col ml-3" do %>
+            <%= link_to new_snack_path, class: "nav-link text-dark col ml-3" do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light col ml-3" do %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark col ml-3" do %>
               <i class="fa-solid fa-right-from-bracket"></i>ログアウト
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to customer_session_path, class: "nav-link text-light col ml-2" do %>
+            <%= link_to customer_session_path, class: "nav-link text-dark col ml-2" do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
           </li>
           <li>
-            <%= link_to customer_session_path, class: "nav-link text-light ml-3" do %>
+            <%= link_to customer_session_path, class: "nav-link text-dark ml-3" do %>
               <i class="fa-solid fa-right-to-bracket"></i>ログイン
             <% end %>
           </li>
           <li>
-            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "nav-link text-light ml-3" %>
+            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "nav-link text-dark ml-3" %>
           </li>
         <% end %>
       </ul>

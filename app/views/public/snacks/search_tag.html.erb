@@ -1,6 +1,8 @@
-<div class="container" style="margin-bottom: 100px; margin-top: 40px;">
+<div class="container" style="margin-bottom: 150px; margin-top: 40px;">
   <div class="row ml-4">
-    <h4><i class="fa-sharp fa-solid fa-tag"></i> <%= @tag.name %>（<%= @quantity %>品）</h4>
+    <h4><i class="fa-sharp fa-solid fa-tag"></i> <strong><%= @tag.name %></strong>
+      （<%= @quantity %>品）
+    </h4>
   </div>
 
   <!--タグ検索-->
@@ -17,7 +19,7 @@
     </div>
   </div>
 
-  <div class="row d-flex justify-content-center mb-3">
+  <div class="row d-flex justify-content-center" style="margin-top: 70px;">
     <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

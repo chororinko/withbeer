@@ -1,6 +1,6 @@
-<div class="container" style="margin-bottom: 150px; margin-top: 40px;">
+<div class="container" style="margin-bottom: 130px; margin-top: 40px;">
   <div class="row mb-5 ml-4">
-    <h4>”<%= @word %>” に関連するおつまみ（<%= @snacks.count %>品）</h4>
+    <h4>”<strong><%= @word %></strong>” に関連するおつまみ（<%= @snacks.total_count %>品）</h4>
   </div>
 
   <!--タグ検索-->
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="pagination row justify-content-center mt-5">
+  <div class="pagination row justify-content-center" style="margin-top: 70px;">
     <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

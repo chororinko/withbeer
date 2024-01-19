@@ -45,23 +45,83 @@
 }
 
 .snack-list {
-    position: relative;
-    background: #fff0cd;
-    box-shadow: 0px 0px 0px 5px #fff0cd;
-    border: dashed 2px white;
-    padding: 20px;
-    color: #454545;
+  position: relative;
+  background: #fff0cd;
+  box-shadow: 0px 0px 0px 5px #fff0cd;
+  border: dashed 2px white;
+  padding: 20px;
+  color: #454545;
 }
 .snack-list:after{
-    position: absolute;
-    content: '';
-    right: -7px;
-    top: -7px;
-    border-width: 0 15px 15px 0;
-    border-style: solid;
-    border-color: #ffdb88 #fff #ffdb88;
-    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: -7px;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: #ffdb88 #fff #ffdb88;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
 }
 .snack-list p {
-    padding: 10px;
+  padding: 10px;
+}
+
+.recipe {
+  position: relative;
+  margin: 2em 0;
+  padding: 15px;
+  border: solid 3px #FFA500;
+}
+.recipe .recipe-title {
+  position: absolute;
+  display: inline-block;
+  top: -27px;
+  left: -3px;
+  padding: 0 9px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 17px;
+  background: #FFA500;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+
+.recipe p {
+  margin: 0;
+  padding: 0;
+}
+
+.recommend {
+  padding: 0.5em 1em;
+  color: #FFF;
+  background: #fff0cd;
+  border-bottom: solid 8px #FFCC66;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.search {
+  position: relative;
+  padding: 10px;
+  border: solid 2px #ffcb8a;
+  border-radius: 3px 0 3px 0;
+}
+
+.search:before,.search:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid 2px #ffcb8a;
+  border-radius: 50%;
+}
+
+.search:after {
+  top: -9px;
+  left: -9px;
+}
+.search:before {
+  bottom: -9px;
+  right: -9px;
 }

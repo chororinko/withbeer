@@ -2,7 +2,7 @@
 
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
-    <h4><%=safe_join(snack.title.split("\n"),tag(:br))%></h4>     <!--改行表示-->
+    <h4 style="border-bottom: 6px double #000000;"><strong><%=safe_join(snack.title.split("\n"),tag(:br))%></strong></h4>     <!--改行表示-->
   </div>
 
   <div class="row mt-5" style="margin-bottom: 100px;">
@@ -11,7 +11,7 @@
     </div>
     <table class="table table-borderless col mr-5">
       <tr>
-        <th class="col-5"><h5>おつまみ紹介文</h5></th>
+        <th class="col-7"><h5 style="text-decoration: underline;">おつまみ紹介文</h5></th>
       </tr>
       <tr>
         <td><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
@@ -37,10 +37,12 @@
           <% elsif snack.customer.present? %>
             <tr>
               <td>
+                <div>
                 <%= link_to customer_path(snack.customer) do %>
                   <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2 rounded-circle' %>
                   <%= snack.customer.user_name %>
                 <% end %>
+                </div>
               </td>
             </tr>
           <% else %>
@@ -55,23 +57,16 @@
 
   <!--おつまみのレシピ情報-->
   <div class="row d-flex justify-content-center mt-5">
-    <h4>レシピ</h4>
+    <h4 style="text-decoration: underline;">レシピ</h4>
   </div>
 
-  <div class="row mt-5">
-    <div class="col">
-      <h5>材料</h5>
-    </div>
-    <div class="col">
-      <h5>作り方</h5>
-    </div>
-  </div>
-
-  <div class="row mb-5">
-    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
+  <div class="row mt-3 mb-3">
+    <div class="col recipe mr-4">
+      <span class="recipe-title">材料</span>
       <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
-    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
+    <div class="col recipe">
+      <span class="recipe-title">作り方</span>
       <p><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
     </div>
   </div>
@@ -90,7 +85,7 @@
   <!--投稿の編集＆削除-->
   <% if current_customer && snack.customer == current_customer %>
     <div class="row justify-content-center mt-5">
-      <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-info btn-lg rounded-pill' %>
+      <%= link_to '編集する', edit_snack_path(snack), class: 'col-3 btn btn-warning btn-lg rounded-pill' %>
     </div>
     <div class="row justify-content-end mt-5 mr-4 mb-5">
       <%= link_to '投稿の削除', snack_path(snack), method: :delete,
@@ -127,7 +122,7 @@
       </div>
     </div>
     <div class="col-3 mt-4 ml-5">
-      <%= link_to_next_page snack_comments, 'コメントをもっと見る', remote: true, id: 'view_more', class: 'btn btn-outline-dark rounded-pill' %>
+      <%= link_to_next_page snack_comments, 'コメントをもっと見る', remote: true, id: 'view_more', class: 'btn btn-outline-warning text-dark rounded-pill' %>
     </div>
   </div>
 
