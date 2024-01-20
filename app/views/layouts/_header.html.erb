@@ -17,7 +17,7 @@
         <%= form_with url: search_path, local: true, method: :get do |f| %>
           <li>
             <div class="col mr-3">
-              <%= f.text_field :word, placeholder: 'キーワードを入力' %>
+              <%= f.text_field :word, placeholder: 'キーワードを入力', class: 'rounded-pill' %>
               <%= f.button :submit, class: "btn-sm btn-dark" do %>
                 <i class="fa-solid fa-magnifying-glass"></i>
               <% end %>

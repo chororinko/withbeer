@@ -2,7 +2,7 @@
 
   <!--おつまみ情報-->
   <div class="row d-flex justify-content-center">
-    <h4><%=safe_join(snack.title.split("\n"),tag(:br))%></h4>     <!--改行表示-->
+    <h3 style="border-bottom: 6px double #000000;"><strong><%=safe_join(snack.title.split("\n"),tag(:br))%></strong></h3>     <!--改行表示-->
   </div>
 
   <div class="row mt-5" style="margin-bottom: 100px;">
@@ -11,7 +11,7 @@
     </div>
     <table class="table table-borderless col mr-5">
       <tr>
-        <th class="col-5"><h5>おつまみ紹介文</h5></th>
+        <th class="col-5"><h5 style="text-decoration: underline;">おつまみ紹介文</h5></th>
       </tr>
       <tr>
         <td><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
@@ -55,23 +55,16 @@
 
   <!--おつまみのレシピ情報-->
   <div class="row d-flex justify-content-center mt-5">
-    <h4>レシピ</h4>
+    <h4 style="text-decoration: underline;">レシピ</h4>
   </div>
 
-  <div class="row mt-5">
-    <div class="col">
-      <h5>材料</h5>
-    </div>
-    <div class="col">
-      <h5>作り方</h5>
-    </div>
-  </div>
-
-  <div class="row mb-5">
-    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
+  <div class="row mt-3 mb-2">
+    <div class="col recipe mr-4">
+      <span class="recipe-title">材料</span>
       <p><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
-    <div class="col" style="padding: 15px; margin-right: 50px; border: 1px solid #333333; border-radius: 10px;">
+    <div class="col recipe">
+      <span class="recipe-title">作り方</span>
       <p><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
     </div>
   </div>
