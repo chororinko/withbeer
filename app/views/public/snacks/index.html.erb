@@ -10,11 +10,17 @@
     </div>
 
     <!--特定のお酒に紐づいたおつまみ一覧-->
-    <div class="snack-list col d-flex flex-wrap">
-      <% @snacks.each do |snack| %>
-        <%= render 'public/snacks/list', snack: snack %>
-      <% end %>
-    </div>
+    <% if @snacks.present? %>
+      <div class="snack-list col d-flex flex-wrap">
+        <% @snacks.each do |snack| %>
+          <%= render 'public/snacks/list', snack: snack %>
+        <% end %>
+      </div>
+    <% else %>
+      <h4 class="col text-center text-muted" style="margin-top: 50px; margin-right: 50px;">
+        投稿はまだありません
+      </h4>
+    <% end %>
   </div>
 
   <div class="pagination row justify-content-center" style="margin-top: 70px;">

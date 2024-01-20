@@ -3,9 +3,15 @@
     <h4><%= @customer.user_name %>さんがいいねした投稿</h4>
   </div>
 
-  <div class="row" style="margin-left: 150px; margin-right: 170px;">
-    <%= render 'public/customers/snacks-index', snacks: @snacks %>
-  </div>
+  <% if @snacks.present? %>
+    <div class="row" style="margin-left: 150px; margin-right: 170px;">
+      <%= render 'public/customers/snacks-index', snacks: @snacks %>
+    </div>
+  <% else %>
+    <h4 class="row justify-content-center text-muted" style="margin-top: 100px;">
+      いいねした投稿はまだありません
+    </h4>
+  <% end %>
 
   <div class="row justify-content-center mt-4">
     <%= paginate @favorites, theme: 'twitter-bootstrap-4' %>

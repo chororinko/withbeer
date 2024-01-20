@@ -38,7 +38,13 @@
       <div class="mb-3 ml-2" style="font-size: 20px;">
         <strong>マイおつまみレシピ</strong>
       </div>
-      <%= render 'public/customers/snacks-index', snacks: @snacks %>
+      <% if @snacks.present? %>
+        <%= render 'public/customers/snacks-index', snacks: @snacks %>
+      <% else %>
+        <h4 class="row justify-content-center text-muted" style="margin-top: 100px;">
+          投稿はまだありません
+        </h4>
+      <% end %>
     </div>
   </div>
   <% end %>
