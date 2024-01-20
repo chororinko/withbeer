@@ -7,9 +7,9 @@
   <div class="row">
     <div class="col-2">
       <h5><strong>お酒ジャンル検索</strong></h5>
-      <table class="search table table mt-2">
+      <table class="table table mt-2 search">
         <% @sakes.each do |sake| %>
-          <tbody>
+          <tbody style="padding: 15px;">
             <tr>
               <td>
                 <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), class: "text-dark" %>

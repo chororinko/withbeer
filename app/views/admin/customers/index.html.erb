@@ -6,38 +6,44 @@
   <div class="row mb-3" style="margin-left: 60px;">
     <h4>会員一覧</h4>
   </div>
-  <div class="row" style="margin-left: 120px; margin-right: 110px;">
-    <table class="table">
-      <tr class="table table-active">
-        <th class="col-2 pl-4">会員ID</th>
-        <th>ユーザー名</th>
-        <th>メールアドレス</th>
-        <th class="col-3 pl-5">会員ステータス</th>
-      </tr>
-      <% @customers.each do |customer|%>
-      <tr>
-        <td class="col-2 pl-5"><%= customer.id %></td>
-        <td class="col-3 pl-3">
-          <%=link_to admin_customer_path(customer), class: 'text-dark underline' do %>
-            <%= customer.user_name %>
-          <% end %>
-        </td>
-        <td class="col-4">
-          <%=link_to admin_customer_path(customer), class: 'text-dark underline' do %>
-            <%= customer.email %>
-          <% end %>
-        </td>
-        <td class="col-3 text-center">
-          <% if customer.is_active? %>
-            <strong><span class="text-success">有効</span></strong>
-          <% else %>
-            <strong><span class="text-secondary">退会済み</span></strong>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+  <% if @customers.present? %>
+    <div class="row" style="margin-left: 120px; margin-right: 110px;">
+      <table class="table table">
+        <tr bgcolor="#A0522D" class="text-light">
+          <th class="col-2 pl-4">会員ID</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+          <th class="col-3 pl-5">会員ステータス</th>
+        </tr>
+        <% @customers.each do |customer|%>
+        <tr>
+          <td class="col-2 pl-5"><%= customer.id %></td>
+          <td class="col-3 pl-3">
+            <%=link_to admin_customer_path(customer), class: 'text-dark underline' do %>
+              <%= customer.user_name %>
+            <% end %>
+          </td>
+          <td class="col-4">
+            <%=link_to admin_customer_path(customer), class: 'text-dark underline' do %>
+              <%= customer.email %>
+            <% end %>
+          </td>
+          <td class="col-3 text-center">
+            <% if customer.is_active? %>
+              <strong><span class="text-success">有効</span></strong>
+            <% else %>
+              <strong><span class="text-secondary">退会済み</span></strong>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+    <h4 class="col text-center text-muted" style="margin-top: 80px; margin-right: 50px;">
+      会員はまだいません
+    </h4>
+  <% end %>
 
   <div class="row d-flex justify-content-center mt-3">
     <%= paginate @customers, theme: 'twitter-bootstrap-4' %>

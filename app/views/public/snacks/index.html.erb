@@ -1,23 +1,23 @@
-<div class="container" style="margin-bottom: 150px; margin-top: 40px;">
+<div class="container" style="margin-bottom: 150px; margin-top: 50px;">
   <div class="row ml-4">
     <h4><strong><%= @sake.genre %></strong>に合うおつまみ（<%= @quantity %>品）</h4>
   </div>
 
   <!--タグ検索-->
-  <div class="row mt-5">
-    <div class="col-2 mr-5">
+  <div class="row">
+    <div class="col-2 mr-5" style="margin-top: 60px;">
      <%= render 'public/homes/taglist', tags: @tags%>
     </div>
 
     <!--特定のお酒に紐づいたおつまみ一覧-->
     <% if @snacks.present? %>
-      <div class="snack-list col d-flex flex-wrap">
+      <div class="snack-list col d-flex flex-wrap mt-5">
         <% @snacks.each do |snack| %>
           <%= render 'public/snacks/list', snack: snack %>
         <% end %>
       </div>
     <% else %>
-      <h4 class="col text-center text-muted" style="margin-top: 50px; margin-right: 50px;">
+      <h4 class="col text-center text-muted" style="margin-top: 100px; margin-right: 150px;">
         投稿はまだありません
       </h4>
     <% end %>

@@ -23,6 +23,7 @@ class Admin::SnacksController < ApplicationController
     snack = Snack.find(params[:id])
     customer = snack.customer.id
     snack.destroy
+    flash[:notice] = '投稿を削除しました。'
     redirect_to admin_customer_snacks_path(customer)
   end
 

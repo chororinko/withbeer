@@ -1,14 +1,24 @@
+<div class="notice mt-2 ml-2">
+  <%= flash[:notice] %>
+</div>
+
 <!--特定の会員のおつまみ一覧-->
 <div class="container" style="margin-bottom: 120px; margin-top: 60px; margin-left: 100px;">
   <div class="row mb-5">
     <%= form_with model: @customer do |f| %>
-      <h4><%= @customer.user_name %>さんのおつまみレシピ一覧</h4>
+      <h4 style="margin-left: 50px;"><%= @customer.user_name %>さんのおつまみレシピ一覧</h4>
     <% end %>
   </div>
 
-  <div class="row" style="margin-left: 150px; margin-right: 170px;">
-    <%= render 'public/customers/snacks-index', snacks: @snacks %>
-  </div>
+  <% if @snacks.present? %>
+    <div class="row" style="margin-left: 150px; margin-right: 170px;">
+      <%= render 'public/customers/snacks-index', snacks: @snacks %>
+    </div>
+  <% else %>
+    <h4 class="col text-center text-muted" style="margin-top: 80px; margin-right: 50px;">
+      投稿はまだありません
+    </h4>
+  <% end %>
 
   <div class="row justify-content-center">
     <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>

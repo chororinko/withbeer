@@ -27,51 +27,51 @@
 
         <% if admin_signed_in? %>
           <li>
-            <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-dark ml-3" %>
+            <%= link_to '会員一覧', admin_customers_path, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' %>
           </li>
           <li>
-            <%= link_to 'お酒一覧', admin_sakes_path, class: "nav-link text-dark ml-3" %>
+            <%= link_to 'お酒一覧', admin_sakes_path, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' %>
           </li>
           <li>
-            <%= link_to '今月のおすすめ履歴一覧', admin_root_path, class: "nav-link text-dark ml-3" %>
+            <%= link_to '今月のおすすめ履歴一覧', admin_root_path, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' %>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark ml-3" %>
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' %>
           </li>
         <% elsif customer_signed_in? %>
           <li>
-            <%= link_to customer_path(current_customer), class: "nav-link text-dark col ml-3" do %>
+            <%= link_to customer_path(current_customer), class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' do %>
               <i class="fa-regular fa-user"></i>マイページ
             <% end %>
           </li>
           <li>
-            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link text-dark col ml-3" do %>
+            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' do %>
               <i class="fa-solid fa-heart"></i>いいね一覧
             <% end %>
           </li>
           <li>
-            <%= link_to new_snack_path, class: "nav-link text-dark col ml-3" do %>
+            <%= link_to new_snack_path, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark col ml-3" do %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' do %>
               <i class="fa-solid fa-right-from-bracket"></i>ログアウト
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to customer_session_path, class: "nav-link text-dark col ml-2" do %>
+            <%= link_to customer_session_path, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' do %>
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
           </li>
           <li>
-            <%= link_to customer_session_path, class: "nav-link text-dark ml-3" do %>
+            <%= link_to customer_session_path, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' do %>
               <i class="fa-solid fa-right-to-bracket"></i>ログイン
             <% end %>
           </li>
           <li>
-            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "nav-link text-dark ml-3" %>
+            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "nav-link btn text-light rounded-pill ml-3", style: 'background-color: #A0522D;' %>
           </li>
         <% end %>
       </ul>

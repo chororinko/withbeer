@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
   before_action :ensure_customer, only: [:show, :edit, :update]
 
   def index
-    @customers = Customer.page(params[:page])
+    @customers = Customer.page(params[:page]).order(created_at: :desc)
   end
 
   def show
