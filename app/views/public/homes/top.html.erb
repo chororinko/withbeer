@@ -7,18 +7,20 @@
   <div class="row">
     <div class="col-2">
       <h5><strong>お酒ジャンル検索</strong></h5>
-      <table class="table table mt-2 search">
-        <% @sakes.each do |sake| %>
-          <tbody style="padding: 15px;">
-            <tr>
-              <td>
-                <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), class: "text-dark" %>
-              </td>
-              <td class="text-dark">( <%= sake.snacks.count %> )</td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
+      <% if @sakes.present? %>
+        <table class="table table mt-2 search">
+          <% @sakes.each do |sake| %>
+            <tbody style="padding: 15px;">
+              <tr>
+                <td>
+                  <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), class: "text-dark" %>
+                </td>
+                <td class="text-dark">( <%= sake.snacks.count %> )</td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% end %>
     </div>
 
     <div class="col text-center" style="margin: 0 50px; background-image: url('<%= asset_path('top.jpg') %>'); background-size: cover; height: 400px;">
@@ -43,25 +45,25 @@
 
     <!--今月のおすすめ-->
     <% if @snack.present? %>
-    <div class="col-9">
-      <div class="row justify-content-center">
-        <h3>今月のおすすめ</h3>
-      </div>
-      <div class="recommend container ml-5">
-        <div class="row mb-4" style="margin-left: 100px; margin-top: 70px;">
-          <%= link_to snack_path(@snack), class: "text-dark" do %>
-            <h1><strong><%= @snack.sake.genre %><strong></h1>
-          <% end %>
+      <div class="col-9">
+        <div class="row justify-content-center">
+          <h3>今月のおすすめ</h3>
         </div>
-        <div class="row justify-content-center mb-3"><h2>✖</h2></div>
-        <div class="row justify-content-end mr-5 mb-3">
-          <%= link_to snack_path(@snack) do %>
-            <%= image_tag(@snack.get_image(250,200)) %><br>
-            <h3 class="text-dark text-center"><strong><%= @snack.title %></strong></h3>
-          <% end %>
+        <div class="recommend container ml-5">
+          <div class="row mb-4" style="margin-left: 100px; margin-top: 70px;">
+            <%= link_to snack_path(@snack), class: "text-dark" do %>
+              <h1><strong><%= @snack.sake.genre %><strong></h1>
+            <% end %>
+          </div>
+          <div class="row justify-content-center mb-3"><h2>✖</h2></div>
+          <div class="row justify-content-end mr-5 mb-3">
+            <%= link_to snack_path(@snack) do %>
+              <%= image_tag(@snack.get_image(250,200)) %><br>
+              <h3 class="text-dark text-center"><strong><%= @snack.title %></strong></h3>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
