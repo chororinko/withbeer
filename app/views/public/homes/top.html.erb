@@ -41,6 +41,7 @@
       <%= render 'public/homes/taglist', tags: @tags%>
     </div>
 
+    <% if @snack.present? %>
     <!--今月のおすすめ-->
     <div class="col-9">
       <div class="row justify-content-center">
@@ -48,19 +49,26 @@
       </div>
       <div class="recommend container ml-5">
         <div class="row mb-4" style="margin-left: 100px; margin-top: 70px;">
-          <%= link_to snack_path(@snack), class: "text-dark link-underline-dark" do %>
+          <%= link_to admin_recommendation_snack_path(@snack), class: "text-dark" do %>
             <h1><strong><%= @snack.sake.genre %><strong></h1>
           <% end %>
         </div>
         <div class="row justify-content-center mb-3"><h2>✖</h2></div>
         <div class="row justify-content-end mr-5 mb-3">
-          <%= link_to snack_path(@snack) do %>
+          <%= link_to admin_recommendation_snack_path(@snack) do %>
             <%= image_tag(@snack.get_image(250,200)) %><br>
-            <h3 class="text-dark text-center link-underline-dark"><strong><%= @snack.title %></strong></h3>
+            <h3 class="text-dark text-center"><strong><%= @snack.title %></strong></h3>
           <% end %>
         </div>
       </div>
     </div>
+    <% else %>
+      <div class="col-9">
+      <div class="row justify-content-center">
+        <h3>今月のおすすめ</h3>
+        <p>ありません</p>
+      </div>
+    <% end %>
   </div>
 </div>
 
