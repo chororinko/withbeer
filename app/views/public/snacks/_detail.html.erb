@@ -1,11 +1,11 @@
 <!--おつまみ詳細画面-->
 
   <!--おつまみ情報-->
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center" style="margin-bottom: 80px;">
     <h3 style="border-bottom: 6px double #000000;"><strong><%=safe_join(snack.title.split("\n"),tag(:br))%></strong></h3>     <!--改行表示-->
   </div>
 
-  <div class="row mt-5" style="margin-bottom: 100px;">
+  <div class="row mt-5" style="margin-bottom: 100px; margin-top: 80px;">
     <div class="col" style="margin-left: 100px;">
       <%= image_tag snack.get_image(400,400) %>
     </div>
