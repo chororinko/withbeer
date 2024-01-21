@@ -1,8 +1,8 @@
 <div class="container" style="margin-bottom: 150px; margin-top: 50px;">
   <div class="row ml-4">
-    <h4><i class="fa-sharp fa-solid fa-tag"></i> <strong><%= @tag.name %></strong>
+    <h3><i class="fa-sharp fa-solid fa-tag"></i> <strong><%= @tag.name %></strong>
       （<%= @quantity %>品）
-    </h4>
+    </h3>
   </div>
 
   <!--タグ検索-->
@@ -12,7 +12,7 @@
     </div>
 
     <!--特定のタグに紐づいた投稿一覧-->
-    <div class="snack-list col d-flex flex-wrap mt-5">
+    <div class="snack-list col d-flex flex-wrap" style="margin-top: 60px;">
       <% @snacks.each do |snack| %>
         <%= render 'public/snacks/list', snack: snack %>
       <% end %>

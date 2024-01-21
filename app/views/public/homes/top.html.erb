@@ -55,11 +55,17 @@
               <h1><strong><%= @snack.sake.genre %><strong></h1>
             <% end %>
           </div>
-          <div class="row justify-content-center mb-3"><h2>✖</h2></div>
-          <div class="row justify-content-end mr-5 mb-3">
+          <h1 class="row justify-content-center mb-5">✖</h1>
+          <div class="row justify-content-end mb-3" style="margin-right: 50px;">
             <%= link_to snack_path(@snack) do %>
-              <%= image_tag(@snack.get_image(250,200)) %><br>
-              <h3 class="text-dark text-center"><strong><%= @snack.title %></strong></h3>
+              <%= image_tag(@snack.get_image(250,200)) %>
+            <% end %>
+          </div>
+          <div class="row justify-content-end mr-2 mb-3">
+            <%= link_to snack_path(@snack) do %>
+              <h3 class="text-dark" style="width: 100%; max-width: 250px; word-break: break-word; margin-right: 50px;">
+                <strong><%= @snack.title %></strong>
+              </h3>
             <% end %>
           </div>
         </div>

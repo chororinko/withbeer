@@ -1,6 +1,6 @@
 <div class="container" style="margin-bottom: 150px; margin-top: 50px;">
   <div class="row ml-4">
-    <h4><strong><%= @sake.genre %></strong>に合うおつまみ（<%= @quantity %>品）</h4>
+    <h3><strong><%= @sake.genre %></strong>に合うおつまみ（<%= @quantity %>品）</h3>
   </div>
 
   <!--タグ検索-->
@@ -11,7 +11,7 @@
 
     <!--特定のお酒に紐づいたおつまみ一覧-->
     <% if @snacks.present? %>
-      <div class="snack-list col d-flex flex-wrap mt-5">
+      <div class="snack-list col d-flex flex-wrap" style="margin-top: 60px;">
         <% @snacks.each do |snack| %>
           <%= render 'public/snacks/list', snack: snack %>
         <% end %>

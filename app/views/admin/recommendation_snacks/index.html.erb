@@ -15,15 +15,15 @@
   <table class="col-9" style="margin-left: 130px; margin-right: 90px;">
     <thead class="table table text-light" bgcolor="#A0522D">
       <tr>
-        <th class="col-4 pl-4">作成日</th>
-        <th class="col-6 pl-4">組み合わせ</th>
+        <th class="col-3 pl-4">作成日</th>
+        <th class="col-7 pl-3">組み合わせ</th>
         <th class="col-2 text-center">いいね数</th>
       </tr>
     </thead>
     <% @snacks.each do |snack| %>
     <tbody class="table table-borderless">
       <tr>
-        <td class="col-4 pl-4"><%= snack.created_at.strftime("%Y/%m/%d") %></td>
+        <td class="col-3 pl-4"><%= snack.created_at.strftime("%Y/%m/%d") %></td>
         <td>
           <style>
             .link-underline-dark {
