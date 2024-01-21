@@ -1,10 +1,10 @@
 <!--おつまみ情報フォーム-->
   <%= form_with model: snack do |f| %>
   <div class="row ml-5 mb-5">
-    <div class="col">
+    <div class="col mr-5">
       <table class="table table-borderless">
         <tr>
-          <th>おつまみ</th>
+          <th style="font-size: 23px; text-decoration: underline;">おつまみ</th>
         </tr>
         <tr>
           <td>おつまみ画像</td>
@@ -38,15 +38,15 @@
     </div>
 
     <!--レシピの材料フォーム-->
-    <div class="col offset-1">
+    <div class="col">
       <table class="table table-borderless">
         <tr>
-          <th>レシピ</th>
+          <th style="font-size: 23px; text-decoration: underline;">レシピ</th>
         </tr>
         <tr>
           <td class="col-2">材料</td>
           <td>
-            <%= f.text_area :ingredients, rows: '7', class: 'col-11',
+            <%= f.text_area :ingredients, rows: '8', class: 'col-11',
               placeholder: 'エリンギ（小）：8本 バター：15g にんにくチューブ：3センチ 冷凍いんげん：7~8本 A（しょうゆ：小さじ1 化学調味料：小さじ1)' %>
           </td>
         </tr>
