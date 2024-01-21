@@ -64,7 +64,7 @@ class Snack < ApplicationRecord
     # 新しいタグ作成
     new_tags.each do |new_name|
       tag = Tag.find_or_create_by(name: new_name)
-      self.tags << tag
+      self.tags << tag unless self.tags.include?(tag)  # 重複したタグを追加させない
     end
   end
 

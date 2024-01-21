@@ -6,5 +6,6 @@ class CreateSnackTags < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :snack_tags, [:snack_id,:tag_id], unique: true
   end
 end

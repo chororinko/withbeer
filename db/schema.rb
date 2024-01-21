@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2024_01_14_092614) do
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["snack_id", "tag_id"], name: "index_snack_tags_on_snack_id_and_tag_id", unique: true
   end
 
   create_table "snacks", force: :cascade do |t|
