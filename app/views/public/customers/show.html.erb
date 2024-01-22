@@ -1,3 +1,8 @@
+<!--退会したユーザーをurlで検索された場合の表示画面-->
+<% if !@customer.is_active %>
+  <h2 class="row justify-content-center text-muted" style="width: 100%; margin-top: 150px;">このユーザーは退会済みです</h2>
+<% else %>
+
 <div class="notice mt-2 ml-2">
   <%= flash[:notice] %>
 </div>
@@ -52,5 +57,5 @@
   <div class="row justify-content-center mb-3">
     <%= paginate @snacks, theme: 'twitter-bootstrap-4' %>
   </div>
-
 </div>
+<% end %>

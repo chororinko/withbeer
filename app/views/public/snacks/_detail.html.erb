@@ -48,7 +48,7 @@
             <tr>
               <td>あなたの投稿</td>
             </tr>
-          <% elsif snack.customer.present? %>
+          <% elsif snack.customer.present? && snack.customer.is_active %>
             <tr>
               <td>
                 <div>
@@ -59,9 +59,13 @@
                 </div>
               </td>
             </tr>
-          <% else %>
+          <% elsif customer == nil %>
             <tr>
               <td>運営者による投稿</td>
+            </tr>
+          <% else %>
+            <tr>
+              <td>投稿者は退会済みです</td>
             </tr>
           <% end %>
         </td>
@@ -115,10 +119,10 @@
   <% end %>
 
   <!--コメントフォーム-->
-  <% unless snack.customer == current_customer %>
+  <% unless snack.customer == current_customer %>    <!--投稿が投稿者本人のものでなければコメントフォームを表示-->
   <div class="row justify-content-end mt-4 mb-5">
     <div class="col-5">
-      <% if customer_signed_in? %>
+      <% if customer_signed_in? %>     <!--ログインしていればコメントフォームを表示-->
         <%= form_with model: [snack, snack_comment], local: false do |f| %>
           <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
           <%= f.submit '送信' %>
@@ -127,6 +131,7 @@
     </div>
   </div>
   <% end %>
+
 
   <!--コメント-->
   <div class="container-6">

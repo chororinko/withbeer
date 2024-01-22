@@ -2,9 +2,13 @@
 <div class="row">
   <% snack_comments.each do |comment| %>
     <div class="col-3">
-      <%= link_to customer_path(comment.customer) do %>
-        <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle') %><br>
-        <div class="col mb-4"><%= comment.customer.user_name %></div>
+      <% if comment.customer.is_active %>
+        <%= link_to customer_path(comment.customer) do %>
+          <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle') %><br>
+          <div class="col mb-4"><%= comment.customer.user_name %></div>
+        <% end %>
+      <% else %>
+        <div class="col mb-4">退会したユーザー</div>
       <% end %>
     </div>
     <div class="col-7 pt-2 mb-3">
