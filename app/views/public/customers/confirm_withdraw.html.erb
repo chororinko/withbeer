@@ -7,13 +7,13 @@
 
       <div class="mt-5 text-center">
         <h5>退会処理をされますと、会員登録することでご利用になれた</h5><br>
-        <h5>全てのサービスがご利用できなくなり、<strong>全てのデータが削除されます。</strong></h5><br>
+        <h5><strong>全てのサービスがご利用できなくなります。</strong></h5><br>
         <h5>退会する場合は、「退会する」をクリックしてください。</h5>
       </div>
 
-      <div class="mt-5 text-center">
+      <div class="text-center" style="margin-top: 80px;">
         <%= link_to "いいえ", customer_path(current_customer), class: "btn btn-info btn-lg col-2 mr-5" %>
-        <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger btn-sm ml-5", 
+        <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger btn-sm ml-5",
           data: { confirm: "OKを押すと退会処理がされます。本当によろしいですか？" } %>
       </div>
     </div>
