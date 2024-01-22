@@ -63,6 +63,7 @@ class Public::SnacksController < ApplicationController
   def destroy
     snack = Snack.find(params[:id])
     snack.destroy
+    flash[:notice] = '投稿を削除しました。'
     redirect_to customer_path(current_customer)
   end
 

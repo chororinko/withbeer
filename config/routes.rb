@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   get '/search' => 'searches#search'
-  get "customers" => redirect("/customers/sign_up")
+  get "customers" => redirect("/customers/sign_up")   # 新規会員登録に失敗してリロードした場合のリダイレクト処理
 
   namespace :admin do
     root to: 'recommendation_snacks#index'
@@ -51,8 +51,8 @@ Rails.application.routes.draw do
 
     get "search_tag" => "snacks#search_tag"
     resources :tags, only: [:index, :create, :new, :destroy]
-      # resources :snacks, only: [:index, :show]
-    # end
+
+    get "snacks" => redirect("/snacks/new")  # 投稿に失敗してリロードした場合のリダイレクト処理
 
     resources :snacks, only: [:new, :edit, :show, :create, :update, :destroy] do
       resources :snack_comments, only: [:create, :destroy]

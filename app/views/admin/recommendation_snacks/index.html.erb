@@ -25,14 +25,11 @@
       <tr>
         <td class="col-3 pl-4"><%= snack.created_at.strftime("%Y/%m/%d") %></td>
         <td>
-          <style>
-            .link-underline-dark {
-            text-decoration: underline;
-            }
-          </style>
-        　<%= link_to admin_recommendation_snack_path(snack), class: "text-dark link-underline-dark" do %>
-            <strong><%= snack.sake.genre %><strong>　✖　<strong><%= snack.title %></strong>
-          <% end %>
+          <div style="width: 100%; max-width: 450px; word-break: break-word;">
+          　<%= link_to admin_recommendation_snack_path(snack), class: "text-dark link-underline-dark", style: "text-decoration: underline;" do %>
+              <strong><%= snack.sake.genre %><strong>　✖　<strong><%= snack.title %></strong>
+            <% end %>
+          </div>
         </td>
         <td class="text-center"><%= snack.favorites.count %></td>
       </tr>

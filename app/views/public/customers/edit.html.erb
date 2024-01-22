@@ -1,10 +1,9 @@
-<div class="container mt-2 ml-4">
-  <%= render 'layouts/errors', obj: @customer %>
-</div>
-
 <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
   <div class="row mb-5" style="margin-left: 100px;">
     <h4>プロフィール編集</h4>
+    <div class="container mt-2 ml-4">
+      <%= render 'layouts/errors', obj: @customer %>
+    </div>
   </div>
 
   <%= form_with model: @customer do |f| %>

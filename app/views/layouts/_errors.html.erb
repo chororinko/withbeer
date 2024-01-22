@@ -1,4 +1,5 @@
 <% if obj.errors.any? %>
+<div class="col-4 pt-1 pb-1" style="background-color: #FFB6C1;">
 <h5><%= obj.errors.count %> 件のエラーが発生しました：</h5>
 <h7>
   <ul>
@@ -7,4 +8,5 @@
     <% end %>
   </ul>
 </h7>
+</div>
 <% end %>
