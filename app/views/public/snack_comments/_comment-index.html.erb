@@ -4,27 +4,27 @@
     <div class="col-3">
       <% if comment.customer.is_active %>
         <%= link_to customer_path(comment.customer) do %>
-          <%= image_tag(comment.customer.get_profile_image(100,100), class: 'rounded-circle') %><br>
-          <div class="col mb-4"><%= comment.customer.user_name %></div>
+          <%= image_tag(comment.customer.get_profile_image(100,100), style: 'border-radius: 50%; background-position: center;') %><br>
+          <div class="col mb-4" style="width: 100%; max-width: 110px; word-break: break-word;"><%= comment.customer.user_name %></div>
         <% end %>
       <% else %>
-        <div class="col mb-4">退会したユーザー</div>
+        <div class="col mb-4">退会した<br>ユーザー</div>
       <% end %>
     </div>
-    <div class="col-7 pt-2 mb-3">
+    <div class="col-7 pt-4 mb-3">
       <div class="snack-comment">
         <%= comment.comment %>
       </div>
     </div>
-    <div class="col-2 pt-3">
+    <div class="col-2 pt-4">
       <% if comment.customer == current_customer %>
         <%= link_to snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true do %>
-          <h5><i class="fa-solid fa-trash-can" style="color:red;"></i></h5>
+          <h4><i class="fa-solid fa-trash-can" style="color: gray;"></i></h4>
         <% end %>
       <% elsif admin_signed_in? %>
         <%= link_to admin_snack_snack_comment_path(comment.snack, comment),
         method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?" do %>
-        <h5><i class="fa-solid fa-trash-can" style="color:red;"></i></h5>
+        <h5><i class="fa-solid fa-trash-can" style="color: gray;"></i></h5>
         <% end %>
       <% end %>
     </div>

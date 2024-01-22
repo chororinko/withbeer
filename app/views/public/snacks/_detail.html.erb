@@ -53,7 +53,7 @@
               <td>
                 <div>
                 <%= link_to customer_path(snack.customer) do %>
-                  <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2 rounded-circle' %>
+                  <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2', style: 'border-radius: 50%; background-position: center;' %>
                   <%= snack.customer.user_name %>
                 <% end %>
                 </div>
@@ -95,9 +95,23 @@
 
   <!--いいね-->
   <h5>
-    <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-5" style="margin-right: 70px;">
-      <%= render 'public/favorites/favorite-btn', snack: snack %>
-    </div>
+    <% if snack.customer == current_customer %>    <!--投稿が投稿者本人のものであればいいねボタンは表示しない-->
+      <div class="row justify-content-end mb-5" style="margin-right: 70px;">
+        いいね：<%= snack.favorites.count %>
+      </div>
+    <% elsif snack.customer.present? && snack.customer.is_active %>   <!--投稿者がcustomerで、かつアクティブであればいいねボタンを表示する-->
+      <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-5" style="margin-right: 70px;">
+        <%= render 'public/favorites/favorite-btn', snack: snack %>
+      </div>
+    <% elsif customer == nil %>       <!--投稿者がadminであればいいねボタンを表示する-->
+      <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-5" style="margin-right: 70px;">
+        <%= render 'public/favorites/favorite-btn', snack: snack %>
+      </div>
+    <% else %>
+      <div class="row justify-content-end mb-5" style="margin-right: 70px;">     <!--投稿者が退会済みであればいいねボタンは表示しない-->
+        いいね：<%= snack.favorites.count %>
+      </div>
+    <% end %>
   </h5>
 
   <!--投稿の編集＆削除-->
@@ -120,18 +134,31 @@
 
   <!--コメントフォーム-->
   <% unless snack.customer == current_customer %>    <!--投稿が投稿者本人のものでなければコメントフォームを表示-->
-  <div class="row justify-content-end mt-4 mb-5">
-    <div class="col-5">
-      <% if customer_signed_in? %>     <!--ログインしていればコメントフォームを表示-->
-        <%= form_with model: [snack, snack_comment], local: false do |f| %>
-          <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
-          <%= f.submit '送信' %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+    <% if snack.customer.present? && snack.customer.is_active %>   <!--投稿者がcustomerであり、かつアクティブであればコメントフォームを表示する-->
+      <div class="row justify-content-end mt-4 mb-5">
+        <div class="col-5">
+          <% if customer_signed_in? %>     <!--ログインしていればコメントフォームを表示-->
+            <%= form_with model: [snack, snack_comment], local: false do |f| %>
+              <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
+              <%= f.submit '送信' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% elsif customer == nil %>       <!--投稿者がadminであればコメントフォームを表示する-->
+      <div class="row justify-content-end mt-4 mb-5">
+        <div class="col-5">
+          <% if customer_signed_in? %>     <!--ログインしていればコメントフォームを表示-->
+            <%= form_with model: [snack, snack_comment], local: false do |f| %>
+              <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
+              <%= f.submit '送信' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% else %>           <!--ログインしていなければコメントフォームを表示させない-->
+    <% end %>
   <% end %>
-
 
   <!--コメント-->
   <div class="container-6">

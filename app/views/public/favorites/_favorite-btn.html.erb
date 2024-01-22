@@ -1,7 +1,11 @@
 <% if snack.favorited_by?(current_customer) %>
-  <%= link_to '♥', snack_favorites_path(snack), method: :delete, remote: true, style: 'color: red;' %>
+    <%= link_to '♥', snack_favorites_path(snack), method: :delete, remote: true, style: 'color: red;' %>
     いいね：<%= snack.favorites.count %>
 <% else %>
-  <%= link_to '♡', snack_favorites_path(snack), method: :post, remote: true %>
-   いいね：<%= snack.favorites.count %>
+  <% if customer_signed_in? %>           <!--ログインしていればいいねボタンを表示する-->
+    <%= link_to '♡', snack_favorites_path(snack), method: :post, remote: true %>
+    いいね：<%= snack.favorites.count %>
+  <% else %>                            <!--ログインしていなけれいいねボタンは表示しない-->
+    いいね：<%= snack.favorites.count %>
+  <% end %>
 <% end %>

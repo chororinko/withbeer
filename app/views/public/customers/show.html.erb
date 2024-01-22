@@ -1,5 +1,4 @@
-<!--退会したユーザーをurlで検索された場合の表示画面-->
-<% if !@customer.is_active %>
+<% if !@customer.is_active %>         <!--退会したユーザーをurlで検索された場合の表示画面-->
   <h2 class="row justify-content-center text-muted" style="width: 100%; margin-top: 150px;">このユーザーは退会済みです</h2>
 <% else %>
 
@@ -19,7 +18,7 @@
   <%= form_with model: @customer do |f| %>
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @customer.get_profile_image(200,200), class: 'rounded-circle col mb-3' %>
+      <%= image_tag @customer.get_profile_image(200,200), class: 'col mb-3', style: 'border-radius: 50%; background-position: center;' %>
       <table class="table table-borderless">
         <tr>
           <td class="col-6" style="margin-bottom: 20px;">ユーザー名：</td>
