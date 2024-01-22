@@ -1,10 +1,9 @@
-<div class="container mt-2 ml-4">
-  <%= render 'layouts/errors', obj: @snack %>
-</div>
-
 <div class="container-fluid" style="margin-bottom: 150px; margin-top: 50px;">
   <div class="row mb-5" style="margin-left: 60px;">
     <h4>今月のおすすめ新規登録</h4>
+    <div class="container mt-2 ml-4">
+      <%= render 'layouts/errors', obj: @snack %>
+    </div>
   </div>
 
   <%= render 'admin/snacks/form', snack: @snack, tags: @tags %>

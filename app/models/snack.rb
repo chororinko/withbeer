@@ -15,6 +15,7 @@ class Snack < ApplicationRecord
     validates :ingredients
     validates :process
   end
+  validates :title, length: { in: 2..40 }
   validates :introduction, presence: true, length: { maximum: 200 }
 
   # 1つの投稿に対して1人1回までしかいいねできないようにするための確認メソッド
