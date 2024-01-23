@@ -53,7 +53,7 @@
               <td>
                 <div>
                 <%= link_to customer_path(snack.customer) do %>
-                  <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-3 mr-2', style: 'border-radius: 50%; background-position: center;' %>
+                  <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-4 mr-2', style: 'width: 130px; height: 100px; border-radius: 50%; background-position: center;' %>
                   <%= snack.customer.user_name %>
                 <% end %>
                 </div>

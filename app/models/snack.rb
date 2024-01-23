@@ -16,7 +16,9 @@ class Snack < ApplicationRecord
     validates :process
   end
   validates :title, length: { in: 2..40 }
-  validates :introduction, presence: true, length: { maximum: 200 }
+  validates :introduction, presence: true, length: { maximum: 100 }
+  validates :ingredients, length: { maximum: 300 }
+  validates :process, length: { maximum: 600 }
 
   # 1つの投稿に対して1人1回までしかいいねできないようにするための確認メソッド
   def favorited_by?(customer)

@@ -16,11 +16,11 @@
         </tr>
         <tr>
           <td class="col-3">タイトル</td>
-          <td><%= f.text_field :title, placeholder: 'タイトル', class: 'col' %></td>
+          <td><%= f.text_field :title, placeholder: 'タイトル（2~40文字以内）', class: 'col' %></td>
         </tr>
         <tr>
           <td>おつまみ紹介</td>
-          <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します', class: 'col' %></td>
+          <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します（100文字以内）', class: 'col' %></td>
         </tr>
         <tr>
           <td>お酒</td>
@@ -47,12 +47,13 @@
           <td class="col-2">材料</td>
           <td>
             <%= f.text_area :ingredients, rows: '8', class: 'col-11',
-              placeholder: 'エリンギ（小）：8本 バター：15g にんにくチューブ：3センチ 冷凍いんげん：7~8本 A（しょうゆ：小さじ1 化学調味料：小さじ1)' %>
+              placeholder: '（2人前）エリンギ（小）：8本 バター：15g にんにくチューブ：3センチ 冷凍いんげん：7~8本 A（しょうゆ：小さじ1 化学調味料：小さじ1)' %>
           </td>
         </tr>
         <tr>
           <td></td>
-          <td class="text-muted">※材料ごとに改行して入力してください。<br>
+          <td class="text-muted">※材料は300文字以内で入力してください。<br>
+            ※材料ごとに改行して入力してください。<br>
             ※適量→小さじ1のようにわかりやすい表記にしてください。
           </td>
         </tr>
@@ -68,7 +69,8 @@
         </tr>
         <tr>
           <td></td>
-          <td class="text-muted">※手順ごとに改行して入力してください。</td>
+          <td class="text-muted">※作り方は600文字以内で入力してさい。<br>
+            ※手順ごとに改行して入力してください。</td>
         </tr>
       </table>
     </div>

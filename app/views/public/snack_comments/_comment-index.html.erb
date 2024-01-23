@@ -4,7 +4,7 @@
     <div class="col-3">
       <% if comment.customer.is_active %>
         <%= link_to customer_path(comment.customer) do %>
-          <%= image_tag(comment.customer.get_profile_image(100,100), style: 'border-radius: 50%; background-position: center;') %><br>
+          <%= image_tag(comment.customer.get_profile_image(100,100), style: 'width: 80px; height: 80px; border-radius: 50%; background-position: center;') %><br>
           <div class="col mb-4" style="width: 100%; max-width: 110px; word-break: break-word;"><%= comment.customer.user_name %></div>
         <% end %>
       <% else %>
