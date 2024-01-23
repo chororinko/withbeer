@@ -16,11 +16,11 @@
         </tr>
         <tr>
           <td class="col-3">タイトル</td>
-          <td><%= f.text_field :title, placeholder: 'タイトル', class: 'col' %></td>
+          <td><%= f.text_field :title, placeholder: 'タイトル（2~40文字以内）', class: 'col' %></td>
         </tr>
         <tr>
           <td>おつまみ紹介</td>
-          <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します', class: 'col' %></td>
+          <td><%= f.text_area :introduction, rows:'5', placeholder: 'ここに紹介文を記述します（100文字以内）', class: 'col' %></td>
         </tr>
         <tr>
           <td>お酒</td>
@@ -52,7 +52,10 @@
         </tr>
         <tr>
           <td></td>
-          <td class="text-muted">※材料ごとに改行して入力してください。</td>
+          <td class="text-muted">※材料は300文字以内で入力してください。<br>
+            ※材料ごとに改行して入力してください。<br>
+            ※適量→小さじ1のようにわかりやすい表記にしてください。
+          </td>
         </tr>
       </table>
 
@@ -66,8 +69,8 @@
         </tr>
         <tr>
           <td></td>
-          <td class="text-muted">※文章ごとに改行して入力してください。<br>
-            ※適量→小さじ1のようにわかりやすい表記にしてください。
+          <td class="text-muted">※作り方は600文字以内で入力してさい。<br>
+            ※手順ごとに改行して入力してください。
           </td>
         </tr>
       </table>
@@ -75,7 +78,7 @@
   </div>
 
   <div class="row d-flex justify-content-center">
-    <%= f.submit 'おすすめを登録', class: 'btn btn-lg btn-warning col-4 rounded-pill' %>
+    <%= f.submit 'おすすめを登録', class: 'col-4 btn btn-lg text-light', style: 'background-color: #A0522D;' %>
   </div>
 
 <% end %>

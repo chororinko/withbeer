@@ -33,14 +33,14 @@
             <%= f.radio_button :is_active, "false" %>
             <%= f.label :is_active_false, "退会" %>
           </div>
-          <div class="col-2"><%= f.submit '変更', class: 'btn btn-sm btn-info' %></div>
+          <div class="col-2"><%= f.submit '変更', class: 'btn btn-sm btn-warning' %></div>
         </td>
       </tr>
     </table>
   </h5>
 
   <div class="row justify-content-center mt-5">
-    <%= link_to 'おつまみ一覧', admin_customer_snacks_path(@customer), class: 'btn btn-lg btn-warning' %>
+    <%= link_to 'おつまみ一覧', admin_customer_snacks_path(@customer), class: 'btn btn-lg text-light', style: 'background-color: #A0522D;' %>
   </div>
 
 </div>

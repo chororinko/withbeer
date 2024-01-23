@@ -2,7 +2,7 @@
 
   <!--おつまみ情報-->
   <div class="row justify-content-center" style="width: 100%; max-width: 100%;">
-    <h3 style="margin-bottom: 70px; border-bottom: 6px double #000000;"><strong><%= snack.title %></strong></h3>     <!--改行表示-->
+    <h3 style="margin-bottom: 70px; border-bottom: 6px double #000000;"><strong><%= snack.title %></strong></h3>
   </div>
 
   <div class="row" style="margin-bottom: 100px;">
@@ -16,7 +16,7 @@
         </th>
       </tr>
       <tr class="snack-introduction">
-        <td style="font-size: 20px;"><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
+        <td style="font-size: 18px;"><%=safe_join(snack.introduction.split("\n"),tag(:br))%></td>
       </tr>
       <tr>
         <td></td>
@@ -81,11 +81,11 @@
   <div class="row mt-3 mb-2">
     <div class="col recipe mr-4">
       <span class="recipe-title">材料</span>
-      <p style="width: 100%; max-width: 527px; word-break: break-word; font-size: 20px;"><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
+      <p style="width: 100%; max-width: 527px; word-break: break-word;"><%=safe_join(snack.ingredients.split("\n"),tag(:br))%></p>
     </div>
     <div class="col recipe">
       <span class="recipe-title">作り方</span>
-      <p style="width: 100%; max-width: 527px; word-break: break-word; font-size: 20px;"><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
+      <p style="width: 100%; max-width: 527px; word-break: break-word;"><%=safe_join(snack.process.split("\n"),tag(:br))%></p>
     </div>
   </div>
 
@@ -128,7 +128,7 @@
   <!--管理者側で不適切な投稿を削除するため-->
   <% if admin_signed_in? && snack.customer.present? %>
     <div class="row justify-content-center mt-5" style="margin-bottom: 100px;">
-      <%= link_to '投稿の削除', admin_snack_path(snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'col-3 btn btn-danger btn-lg' %>
+      <%= link_to '投稿の削除', admin_snack_path(snack), method: :delete, "data-confirm" => "この投稿を削除してよろしいですか?", class: 'col-2 btn btn-danger btn-lg' %>
     </div>
   <% end %>
 
