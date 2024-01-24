@@ -1,12 +1,14 @@
 <% if tags.present? %>
-  <h5 class="col mb-2"><i class="fa-solid fa-magnifying-glass"></i><strong>タグ検索</strong></h5>
+  <h5 class="col mb-2"><i class="fa-solid fa-magnifying-glass"></i>
+    <strong>タグ検索</strong>
+  </h5>
   <div class="search">
-  <% tags.each do |tag|%>
-    <% unless tag.snacks.count == 0 %>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-      <%=link_to tag.name, search_tag_path(tag_id: tag.id), class: 'text-dark' %>
-      (<%= tag.snacks.count %>)
+    <% tags.each do |tag|%>
+      <% unless tag.snacks.count == 0 %>
+        <i class="fa-sharp fa-solid fa-tag"></i>
+        <%=link_to tag.name, search_tag_path(tag_id: tag.id), class: 'text-dark' %>
+        (<%= tag.snacks.count %>)
+      <% end %>
     <% end %>
-  <% end %>
   </div>
 <% end %>

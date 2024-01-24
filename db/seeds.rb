@@ -14,6 +14,14 @@ Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
   admin.password = ENV['ADMIN_PASSWORD']
 end
 
+Sake.create([
+  { genre: 'ビール' },
+  { genre: '赤ワイン' },
+  { genre: '白ワイン' },
+  { genre: '日本酒' },
+  { genre: '焼酎' }
+])
+
 次郎 = Customer.find_or_create_by!(email: "jirou@example.com") do |customer|
   customer.user_name = "次郎"
   customer.password = "password"
@@ -36,46 +44,51 @@ Snack.find_or_create_by!(title: "エリンギのガリバタ醤油炒め") do |s
   snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack1.jpg"), filename:"sample-snack1.jpg")
   snack.introduction = "ガーリック・バター・醤油の最強トリオでビールが進む逸品です。"
   snack.customer = 次郎
-  snack.ingredients = "
-（2人前）
+  snack.ingredients =
+"（2人前）
 エリンギ（小）：8本
-バター：15g にんにくチューブ：3センチ
+バター：15g
+にんにくチューブ：3センチ
 冷凍いんげん：7~8本
 (A)しょうゆ：小さじ1
 (A)化学調味料：小さじ1"
-  snack.process = "
-1. エリンギといんげんを食べやすい大きさにカットします。
+  snack.process =
+"1. エリンギといんげんを食べやすい大きさにカットします。
 2.フライパンを弱火にかけバターを熱します。チューブにんにくをいれバターと炒め合わせます。
 3. 中火でエリンギといんげんを炒め、しんなりしたら(A)を加えて味を整えます。"
   snack.sake = Sake.find(1)
+  snack.tags << Tag.find_or_create_by!(name: "和食")
+  snack.tags << Tag.find_or_create_by!(name: "こってり")
+  snack.tags << Tag.find_or_create_by!(name: "15分以内")
 end
 
 Snack.find_or_create_by!(title: "グリル野菜のチーズ焼き") do |snack|
   snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack2.jpg"), filename:"sample-snack2.jpg")
   snack.introduction = "赤ワインとの相性抜群！ぜひお試しください。"
   snack.customer = 冬子
-  snack.ingredients = "
-（2人前）
+  snack.ingredients =
+"（2人前）
 グリル野菜ミックス（冷凍）：1袋
 舞茸：半パック
-とろける：チーズ2枚
+とろけるチーズ:2枚
 粉チーズ：大さじ1
 にんにくチューブ：3センチ
 塩コショウ：少々"
-  snack.process = "
-1. バターとにんにくを中火で、にんにくの香りが出るくらいまで炒めます。
+  snack.process =
+"1. バターとにんにくを中火で、にんにくの香りが出るくらいまで炒めます。
 2.野菜ミックス・舞茸を入れます。野菜がしんなりするまで炒めます。
 3. 炒めたらグラタン皿に取り分けて、スライスチーズを上に乗せます。さらにその上から粉チーズをかけます。
 4. オーブントースターで5分焼き、焦げ目がついたら完成です。"
   snack.sake = Sake.find(2)
+  snack.tags << Tag.find_or_create_by!(name: "洋食")
 end
 
 Snack.find_or_create_by!(title: "野菜たっぷり天ぷら") do |snack|
   snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack3.jpg"), filename:"sample-snack3.jpg")
   snack.introduction = "野菜盛りだくさんの天ぷら！！ビールが進むこと間違いなし！！！"
   snack.customer = 道子
-  snack.ingredients = "
-（3人前）
+  snack.ingredients =
+"（3人前）
 鳥ササミ：150g
 ししとう：1パック
 レンコン：1個
@@ -89,10 +102,33 @@ A（ニンニクチューブ：3センチ
 水：大さじ1）
 サラダ油：適量
 天ぷら粉：200g
-【下準備】エビ：殻とって背腸を取る　レンコン：1センチ程度に切って輪切りの状態で酢水にさらす　舞茸：適当な大きさに分けるジャガイモ：皮を剥いて1センチ輪切り"
-  snack.process = "
-1. 天ぷら粉を水で溶きます。
+【下準備】
+エビ：殻とって背腸を取る
+レンコン：1センチ程度に切って輪切りの状態で酢水にさらす
+舞茸：適当な大きさに分ける
+ジャガイモ：皮を剥いて1センチ輪切り"
+  snack.process =
+"1. 天ぷら粉を水で溶きます。
 2.野菜から順番に水で溶いた天ぷら粉につけて油で揚げます。
 3. 全部揚げたら完成です。"
   snack.sake = Sake.find(1)
+  snack.tags << Tag.find_or_create_by!(name: "和食")
+end
+
+Snack.find_or_create_by!(title: "日本酒といったらコレ！刺身盛り合わせ") do |snack|
+  snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack4.jpg"), filename:"sample-snack4.jpg")
+  snack.introduction = "鯛・ハマチ・マグロの３種盛り。”日本酒といったらコレ！”の組み合わせを盛り合わせました。"
+  snack.customer = nil
+  snack.ingredients =
+"（2人前）
+鯛（刺身）：１パック
+ハマチ（刺身）：1パック
+マグロ（刺身）：1パック
+しょうゆ：適量
+わさび：お好み"
+  snack.process =
+"1. 刺身を盛り合わせたら完成。"
+  snack.sake = Sake.find(4)
+  snack.tags << Tag.find_or_create_by!(name: "和食")
+  snack.tags << Tag.find_or_create_by!(name: "簡単")
 end
