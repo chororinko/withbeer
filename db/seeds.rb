@@ -115,20 +115,25 @@ A（ニンニクチューブ：3センチ
   snack.tags << Tag.find_or_create_by!(name: "和食")
 end
 
-Snack.find_or_create_by!(title: "日本酒といったらコレ！刺身盛り合わせ") do |snack|
+Snack.find_or_create_by!(title: "舞茸とチーズのベーコン巻き") do |snack|
   snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack4.jpg"), filename:"sample-snack4.jpg")
-  snack.introduction = "鯛・ハマチ・マグロの３種盛り。”日本酒といったらコレ！”の組み合わせを盛り合わせました。"
+  snack.introduction = "定番のベーコン＆チーズに、舞茸を加えた”THEおつまみ”な逸品です。ビールのお供にお試しください。"
   snack.customer = nil
   snack.ingredients =
 "（2人前）
-鯛（刺身）：１パック
-ハマチ（刺身）：1パック
-マグロ（刺身）：1パック
-しょうゆ：適量
-わさび：お好み"
+舞茸：１パック
+スティックチーズ：10本
+ベーコン：10枚
+しょうゆ：小さじ1
+塩コショウ：少々
+サラダ油：適量
+【下準備】
+舞茸を適当な大きさに分ける。"
   snack.process =
-"1. 刺身を盛り合わせたら完成。"
-  snack.sake = Sake.find(4)
+"1. ベーコンにスティックチーズと舞茸を乗せて巻く。
+2. フライパンにサラダ油を敷いて中火で炒め、塩コショウをししょうゆをかける。
+3. ベーコンに焦げ目がついたらお皿に取りわけ完成です。"
+  snack.sake = Sake.find(1)
   snack.tags << Tag.find_or_create_by!(name: "和食")
   snack.tags << Tag.find_or_create_by!(name: "簡単")
 end
