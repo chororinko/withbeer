@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-image: url('<%= asset_path('body_image.png') %>');">
     <%= render 'layouts/header' %>
     <main>
       <%= yield %>
