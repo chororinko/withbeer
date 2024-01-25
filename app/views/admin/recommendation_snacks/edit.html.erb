@@ -1,5 +1,5 @@
 <div class="container-fluid" style="margin-bottom: 150px; margin-top: 50px;">
-  <div class="row mb-5" style="margin-left: 60px;">
+  <div class="row mb-3" style="margin-left: 60px;">
     <h4>今月のおすすめ編集</h4>
     <div class="container mt-2 ml-4">
       <%= render 'layouts/errors', obj: @snack %>
@@ -8,11 +8,11 @@
 
   <!--おつまみ情報フォーム-->
   <%= form_with model: @snack, url: admin_recommendation_snack_path do |f| %>
-  <div class="row ml-5 mt-5">
-    <div class="col">
+  <div class="row ml-5">
+    <div class="col-6 pr-5">
       <table class="table table-borderless">
         <tr>
-          <th>おつまみ</th>
+          <th style="font-size: 23px; text-decoration: underline;">おつまみ</th>
         </tr>
         <tr>
           <td>おつまみ画像</td>
@@ -46,10 +46,10 @@
     </div>
 
     <!--レシピの材料フォーム-->
-    <div class="col offset-1">
+    <div class="col">
       <table class="table table-borderless">
         <tr>
-          <th>レシピ</th>
+          <th style="font-size: 23px; text-decoration: underline;">レシピ</th>
         </tr>
         <tr>
           <td class="col-2">材料</td>
