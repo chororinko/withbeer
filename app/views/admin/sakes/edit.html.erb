@@ -2,17 +2,17 @@
   <%= flash[:notice] %>
 </div>
 
-<div class="container mb-5" style="margin-top: 60px; margin-left: 120px;">
+<div class="container" style="margin-top: 60px; margin-left: 120px;">
   <h4>お酒ジャンル編集</h4>
 </div>
 
 <%= form_with model: @sake, url: admin_sake_path(@sake), method: :patch do |f| %>
-<div class="container ml-5 mb-4">
+<div class="container mb-4" style="margin-top: 60px;">
   <div class="row justify-content-center" style="margin-left: 100px;">
     <div class="col-8">
     <table class="table table-borderless">
       <tr>
-        <td class="col-2">ジャンル名</td>
+        <td class="col-2" style="font-size: 20px;">ジャンル名</td>
         <td class="col-3"><%= f.text_field :genre, placeholder: 'ジャンル名' %></td>
         <td class="col-3"><%= f.submit '変更を保存', class: 'btn text-light btn-lg', style: 'background-color: #A0522D;' %></td>
       </tr>

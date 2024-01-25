@@ -1,22 +1,24 @@
 <table class="table table ml-5 mr-1">
   <% snacks.each do |snack| %>
     <tr>
-      <td class="col-3">
+      <td class="col-2">
         <%= link_to snack_path(snack) do %>
-          <%= image_tag snack.get_image(100,100) %>
+          <%= image_tag snack.get_image(120,120), style: 'border-radius: 10%;' %>
         <% end %>
       </td>
-      <td class="col-5">
-        <div style="width: 100%; max-width: 300px; word-break: break-word;">
-          <%= link_to snack_path(snack) do %>
-            <%= snack.title %>
-          <% end %>
+      <td class="col-5 pl-4">
+        <div style="width: 100%; max-width: 300px; word-break: break-word; font-size: 18px;">
+          <strong>
+            <%= link_to snack_path(snack), class: 'text-dark' do %>
+              <%= snack.title %>
+            <% end %>
+          </strong>
         </div>
       </td>
-      <td id="favorite-btn_<%= snack.id %>" class="col-2">
+      <td id="favorite-btn_<%= snack.id %>" class="col-2" style="font-size: 18px;">
         <%= render 'public/favorites/favorite-btn', snack: snack %>
       </td>
-      <td class="col-2">コメント：<%= snack.snack_comments.count %></td>
+      <td class="col-2" style="font-size: 18px;">コメント：<%= snack.snack_comments.count %></td>
     </tr>
   <% end %>
 </table>

@@ -2,8 +2,8 @@
   <%= flash[:notice] %>
 </div>
 
+<!--お酒ジャンル検索-->
 <div class="container" style="margin-bottom: 30px; margin-top: 50px;">
-  <!--お酒ジャンル検索-->
   <div class="row">
     <div class="col-2">
       <h5><strong>お酒ジャンル検索</strong></h5>
@@ -13,9 +13,13 @@
             <tbody style="padding: 15px;">
               <tr>
                 <td>
-                  <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), class: "text-dark" %>
+                  <%= link_to sake.genre, sake_snacks_path(sake_id: sake.id), class: "text-dark", style: 'font-weight: bold; font-size: 18px;' %>
                 </td>
-                <td class="text-dark">( <%= sake.snacks.count %> )</td>
+                <td style="font-weight: bold;">
+                  <%= link_to sake_snacks_path(sake_id: sake.id), class: 'text-dark' do %>
+                  ( <%= sake.snacks.count %> )
+                  <% end %>
+                </td>
               </tr>
             </tbody>
           <% end %>
@@ -27,8 +31,8 @@
 </div>
 
 <div class="container" style="margin-bottom: 150px; margin-top: 80px;">
-  <!--タグ検索-->
   <div class="row">
+    <!--タグ検索-->
     <div class="col-2">
       <%= render 'public/homes/taglist', tags: @tags%>
     </div>

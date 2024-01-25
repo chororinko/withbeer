@@ -4,11 +4,11 @@
 
 <div class="container" style="margin-bottom: 100px; margin-top: 60px;">
   <div class="row">
-    <div class="col ml-5">
+    <div class="col ml-4">
       <h4>今月のおすすめ履歴一覧</h4>
     </div>
     <div class="col mt-2 mb-2 d-flex justify-content-end" style="margin-right: 100px;">
-      <h1><%= link_to '新規登録', new_admin_recommendation_snack_path, class: 'btn btn-lg btn-outline-warning text-dark'%></h1>
+      <h1><%= link_to '新規登録', new_admin_recommendation_snack_path, class: 'btn btn-lg text-light', style: 'background-color: #A0522D;' %></h1>
     </div>
   </div>
 
@@ -16,17 +16,17 @@
     <thead class="table table text-light" bgcolor="#A0522D">
       <tr>
         <th class="col-3 pl-4">作成日</th>
-        <th class="col-7 pl-3">組み合わせ</th>
+        <th class="col-7 pl-5">組み合わせ</th>
         <th class="col-2 text-center">いいね数</th>
       </tr>
     </thead>
     <% @snacks.each do |snack| %>
     <tbody class="table table-borderless">
       <tr>
-        <td class="col-3 pl-4"><%= snack.created_at.strftime("%Y/%m/%d") %></td>
+        <td class="col-3 pl-3"><%= snack.created_at.strftime("%Y/%m/%d") %></td>
         <td>
-          <div style="width: 100%; max-width: 450px; word-break: break-word;">
-          　<%= link_to admin_recommendation_snack_path(snack), class: "text-dark link-underline-dark", style: "text-decoration: underline;" do %>
+          <div style="width: 100%; max-width: 450px; word-break: break-word; font-size: 18px;">
+          　<%= link_to admin_recommendation_snack_path(snack), class: "text-dark link-underline-dark" do %>
               <strong><%= snack.sake.genre %><strong>　✖　<strong><%= snack.title %></strong>
             <% end %>
           </div>

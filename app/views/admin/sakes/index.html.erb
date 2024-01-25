@@ -2,18 +2,18 @@
   <%= flash[:notice] %>
 </div>
 
-<div class="container mb-5" style="margin-top: 60px; margin-left: 100px;">
+<div class="container mb-5" style="margin-top: 60px; margin-left: 120px;">
   <h4>お酒ジャンル一覧・追加</h4>
 </div>
 
 <!--ジャンル登録-->
 <%= form_with model: @sake, url: admin_sakes_path, method: :post do |f| %>
-<div class="container ml-5 mb-4">
+<div class="container mb-4">
   <div class="row justify-content-center" style="margin-left: 100px;">
     <div class="col-8">
     <table class="table table-borderless">
       <tr>
-        <td class="col-2">ジャンル名</td>
+        <td class="col-2" style="font-size: 20px;">ジャンル名</td>
         <td class="col-3"><%= f.text_field :genre, placeholder: 'ジャンル名' %></td>
         <td class="col-3"><%= f.submit '新規登録', class: 'btn text-light btn-lg', style: 'background-color: #A0522D;' %></td>
       </tr>
@@ -24,7 +24,7 @@
 <% end %>
 
 <!--ジャンル一覧-->
-<div class="container ml-5" style="margin-bottom: 150px;">
+<div class="container" style="margin-bottom: 150px;">
   <div class="row justify-content-center">
     <div class="col-5">
       <table class="table table">
@@ -36,11 +36,11 @@
         <% @sakes.each do |sake| %>
         <tr>
           <td>
-            <div class="col ml-2"><%= sake.genre %></div>
+            <div class="col ml-1" style="font-size: 20px;"><%= sake.genre %></div>
           </td>
           <td>
             <div class="col d-flex justify-content-end">
-              <%= link_to '編集', edit_admin_sake_path(sake.id), class: 'btn btn-warning' %>
+              <%= link_to '編集', edit_admin_sake_path(sake.id), class: 'btn text-light', style: 'background-color: #A0522D;' %>
             </div>
           </td>
           <td>

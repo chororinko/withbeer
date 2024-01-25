@@ -6,10 +6,10 @@
   </div>
 
   <div class="row">
-    <div class="col mt-3" style="margin-left: 50px;">
-      <%= image_tag snack.get_image(450,450) %>
+    <div class="col mt-2" >
+      <%= image_tag snack.get_image(490,470) %>
     </div>
-    <table class="table table-borderless col mr-2">
+    <table class="table table-borderless col">
       <tr>
         <th class="col-7">
           <h5><i class="fa-solid fa-pencil"></i>おつまみ紹介文</h5>
@@ -35,13 +35,10 @@
       <tr>
         <td style="font-size: 20px;"><i class="fa-solid fa-tags"></i>タグ：
         <% snack_tags.each do |tag| %>
-          <strong><%= link_to tag.name,search_tag_path(tag_id: tag.id) %>　</storong>
+          <strong><%= link_to tag.name,search_tag_path(tag_id: tag.id), class: 'text-dark' %>　</storong>
         <% end %>
         </td>
       </tr>
-      <!--<tr>-->
-      <!--  <td></td>-->
-      <!--</tr>-->
       <tr>
         <td>
           <% if current_customer && snack.customer == current_customer %>
@@ -52,7 +49,7 @@
             <tr>
               <td>
                 <div>
-                <%= link_to customer_path(snack.customer) do %>
+                <%= link_to customer_path(snack.customer), class: 'text-dark', style: 'font-size: 18px;' do %>
                   <%= image_tag snack.customer.get_profile_image(100,100), class: 'col-4 mr-2', style: 'width: 130px; height: 100px; border-radius: 50%; background-position: center;' %>
                   <%= snack.customer.user_name %>
                 <% end %>
@@ -96,19 +93,19 @@
   <!--いいね-->
   <h5>
     <% if snack.customer == current_customer %>    <!--投稿が投稿者本人のものであればいいねボタンは表示しない-->
-      <div class="row justify-content-end mb-5" style="margin-right: 70px;">
+      <div class="row justify-content-end mb-3" style="margin-right: 70px;">
         いいね：<%= snack.favorites.count %>
       </div>
     <% elsif snack.customer.present? && snack.customer.is_active %>   <!--投稿者がcustomerで、かつアクティブであればいいねボタンを表示する-->
-      <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-5" style="margin-right: 70px;">
+      <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-3" style="margin-right: 70px;">
         <%= render 'public/favorites/favorite-btn', snack: snack %>
       </div>
     <% elsif customer == nil %>       <!--投稿者がadminであればいいねボタンを表示する-->
-      <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-5" style="margin-right: 70px;">
+      <div id="favorite-btn_<%= snack.id %>" class="row justify-content-end mb-3" style="margin-right: 70px;">
         <%= render 'public/favorites/favorite-btn', snack: snack %>
       </div>
     <% else %>
-      <div class="row justify-content-end mb-5" style="margin-right: 70px;">     <!--投稿者が退会済みであればいいねボタンは表示しない-->
+      <div class="row justify-content-end mb-3" style="margin-right: 70px;">     <!--投稿者が退会済みであればいいねボタンは表示しない-->
         いいね：<%= snack.favorites.count %>
       </div>
     <% end %>
@@ -139,7 +136,7 @@
         <div class="col-5">
           <% if customer_signed_in? %>     <!--ログインしていればコメントフォームを表示-->
             <%= form_with model: [snack, snack_comment], local: false do |f| %>
-              <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
+              <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8', style: "margin-left: 90px;" %>
               <%= f.submit '送信' %>
             <% end %>
           <% end %>
@@ -150,7 +147,7 @@
         <div class="col-5">
           <% if customer_signed_in? %>     <!--ログインしていればコメントフォームを表示-->
             <%= form_with model: [snack, snack_comment], local: false do |f| %>
-              <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8 ml-5' %>
+              <%= f.text_area :comment, rows:'5', placeholder: 'ここにコメントを記述します', class: 'col-8', style: "margin-left: 90px;" %>
               <%= f.submit '送信' %>
             <% end %>
           <% end %>
