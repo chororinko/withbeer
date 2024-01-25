@@ -106,7 +106,7 @@ A（ニンニクチューブ：3センチ
 エビ：殻とって背腸を取る
 レンコン：1センチ程度に切って輪切りの状態で酢水にさらす
 舞茸：適当な大きさに分ける
-ジャガイモ：皮を剥いて1センチ輪切り"
+ジャガイモ：皮を剥いて1センチの輪切りにする"
   snack.process =
 "1. 天ぷら粉を水で溶きます。
 2.野菜から順番に水で溶いた天ぷら粉につけて油で揚げます。
@@ -116,7 +116,7 @@ A（ニンニクチューブ：3センチ
 end
 
 Snack.find_or_create_by!(title: "舞茸とチーズのベーコン巻き") do |snack|
-  snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack4.jpg"), filename:"sample-snack4.jpg")
+  snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack5.jpg"), filename:"sample-snack5.jpg")
   snack.introduction = "定番のベーコン＆チーズに、舞茸を加えた”THEおつまみ”な逸品です。ビールのお供にお試しください。"
   snack.customer = nil
   snack.ingredients =
@@ -128,11 +128,14 @@ Snack.find_or_create_by!(title: "舞茸とチーズのベーコン巻き") do |s
 塩コショウ：少々
 サラダ油：適量
 【下準備】
-舞茸を適当な大きさに分ける。"
+1. 舞茸を適当な大きさに分けます。
+2. ベーコンにスティックチーズと舞茸を乗せて巻きます。
+【POINT】
+巻き終わったベーコンの端を下にした状態で、横からつまようじを刺しておくと焼くときに型崩れしにくい！"
   snack.process =
-"1. ベーコンにスティックチーズと舞茸を乗せて巻く。
-2. フライパンにサラダ油を敷いて中火で炒め、塩コショウをししょうゆをかける。
-3. ベーコンに焦げ目がついたらお皿に取りわけ完成です。"
+"1. フライパンにサラダ油を敷いてベーコン巻きを中火で炒め、塩コショウをし醤油をかけます。
+2. フライパンに蓋をして少々蒸らします。
+3. チーズがとろけてきたらお皿に取りわけ完成です。"
   snack.sake = Sake.find(1)
   snack.tags << Tag.find_or_create_by!(name: "和食")
   snack.tags << Tag.find_or_create_by!(name: "簡単")
