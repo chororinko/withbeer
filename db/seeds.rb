@@ -24,18 +24,21 @@ Sake.create([
 
 次郎 = Customer.find_or_create_by!(email: "jirou@example.com") do |customer|
   customer.user_name = "次郎"
+  customer.introduction = "三度の飯よりお酒が好き"
   customer.password = "password"
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer1.jpg"), filename:"sample-customer1.jpg")
 end
 
 冬子 = Customer.find_or_create_by!(email: "huyu@example.com") do |customer|
   customer.user_name = "冬子"
+  customer.introduction = "赤ワインが大好きです。赤ワインに合うおつまみを紹介していきたいと思います。"
   customer.password = "password"
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer2.jpg"), filename:"sample-customer2.jpg")
 end
 
 道子 = Customer.find_or_create_by!(email: "michiko@example.com") do |customer|
   customer.user_name = "道子"
+  customer.introduction = "no BEER no life"
   customer.password = "password"
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer3.jpg"), filename:"sample-customer3.jpg")
 end
@@ -85,7 +88,7 @@ end
 
 Snack.find_or_create_by!(title: "野菜たっぷり天ぷら") do |snack|
   snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack3.jpg"), filename:"sample-snack3.jpg")
-  snack.introduction = "野菜盛りだくさんの天ぷら！！ビールが進むこと間違いなし！！！"
+  snack.introduction = "野菜盛りだくさんの天ぷら！！ビールが進むこと間違いなし！！天つゆで食べても塩で食べても最高に美味しい！！！"
   snack.customer = 道子
   snack.ingredients =
 "（3人前）
@@ -95,22 +98,29 @@ Snack.find_or_create_by!(title: "野菜たっぷり天ぷら") do |snack|
 舞茸：1パック
 ジャガイモ：1個
 エビ：6尾
+サラダ油：適量
+天ぷら粉：200g
+
 A（ニンニクチューブ：3センチ
 生姜チューブ：3センチ
 酒：大さじ1
 醤油：大さじ1
 水：大さじ1）
-サラダ油：適量
-天ぷら粉：200g
+
 【下準備】
-エビ：殻とって背腸を取る
+鳥ササミ：揚げる直前までAに漬けておく
+エビ：殻を取り背腸を取る
 レンコン：1センチ程度に切って輪切りの状態で酢水にさらす
 舞茸：適当な大きさに分ける
 ジャガイモ：皮を剥いて1センチの輪切りにする"
   snack.process =
 "1. 天ぷら粉を水で溶きます。
-2.野菜から順番に水で溶いた天ぷら粉につけて油で揚げます。
-3. 全部揚げたら完成です。"
+2. 野菜から順番に水で溶いた天ぷら粉につけて油で揚げます。
+　　※ししとうを揚げる際は、油ハネに特に注意してください。
+3. 全部揚げたら完成です。
+
+【POINT】
+天ぷらが残ったら、次の日に天丼として食べてもいいですね！"
   snack.sake = Sake.find(1)
   snack.tags << Tag.find_or_create_by!(name: "和食")
 end

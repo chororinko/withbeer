@@ -74,7 +74,7 @@
 <!--投稿の編集＆削除-->
 <% if admin_signed_in?%>
   <div class="row mt-5 justify-content-center">
-    <%= link_to '編集する', edit_admin_recommendation_snack_path(snack), class: 'col-3 btn text-light btn-lg', style: 'background-color: #A0522D;' %>
+    <%= link_to '編集する', edit_admin_recommendation_snack_path(snack), class: 'col-4 btn text-light btn-lg', style: 'background-color: #A0522D;' %>
   </div>
   <div class="row mt-5 mb-5 mr-3 justify-content-end">
     <%= link_to '投稿の削除', admin_recommendation_snack_path(snack), method: :delete,
