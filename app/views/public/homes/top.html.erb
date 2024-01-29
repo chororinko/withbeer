@@ -44,16 +44,16 @@
           <h3>今月のおすすめ</h3>
         </div>
         <div class="recommend container ml-5 mt-1">
-          <div class="row justify-content-center" style="margin-top: 50px;">
-            <div class="col-3 ml-5">
-              <%= link_to snack_path(@snack), class: "text-dark" do %>
-                <h1><strong><%= @snack.sake.genre %></strong></h1>
+          <div class="row" style="margin-top: 50px;">
+            <div class="col-4 ml-5">
+              <%= link_to snack_path(@snack), class: "text-dark", style: 'font-size: 60px;' do %>
+                <strong><%= @snack.sake.genre %></strong>
               <% end %>
             </div>
-            <div class="col-2"><h1>✖</h1></div>
-            <div class="col-5">
+            <div class="col-1 ml-4 mr-5" style='font-size: 60px;'>✖</div>
+            <div class="col-4 ml-5">
               <%= link_to snack_path(@snack) do %>
-                <%= image_tag(@snack.get_image(250,200)) %>
+                <%= image_tag(@snack.get_image(250,200), style: 'border-radius: 10%;') %>
               <% end %>
               <div class="col">
                 <%= link_to snack_path(@snack) do %>
