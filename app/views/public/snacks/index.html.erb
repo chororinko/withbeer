@@ -2,10 +2,18 @@
   <div class="row ml-4">
     <h3><strong><%= @sake.genre %></strong>に合うおつまみ（<%= @quantity %>品）</h3>
   </div>
+
+  <!--並べ替え-->
   <div class="row justify-content-end">
-    <div class="col-1" style="padding-left: 35px; padding-right: 0px;"><%= link_to '新着順', sake_snacks_path(latest: "true") %></div>
-    <div class="col-1 text-center" style="padding-left: 0px; padding-right: 10px;"><%= link_to '古い順', sake_snacks_path(old: "true") %></div>
-    <div class="col-1 px-0"><%= link_to 'いいね順', sake_snacks_path(most_favorited: "true") %></div>
+    <div class="col-1" style="padding-left: 35px; padding-right: 0px;">
+      <%= link_to '新着順', sake_snacks_path(latest: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
+    <div class="col-1 text-center" style="padding-left: 10px; padding-right: 10px;">
+      <%= link_to '古い順', sake_snacks_path(old: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
+    <div class="col-1 px-0">
+      <%= link_to 'いいね順', sake_snacks_path(most_favorited: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
   </div>
 
   <!--タグ検索-->

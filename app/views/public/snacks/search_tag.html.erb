@@ -4,10 +4,18 @@
       （<%= @quantity %>品）
     </h3>
   </div>
+
+  <!--並べ替え-->
   <div class="row justify-content-end">
-    <div class="col-1" style="padding-left: 35px; padding-right: 0px;"><%= link_to '新着順', search_tag_path(tag_id: @tag.id, latest: "true") %></div>
-    <div class="col-1 text-center" style="padding-left: 0px; padding-right: 10px;"><%= link_to '古い順', search_tag_path(tag_id: @tag.id, old: "true") %></div>
-    <div class="col-1 px-0"><%= link_to 'いいね順', search_tag_path(tag_id: @tag.id, most_favorited: "true") %></div>
+    <div class="col-1" style="padding-left: 35px; padding-right: 0px;">
+      <%= link_to '新着順', search_tag_path(tag_id: @tag.id, latest: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
+    <div class="col-1 text-center" style="padding-left: 10px; padding-right: 10px;">
+      <%= link_to '古い順', search_tag_path(tag_id: @tag.id, old: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
+    <div class="col-1 px-0">
+      <%= link_to 'いいね順', search_tag_path(tag_id: @tag.id, most_favorited: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
   </div>
 
   <!--タグ検索-->

@@ -1,7 +1,19 @@
-
 <div class="container" style="margin-bottom: 150px; margin-top: 50px;">
   <div class="row ml-4">
     <h3>”<strong><%= @word %></strong>” に関連するおつまみ（<%= @snacks.total_count %>品）</h3>
+  </div>
+
+  <!--並べ替え-->
+  <div class="row justify-content-end">
+    <div class="col-1" style="padding-left: 35px; padding-right: 0px;">
+      <%= link_to '新着順', search_path(word: @word, latest: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
+    <div class="col-1 text-center" style="padding-left: 10px; padding-right: 10px;">
+      <%= link_to '古い順', search_path(word: @word, old: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
+    <div class="col-1 px-0">
+      <%= link_to 'いいね順', search_path(word: @word, most_favorited: "true"), class: 'btn btn-sm text-light', style: 'background-color: #A0522D;' %>
+    </div>
   </div>
 
   <!--タグ検索-->
@@ -12,7 +24,7 @@
 
     <!--キーワードに紐づいた投稿一覧-->
     <% if @snacks.present? %>
-      <div class="snack-list col d-flex flex-wrap" style="margin-top: 60px;">
+      <div class="snack-list col d-flex flex-wrap mt-3">
         <% @snacks.each do |snack| %>
           <%= render 'public/snacks/list', snack: snack %>
         <% end %>
