@@ -22,24 +22,24 @@ Sake.create([
   { genre: '焼酎' }
 ])
 
-次郎 = Customer.find_or_create_by!(email: "jirou@example.com") do |customer|
+次郎 = Customer.find_or_create_by!(email: ENV['CUSTOMER1_EMAIL']) do |customer|
   customer.user_name = "次郎"
   customer.introduction = "三度の飯よりお酒が好き"
-  customer.password = "password"
+  customer.password = ENV['CUSTOMER1_PASSWORD']
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer1.jpg"), filename:"sample-customer1.jpg")
 end
 
-冬子 = Customer.find_or_create_by!(email: "huyu@example.com") do |customer|
+冬子 = Customer.find_or_create_by!(email: ENV['CUSTOMER2_EMAIL']) do |customer|
   customer.user_name = "冬子"
   customer.introduction = "赤ワインが大好きです。赤ワインに合うおつまみを紹介していきたいと思います。"
-  customer.password = "password"
+  customer.password = ENV['CUSTOMER2_PASSWORD']
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer2.jpg"), filename:"sample-customer2.jpg")
 end
 
-道子 = Customer.find_or_create_by!(email: "michiko@example.com") do |customer|
+道子 = Customer.find_or_create_by!(email: ENV['CUSTOMER3_EMAIL']) do |customer|
   customer.user_name = "道子"
   customer.introduction = "no BEER no life"
-  customer.password = "password"
+  customer.password = ENV['CUSTOMER3_PASSWORD']
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer3.jpg"), filename:"sample-customer3.jpg")
 end
 
