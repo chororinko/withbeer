@@ -25,6 +25,13 @@ class Public::SnacksController < ApplicationController
   def index
     @sake = Sake.find(params[:sake_id])
     @snacks = @sake.snacks.order(created_at: :desc).page(params[:page])
+    if params[:latest]
+      @snacks = @sake.snacks.latest.page(params[:page])
+    elsif params[:old]
+      @snacks = @sake.snacks.old.page(params[:page])
+    elsif params[:most_favorited]
+      @snacks = @sake.snacks.most_favorited.page(params[:page])
+    end
     @quantity = @sake.snacks.count
     @tags = Tag.all
   end
