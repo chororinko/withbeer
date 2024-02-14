@@ -78,6 +78,13 @@ class Public::SnacksController < ApplicationController
     @tags = Tag.all
     @tag = Tag.find(params[:tag_id])                     #特定のタグを受け取る
     @snacks = @tag.snacks.order(created_at: :desc).page(params[:page])     #特定のタグに紐づく投稿を表示
+    if params[:latest]
+      @snacks = @tag.snacks.latest.page(params[:page])
+    elsif params[:old]
+      @snacks = @tag.snacks.old.page(params[:page])
+    elsif params[:most_favorited]
+      @snacks = @tag.snacks.most_favorited.page(params[:page])
+    end
     @quantity = @tag.snacks.count                       # タグに紐づくおつまみの数
   end
 

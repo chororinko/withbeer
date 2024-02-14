@@ -4,6 +4,11 @@
       （<%= @quantity %>品）
     </h3>
   </div>
+  <div class="row justify-content-end">
+    <div class="col-1" style="padding-left: 35px; padding-right: 0px;"><%= link_to '新着順', search_tag_path(tag_id: @tag.id, latest: "true") %></div>
+    <div class="col-1 text-center" style="padding-left: 0px; padding-right: 10px;"><%= link_to '古い順', search_tag_path(tag_id: @tag.id, old: "true") %></div>
+    <div class="col-1 px-0"><%= link_to 'いいね順', search_tag_path(tag_id: @tag.id, most_favorited: "true") %></div>
+  </div>
 
   <!--タグ検索-->
   <div class="row">
@@ -12,7 +17,7 @@
     </div>
 
     <!--特定のタグに紐づいた投稿一覧-->
-    <div class="snack-list col d-flex flex-wrap" style="margin-top: 60px;">
+    <div class="snack-list col d-flex flex-wrap mt-3">
       <% @snacks.each do |snack| %>
         <%= render 'public/snacks/list', snack: snack %>
       <% end %>
