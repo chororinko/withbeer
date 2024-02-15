@@ -74,7 +74,7 @@ class Snack < ApplicationRecord
   scope :latest, -> { order(created_at: :desc) }    #desc = 降順 => 新着順
   scope :old, -> { order(created_at: :asc) }    #asc = 昇順 => 古い順
   scope :most_favorited, -> { left_joins(:favorites)
-    .group('snacks.id')    #いいね数のカウント
+    .group('snacks.id')    #いいね数をカウントするためグループ化
     .order('COUNT(favorites.id) DESC')    #いいねが多い順
     .includes(:favorites) }
 

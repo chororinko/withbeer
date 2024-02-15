@@ -67,6 +67,19 @@
         </div>
       </div>
     <% end %>
+
+    <!--人気のおつまみ-->
+    <% if @most_favorited.present? %>
+    <% @most_favorited.each do |most_favorited| %>
+      <%= link_to snack_path(most_favorited.id) do %>
+        <h3 class="text-dark pr-2" style="width: 100%; max-width: 250px; word-break: break-word;">
+          <strong><%= most_favorited.snack.title %></strong>
+        </h3>
+      <% end %>
+    <% end %>
+    <% else %>
+      投稿はまだありません
+    <% end %>
   </div>
 </div>
 
