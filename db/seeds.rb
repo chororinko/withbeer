@@ -43,6 +43,18 @@ end
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer3.jpg"), filename:"sample-customer3.jpg")
 end
 
+サブロー = Customer.find_or_create_by!(email: ENV['CUSTOMER4_EMAIL']) do |customer|
+  customer.user_name = "サブロー"
+  customer.password = ENV['CUSTOMER4_PASSWORD']
+  customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer4.jpg"), filename:"sample-customer4.jpg")
+end
+
+なっちゃん = Customer.find_or_create_by!(email: ENV['CUSTOMER5_EMAIL']) do |customer|
+  customer.user_name = "なっちゃん"
+  customer.password = ENV['CUSTOMER5_PASSWORD']
+  customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-customer5.jpg"), filename:"sample-customer5.jpg")
+end
+
 Snack.find_or_create_by!(title: "エリンギのガリバタ醤油炒め") do |snack|
   snack.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-snack1.jpg"), filename:"sample-snack1.jpg")
   snack.introduction = "ガーリック・バター・醤油の最強トリオでビールが進む逸品です。"

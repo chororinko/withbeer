@@ -40,11 +40,11 @@
     <!--今月のおすすめ-->
     <% if @snack.present? %>
       <div class="col-9">
-        <h3 class="row pl-5 ml-1"><i class="fa-regular fa-thumbs-up"></i> 今月のおすすめ</h3>
+        <h3 class="row pl-5 ml-1" style="font-family: 'Yusei Magic', sans-serif;"><i class="fa-regular fa-thumbs-up"></i> 今月のおすすめ</h3>
         <div class="recommend container ml-5 mt-1">
           <div class="row" style="margin-top: 50px;">
             <div class="col-4 ml-5">
-              <%= link_to snack_path(@snack), class: "text-dark", style: 'font-size: 60px;' do %>
+              <%= link_to snack_path(@snack), class: "text-dark", style: 'font-size: 60px; font-family: Rampart One, sans-serif;' do %>
                 <strong><%= @snack.sake.genre %></strong>
               <% end %>
             </div>
@@ -73,13 +73,13 @@
     <div class="col-2"></div>
 
     <!--人気のおつまみ-->
-    <% if @most_favorited.present? %>
+    <% if @most_favorited.present? && @most_favorited.favorites.count > 0 %>
       <div class="col-9">
-        <h3 class="row pl-5 ml-1"><i class="fa-solid fa-crown"></i>人気のおつまみ</h3>
+        <h3 class="row pl-5 ml-1" style="font-family: 'Yusei Magic', sans-serif;"><i class="fa-solid fa-crown" style="color: #FFCC00;"></i>人気のおつまみ</h3>
         <div class="recommend container ml-5 mt-1">
           <div class="row" style="margin-top: 50px;">
             <div class="col-4 ml-5">
-            <%= link_to snack_path(@most_favorited.id), class: "text-dark", style: 'font-size: 60px;' do %>
+            <%= link_to snack_path(@most_favorited.id), class: "text-dark", style: 'font-size: 60px; font-family: Rampart One, sans-serif;' do %>
               <strong><%= @most_favorited.sake.genre %></strong>
             <% end %>
           </div>
