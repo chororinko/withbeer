@@ -13,7 +13,7 @@
 
       <div class="text-center" style="margin-top: 80px;">
         <%= link_to "いいえ", customer_path(current_customer), class: "btn btn-info btn-lg col-2 mr-5" %>
-        <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger btn-sm ml-5",
+        <%= link_to "退会する", withdraw_customers_path(@customer), method: :patch, class: "btn btn-danger btn-sm ml-5",
           data: { confirm: "OKを押すと退会処理がされます。本当によろしいですか？" } %>
       </div>
     </div>

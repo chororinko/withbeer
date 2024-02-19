@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:show]
-  before_action :is_matching_login_customer, only: [:edit, :update, :withdraw]
+  before_action :is_matching_login_customer, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
 
   def show
@@ -46,7 +46,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def is_matching_login_customer
-    customer = current_customer
+    customer = Customer.find(params[:id])
     unless customer.id == current_customer.id
       redirect_to customer_path(current_customer)
     end

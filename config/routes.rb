@@ -41,10 +41,12 @@ Rails.application.routes.draw do
       resources :snacks, only: [:index, :show]
     end
 
-    get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
-    patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:show, :edit, :update] do
-      member do
+      collection do             # collectionはidがつかない
+        get :confirm_withdraw
+        patch :withdraw
+      end
+      member do           # memberを使うとidが付与される=>”誰が”いいねしたのかわかる必要があるため
       get :favorites
       end
     end
