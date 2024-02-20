@@ -5,17 +5,17 @@
       <% if comment.customer.is_active %>
         <%= link_to customer_path(comment.customer) do %>
           <%= image_tag(comment.customer.get_profile_image(100,100), style: 'width: 80px; height: 80px; border-radius: 50%; background-position: center;') %><br>
-          <div class="col mb-4" style="width: 100%; max-width: 110px; word-break: break-word;"><%= comment.customer.user_name %></div>
+          <div class="col mb-1" style="width: 100%; max-width: 110px; word-break: break-word;"><%= comment.customer.user_name %></div>
         <% end %>
       <% else %>
-        <div class="col mb-4">退会した<br>ユーザー</div>
+        <div class="col mb-1">退会した<br>ユーザー</div>
       <% end %>
+      <div class="mb-5"><%= comment.created_at.strftime("%Y/%m/%d") %></div>
     </div>
     <div class="col-7 pt-4 mb-3">
       <div class="snack-comment">
         <%= comment.comment %>
       </div>
-      <div><%= comment.created_at.strftime("%Y/%m/%d") %></div>
     </div>
     <div class="col-2 pt-4">
       <% if comment.customer == current_customer %>

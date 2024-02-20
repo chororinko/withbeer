@@ -2,7 +2,9 @@
 <div class="flex-item" style="flex-basis: 20%;">
   <%= link_to snack_path(snack) do %>
     <%= image_tag(snack.get_image(150,150), style: 'border-radius: 10%;') %>
-    <div class="snack-title mt-3 mb-3 mr-1 ml-1 text-dark"><strong><%= snack.title %></strong></div>
+    <div class="snack-title mt-3 mb-3 mr-1 ml-1 text-dark">
+      <strong><%= snack.title %></strong>
+      <div class="mt-2">いいね：<%= snack.favorites.count %></div>
+    </div>
   <% end %>
-  いいね：<%= snack.favorites.count %>
 </div>
