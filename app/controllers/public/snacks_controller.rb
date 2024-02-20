@@ -91,7 +91,7 @@ class Public::SnacksController < ApplicationController
   private
 
   def snack_params
-    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id, snack_tag_ids: [])
+    params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id)
   end
 
   def is_matching_login_customer

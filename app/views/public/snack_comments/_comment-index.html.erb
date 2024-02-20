@@ -15,10 +15,11 @@
       <div class="snack-comment">
         <%= comment.comment %>
       </div>
+      <div><%= comment.created_at.strftime("%Y/%m/%d") %></div>
     </div>
     <div class="col-2 pt-4">
       <% if comment.customer == current_customer %>
-        <%= link_to snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true do %>
+        <%= link_to snack_snack_comment_path(comment.snack, comment), method: :delete, remote: true, "data-confirm" => "このコメントを削除してよろしいですか?" do %>
           <h4><i class="fa-solid fa-trash-can" style="color: gray;"></i></h4>
         <% end %>
       <% elsif admin_signed_in? %>
