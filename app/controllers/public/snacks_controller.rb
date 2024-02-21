@@ -17,6 +17,7 @@ class Public::SnacksController < ApplicationController
       flash[:notice] = 'おつまみレシピの新規投稿に成功しました。'
       redirect_to snack_path(@snack)
     else
+      @tags = params[:snack][:name]
       flash[:notice] = 'おつまみレシピの新規投稿に失敗しました。'
       render :new
     end
@@ -62,6 +63,7 @@ class Public::SnacksController < ApplicationController
       flash[:notice] = 'おつまみレシピの編集に成功しました。'
       redirect_to snack_path(@snack)
     else
+      @tags = params[:snack][:name]
       flash[:notice] = 'おつまみレシピの編集に失敗しました。'
       render :edit
     end
