@@ -12,13 +12,6 @@ class Admin::SnacksController < ApplicationController
     @snack_tags = @snack.tags
   end
 
-  def edit
-    @snack = Snack.find(params[:id])
-  end
-
-  def update
-  end
-
   def destroy
     snack = Snack.find(params[:id])
     customer = snack.customer.id
@@ -28,5 +21,3 @@ class Admin::SnacksController < ApplicationController
   end
 
 end
-
-

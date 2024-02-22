@@ -1,16 +1,21 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_customer!
+  before_action :set_snack, only: [:create, :destroy]
 
   def create
-    @snack = Snack.find(params[:snack_id])
     favorite = current_customer.favorites.new(snack_id: @snack.id)
     favorite.save
   end
 
   def destroy
-    @snack = Snack.find(params[:snack_id])
     favorite = current_customer.favorites.find_by(snack_id: @snack.id)
     favorite.destroy
+  end
+
+  private
+
+  def set_snack
+    @snack = Snack.find(params[:snack_id])
   end
 
 end

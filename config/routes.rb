@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :sakes, only: [:index, :edit, :create, :update, :destroy]
 
-    resources :snacks do
+    resources :snacks, only: [:index, :show, :destroy] do
       resources :snack_comments, only: [:destroy]
     end
     resources :recommendation_snacks
@@ -35,7 +35,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    resources :recommendations, only: [:index, :show]
 
     resources :sakes, only: [:index, :show] do
       resources :snacks, only: [:index, :show]
@@ -52,11 +51,10 @@ Rails.application.routes.draw do
     end
 
     get "search_tag" => "snacks#search_tag"
-    resources :tags, only: [:index, :create, :new, :destroy]
 
     get "snacks" => redirect("/snacks/new")  # 投稿に失敗してリロードした場合のリダイレクト処理
 
-    resources :snacks, only: [:new, :edit, :show, :create, :update, :destroy] do
+    resources :snacks do
       resources :snack_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end

@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :ensure_customer, only: [:show, :edit, :update]
+  before_action :set_customer, only: [:show, :edit, :update]
 
   def index
     @customers = Customer.page(params[:page]).order(created_at: :desc)
@@ -28,7 +28,7 @@ class Admin::CustomersController < ApplicationController
     params.require(:customer).permit(:is_active)
   end
 
-  def ensure_customer
+  def set_customer
     @customer = Customer.find(params[:id])
   end
 

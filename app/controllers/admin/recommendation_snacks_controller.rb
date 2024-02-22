@@ -1,5 +1,6 @@
 class Admin::RecommendationSnacksController < ApplicationController
   before_action :authenticate_admin!, except: [:show]
+  before_action :set_snack, only: [:show, :edit, :update]
 
   def new
     @snack = Snack.new
@@ -26,19 +27,16 @@ class Admin::RecommendationSnacksController < ApplicationController
   end
 
   def show
-    @snack = Snack.find(params[:id])
     @snack_comments = @snack.snack_comments.order(created_at: :desc).page(params[:page]).per(6)
     @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
   end
 
   def edit
-    @snack = Snack.find(params[:id])
     @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def update
-    @snack = Snack.find(params[:id])
     tags = params[:snack][:name].split(',')
     if @snack.update(snack_params)
       @snack.save_tags(tags)
@@ -61,6 +59,10 @@ class Admin::RecommendationSnacksController < ApplicationController
 
   def snack_params
     params.require(:snack).permit(:image, :title, :introduction, :ingredients, :process, :sake_id)
+  end
+
+  def set_snack
+    @snack = Snack.find(params[:id])
   end
 
 end

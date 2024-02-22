@@ -2,9 +2,9 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:show]
   before_action :is_matching_login_customer, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
+  before_action :set_customer, only: [:show, :edit, :update]
 
   def show
-    @customer = Customer.find(params[:id])
     @snacks = @customer.snacks.order(created_at: :desc).page(params[:page]).per(10)
   end
 
@@ -15,11 +15,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = 'プロフィールの編集に成功しました。'
       redirect_to customer_path(@customer)
@@ -57,6 +55,10 @@ class Public::CustomersController < ApplicationController
     if @customer.guest_user?
       redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
+  end
+
+  def set_customer
+    @customer = Customer.find(params[:id])
   end
 
 end

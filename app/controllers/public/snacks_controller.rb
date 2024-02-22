@@ -1,11 +1,12 @@
 class Public::SnacksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show, :search_tag]
   before_action :is_matching_login_customer, only: [:edit, :update, :destroy]
+  before_action :set_snack, only: [:show, :edit, :update]
+  before_action :set_tags, only: [:new, :show, :edit]
 
   def new
     @snack = Snack.new
     @sakes = Sake.all
-    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def create
@@ -38,7 +39,6 @@ class Public::SnacksController < ApplicationController
   end
 
   def show
-    @snack = Snack.find(params[:id])
     if @snack.customer.present?
       @customer = @snack.customer.id
     else
@@ -46,17 +46,13 @@ class Public::SnacksController < ApplicationController
     end
     @snack_comment = SnackComment.new
     @snack_comments = @snack.snack_comments.order(created_at: :desc).page(params[:page]).per(6)
-    @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
   end
 
   def edit
-    @snack = Snack.find(params[:id])
-    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def update
-    @snack = Snack.find(params[:id])
     tags = params[:snack][:name].split(',')
     if @snack.update(snack_params)
       @snack.save_tags(tags)
@@ -101,6 +97,14 @@ class Public::SnacksController < ApplicationController
     unless snack.customer_id == current_customer.id
       redirect_to snacks_path
     end
+  end
+
+  def set_snack
+    @snack = Snack.find(params[:id])
+  end
+
+  def set_tags
+    @tags = @snack.tags.pluck(:name).join(',')
   end
 
 end
