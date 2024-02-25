@@ -20,5 +20,6 @@ module Withbeer
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
+    config.paths.add 'lib', eager_load: true
   end
 end

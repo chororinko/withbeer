@@ -2,11 +2,11 @@ class Public::SnacksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show, :search_tag]
   before_action :is_matching_login_customer, only: [:edit, :update, :destroy]
   before_action :set_snack, only: [:show, :edit, :update]
-  before_action :set_tags, only: [:new, :show, :edit]
 
   def new
     @snack = Snack.new
     @sakes = Sake.all
+    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def create
@@ -46,10 +46,12 @@ class Public::SnacksController < ApplicationController
     end
     @snack_comment = SnackComment.new
     @snack_comments = @snack.snack_comments.order(created_at: :desc).page(params[:page]).per(6)
+    @tags = @snack.tags.pluck(:name).join(',')
     @snack_tags = @snack.tags
   end
 
   def edit
+    @tags = @snack.tags.pluck(:name).join(',')
   end
 
   def update
@@ -101,10 +103,6 @@ class Public::SnacksController < ApplicationController
 
   def set_snack
     @snack = Snack.find(params[:id])
-  end
-
-  def set_tags
-    @tags = @snack.tags.pluck(:name).join(',')
   end
 
 end
