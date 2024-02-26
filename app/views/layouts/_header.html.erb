@@ -55,15 +55,18 @@
             <% end %>
           </li>
           <li class="dropdown">
-            <button class="nav-link btn text-light rounded-pill mt-1 ml-3 dropdown-toggle" style='background-color: #A0522D;' type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <% if unchecked_notifications.any? %>
-                <span.fa-stack>
-                  <i class=far.fa-bell.fa-lg.fa-stack-2x style="font-size: 1.5em;"></i> 
-                  <i class=fas.fa-circle.n-circle.fa-stack-1x></i>
-              <% else %> 
-                <i class=far.fa-bell.fa-lg style="font-size: 1.5em;"></i>
-                </span.fa-stack>通知
-              <!--<span class="badge badge-danger"><#%= current_customer.notifications.where(read: false).count %></span>-->
+            <button class="btn text-light rounded-pill mt-1 ml-3 dropdown-toggle" style='background-color: #A0522D;' type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if unread_notifications.any? %>
+                <span class="fa-stack" style="vertical-align: top;">    <!--要素内に二つのアイコンタグの設置-->
+                  <i class="fa-solid fa-bell"></i>
+                  <i class="fa-solid fa-circle fa-xs circle-icon" style="color: orange;"></i>
+                  通知
+                </span>
+              <% else %>
+                  <i class="fa-solid fa-bell"></i>
+                  通知
+              <% end %>
+              <span>　</span>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <% if current_customer.notifications.where(read: false).any? %>
