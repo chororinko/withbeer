@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   has_many :snacks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :snack_comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :user_name, presence: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }

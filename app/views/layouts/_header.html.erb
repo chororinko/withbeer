@@ -54,6 +54,28 @@
               <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
             <% end %>
           </li>
+          <li class="dropdown">
+            <button class="nav-link btn text-light rounded-pill mt-1 ml-3 dropdown-toggle" style='background-color: #A0522D;' type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if unchecked_notifications.any? %>
+                <span.fa-stack>
+                  <i class=far.fa-bell.fa-lg.fa-stack-2x style="font-size: 1.5em;"></i> 
+                  <i class=fas.fa-circle.n-circle.fa-stack-1x></i>
+              <% else %> 
+                <i class=far.fa-bell.fa-lg style="font-size: 1.5em;"></i>
+                </span.fa-stack>通知
+              <!--<span class="badge badge-danger"><#%= current_customer.notifications.where(read: false).count %></span>-->
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% if current_customer.notifications.where(read: false).any? %>
+                <small class="dropdown-item disabled">直近5件の未読の通知を表示しています</small>
+                <% current_customer.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                  <%= link_to notification.message, notification, method: :patch, class: "dropdown-item" %>
+                <% end %>
+              <% else %>
+                <span class="dropdown-item disabled">未読の通知はありません</span>
+              <% end %>
+            </div>
+          </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn text-light rounded-pill mt-1 ml-3", style: 'background-color: #A0522D;' do %>
               <i class="fa-solid fa-right-from-bracket"></i>ログアウト

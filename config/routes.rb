@@ -50,6 +50,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :notifications, only: [:update]
+
     get "search_tag" => "snacks#search_tag"
 
     get "snacks" => redirect("/snacks/new")  # 投稿に失敗してリロードした場合のリダイレクト処理
