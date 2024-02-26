@@ -55,18 +55,16 @@
             <% end %>
           </li>
           <li class="dropdown">
-            <button class="btn text-light rounded-pill mt-1 ml-3 dropdown-toggle" style='background-color: #A0522D;' type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="nav-link btn text-light rounded-pill mt-1 ml-3 dropdown-toggle" style='background-color: #A0522D;' type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if unread_notifications.any? %>
-                <span class="fa-stack" style="vertical-align: top;">    <!--要素内に二つのアイコンタグの設置-->
-                  <i class="fa-solid fa-bell"></i>
-                  <i class="fa-solid fa-circle fa-xs circle-icon" style="color: orange;"></i>
-                  通知
-                </span>
+                <span class="fa-stack">     <!--要素内に二つのアイコンタグの設置-->
+                  <i class="fa-regular fa-bell fa-stack-2x"></i>
+                  <i class="fa-solid fa-circle fa-stack-xs pt-3 pl-1" style="color: #FF8C00; position: absolute;"></i>
+                </span>通知
               <% else %>
-                  <i class="fa-solid fa-bell"></i>
+                  <i class="fa-solid fa-bell" style="font-size: 18px;"></i>
                   通知
               <% end %>
-              <span>　</span>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <% if current_customer.notifications.where(read: false).any? %>
