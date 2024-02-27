@@ -66,16 +66,16 @@ class Snack < ApplicationRecord
 
     # 新しいタグ作成
     new_tags.each do |new_name|
-      tag = Tag.find_or_create_by(name: new_name)
+      tag = Tag.find_or_create_by(name: new_name)   # タグがすでに存在する場合はそのタグを返し存在しない場合は新しく作る
       self.tags << tag unless self.tags.include?(tag)  # 重複したタグを追加させない
     end
   end
 
   scope :latest, -> { order(created_at: :desc) }    #desc = 降順 => 新着順
   scope :old, -> { order(created_at: :asc) }    #asc = 昇順 => 古い順
-  scope :most_favorited, -> { left_joins(:favorites)
-    .group('snacks.id')    #いいね数をカウントするためグループ化
+  scope :most_favorited, -> { left_joins(:favorites)    # favoritesテーブルとsnacksテーブルの左外部結合によるテーブルの関連付け
+    .group('snacks.id')    #いいね数をカウントする際に正しい結果を得るためにグループ化（snacksテーブルのid列）
     .order('COUNT(favorites.id) DESC')    #いいねが多い順
-    .includes(:favorites) }
+    .includes(:favorites) }     # dbへのクエリ回数を減らすためfavoritesテーブルの関連データを予め読み込む
 
 end

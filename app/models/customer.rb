@@ -25,7 +25,7 @@ class Customer < ApplicationRecord
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
-    find_or_create_by!(email: GUEST_USER_EMAIL) do |customer|    # 指定したメアドが見つからなければ新規作成する
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |customer|    # 指定したアドレスが見つからなければ新規作成する
       customer.password = SecureRandom.urlsafe_base64     # パスワードをランダムで作成する
       customer.user_name = 'guestuser'
     end
