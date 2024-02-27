@@ -44,22 +44,12 @@
               <i class="fa-regular fa-user"></i>マイページ
             <% end %>
           </li>
-          <li>
-            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link btn text-light rounded-pill mt-1 ml-3", style: 'background-color: #A0522D;' do %>
-              <i class="fa-solid fa-heart"></i>いいね一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_snack_path, class: "nav-link btn text-light rounded-pill mt-1 ml-3", style: 'background-color: #A0522D;' do %>
-              <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
-            <% end %>
-          </li>
           <li class="dropdown">
             <button class="nav-link btn text-light rounded-pill mt-1 ml-3 dropdown-toggle" style='background-color: #A0522D;' type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if unread_notifications.any? %>
                 <span class="fa-stack pb-1" style="height: 25px; width: 25px;">     <!--要素内に二つのアイコンタグの設置-->
-                  <i class="fa-regular fa-bell fa-stack-1x pb-1" style="font-size: 16px; height: 25px; width: 25px;"></i>
-                  <i class="fa-solid fa-circle fa-stack-xs pt-1" style="font-size: 10px; color: #FF8C00; position: absolute;"></i>
+                  <i class="fa-regular fa-bell fa-stack-1x pb-2" style="font-size: 16px; height: 25px; width: 25px;"></i>
+                  <i class="fa-solid fa-circle fa-stack-xs pt-1" style="font-size: 10px; color: red; position: absolute;"></i>
                 </span>
                 通知
               <% else %>
@@ -77,6 +67,16 @@
                 <span class="dropdown-item disabled">未読の通知はありません</span>
               <% end %>
             </div>
+          </li>
+          <li>
+            <%= link_to favorites_customer_path(current_customer) ,class: "nav-link btn text-light rounded-pill mt-1 ml-3", style: 'background-color: #A0522D;' do %>
+              <i class="fa-solid fa-heart"></i>いいね一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_snack_path, class: "nav-link btn text-light rounded-pill mt-1 ml-3", style: 'background-color: #A0522D;' do %>
+              <i class="fa-regular fa-pen-to-square"></i>レシピを投稿
+            <% end %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn text-light rounded-pill mt-1 ml-3", style: 'background-color: #A0522D;' do %>
