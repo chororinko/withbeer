@@ -6,8 +6,8 @@
           <%= image_tag snack.get_image(120,120), style: 'border-radius: 10%;' %>
         <% end %>
       </td>
-      <td class="col-5 pl-4">
-        <div style="width: 100%; max-width: 300px; word-break: break-word; font-size: 18px;">
+      <td class="col-4 pl-4 pr-0">
+        <div style="width: 100%; max-width: 210px; word-break: break-word; font-size: 18px;">
           <strong>
             <%= link_to snack_path(snack), class: 'text-dark' do %>
               <%= snack.title %>
@@ -15,10 +15,10 @@
           </strong>
         </div>
       </td>
-      <td id="favorite-btn_<%= snack.id %>" class="col-2" style="font-size: 18px;">
+      <td id="favorite-btn_<%= snack.id %>" class="col-3 pr-0 pl-5" style="font-size: 18px;">
         <%= render 'public/favorites/favorite-btn', snack: snack %>
       </td>
-      <td class="col-2" style="font-size: 18px;">コメント：<%= snack.snack_comments.count %></td>
+      <td class="col-3 pl-5 pr-1" style="font-size: 18px;">コメント：<%= snack.snack_comments.count %></td>
     </tr>
   <% end %>
 </table>
