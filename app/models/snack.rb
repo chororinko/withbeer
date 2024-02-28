@@ -22,7 +22,7 @@ class Snack < ApplicationRecord
 
   # 1つの投稿に対して1人1回までしかいいねできないようにするための確認メソッド
   def favorited_by?(customer)
-    if customer.instance_of?(Customer)
+    if customer.instance_of?(Customer)    # Customerクラスのインスタスであればtrueを返す
       favorites.exists?(customer_id: customer.id)
     else
       false

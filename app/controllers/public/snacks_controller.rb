@@ -6,7 +6,7 @@ class Public::SnacksController < ApplicationController
   def new
     @snack = Snack.new
     @sakes = Sake.all
-    @tags = @snack.tags.pluck(:name).join(',')
+    @tags = @snack.tags.pluck(:name).join(',')    # おつまみに紐づいたタグをカンマで区切って文字列として取得
   end
 
   def create
@@ -76,8 +76,8 @@ class Public::SnacksController < ApplicationController
 
   def search_tag
     @tags = Tag.all
-    @tag = Tag.find(params[:tag_id])                     #特定のタグを受け取る
-    @snacks = @tag.snacks.order(created_at: :desc).page(params[:page])     #特定のタグに紐づく投稿を表示
+    @tag = Tag.find(params[:tag_id])       # 特定のタグを受け取る
+    @snacks = @tag.snacks.order(created_at: :desc).page(params[:page])     # 特定のタグに紐づく投稿を新しい順に表示
     if params[:latest]
       @snacks = @tag.snacks.latest.page(params[:page])
     elsif params[:old]
@@ -85,7 +85,7 @@ class Public::SnacksController < ApplicationController
     elsif params[:most_favorited]
       @snacks = @tag.snacks.most_favorited.page(params[:page])
     end
-    @quantity = @tag.snacks.count                       # タグに紐づくおつまみの数
+    @quantity = @tag.snacks.count        # タグに紐づくおつまみの数
   end
 
   private
